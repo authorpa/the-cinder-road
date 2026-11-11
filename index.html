@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1119">
+<meta name="description" content="The Cinder Road: a free, offline, single-file browser fantasy text adventure.">
+<title>The Cinder Road — An Old-School Fantasy Adventure</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1119;--panel:#131c26;--panel-hi:#192532;--edge:#334354;--muted:#9ba9b7;--text:#f4ecd9;--gold:#e5b96c;--amber:#c97c45;--green:#91bd9e;--red:#e28a83;--blue:#9ac4de;--shadow:#070b10;--mono:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace}
+*{box-sizing:border-box}html{min-height:100%}body{margin:0;background:radial-gradient(ellipse at 28% 0%,#203047 0,transparent 48%),linear-gradient(110deg,#101620,#090f16);color:var(--text);font-family:Georgia,"Times New Roman",serif;line-height:1.5}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:3px}button:disabled{cursor:default;opacity:.34}button:not(:disabled):active{transform:translateY(1px)}.shell{max-width:1470px;margin:auto;padding:23px 26px 34px}.mast{display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid var(--edge);padding:0 0 17px}.eyebrow{font:700 10px/1.5 var(--mono);letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}.brand h1{font-size:clamp(26px,3.4vw,47px);font-weight:500;line-height:1.05;letter-spacing:.035em;margin:4px 0 3px;text-shadow:0 2px 10px #000}.brand h1 span{color:var(--gold)}.brand small{font-family:var(--mono);font-size:11px;color:var(--muted)}.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.btn-minor{font:700 11px var(--mono);letter-spacing:.06em;color:#d0dbe0;background:transparent;border:1px solid #506073;padding:9px 11px;border-radius:3px}.btn-minor:hover{border-color:var(--gold);color:var(--gold)}.autosave{font:11px var(--mono);color:var(--green);min-width:95px;text-align:right}.topline{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:12px 0 15px;font:12px var(--mono);color:var(--muted)}.topline strong{color:#e7d6b4;font-weight:500}.layout{display:grid;grid-template-columns:minmax(245px,290px) minmax(390px,1fr) minmax(238px,278px);gap:17px;align-items:start}.panel{border:1px solid var(--edge);background:linear-gradient(170deg,#18232f,#121a23 60%);border-radius:4px;box-shadow:0 14px 32px #0003;min-width:0}.panelpad{padding:17px}.section-label{font:700 11px var(--mono);color:var(--gold);letter-spacing:.16em;text-transform:uppercase;display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:13px}.section-label em{color:var(--muted);font-style:normal;font-weight:400;letter-spacing:0;text-transform:none}.mapbox{background:#0b141b;border:1px solid #35424a;padding:8px 5px;border-radius:3px}.mapgrid{display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:1px;max-width:285px;margin:auto}.tile{border:0;outline-offset:1px;aspect-ratio:1/1;min-width:0;background:transparent;color:#758779;font:700 clamp(13px,1.45vw,20px)/1 var(--mono);padding:0;text-align:center;border-radius:1px;transition:background .12s}.tile.wall{color:#657183;background:#18222d}.tile.forest{color:#4f9d76;background:#10261f}.tile.water{color:#629eba;background:#102733}.tile.road{color:#6e7d78}.tile.town{color:#e7b46d;background:#392f25}.tile.ruins{color:#a3b6c4;background:#252e38}.tile.shrine{color:#9b9ed8;background:#25263e}.tile.cave{color:#be9d7b;background:#332b27}.tile.tower{color:#e78c81;background:#3d272c}.tile.bridge{color:#c2a37d;background:#3a3027}.tile.you{color:#fff2bd;background:#9b6033;box-shadow:inset 0 0 0 2px #ecbe76;text-shadow:0 1px 3px #000}.tile.reachable:not(.you):hover{background:#445064;box-shadow:inset 0 0 0 1px #f3d193}.tile:disabled{opacity:1;cursor:default}.maplegend{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:5px 8px;font:10px var(--mono);color:#aebac6}.maplegend b{color:var(--gold);font-weight:700}.maphelp{font:11px/1.5 var(--mono);margin:11px 0 0;color:var(--muted)}.locationbox{border-top:1px solid #354453;margin-top:14px;padding-top:13px}.place-title{font-size:22px;margin:1px 0 6px}.place-desc{font-size:13px;color:#c6c5bc;line-height:1.55;margin:0}.storypanel{overflow:hidden}.chapter{padding:19px 22px 15px;border-bottom:1px solid var(--edge);background:linear-gradient(105deg,#222c36,#192431);position:relative}.chapter:after{content:"✦";position:absolute;right:19px;top:11px;font-size:26px;color:#bd955b;opacity:.55}.chapter-label{font:700 10px var(--mono);text-transform:uppercase;letter-spacing:.21em;color:var(--gold)}.chapter h2{font-size:26px;line-height:1.15;font-weight:400;margin:5px 0 3px}.chapter p{margin:0;font:11px var(--mono);color:var(--muted)}.chronicle{height:355px;overflow-y:auto;padding:10px 22px 19px;scrollbar-color:#566376 #18222d;scrollbar-width:thin;background:linear-gradient(180deg,#131c26,#101922)}.entry{margin:12px 0;line-height:1.65;font-size:16px;max-width:74ch}.entry:before{content:"◆";font:10px var(--mono);color:#997448;margin-right:10px}.entry.reward{color:#bde2b9}.entry.reward:before{color:#93c396}.entry.danger{color:#f0aaa0}.entry.danger:before{color:#df8077}.entry.roll{font:12px/1.5 var(--mono);color:#a2bad0;background:#172634;padding:7px 10px;border-left:2px solid #6486a0}.entry.roll:before{content:"d20";font:700 11px var(--mono);color:#88b8db;margin-right:12px}.entry.epilogue{font-size:19px;color:#f3d69d}.entry.epilogue:before{color:#f5bd6d}.action-area{border-top:1px solid var(--edge);padding:17px 21px 20px;background:#16212c}.actiongrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.action{display:block;text-align:left;min-height:61px;background:#20303d;border:1px solid #465b68;border-radius:3px;padding:10px 12px;color:var(--text)}.action:hover{background:#2a3a45;border-color:var(--gold)}.action .name{font:700 12px/1.5 var(--mono);letter-spacing:.01em;color:#f1dfbf}.action .key{display:inline-block;border:1px solid #74808a;border-radius:2px;margin-right:9px;padding:0 5px;color:var(--gold);font-size:10px}.action .hint{display:block;font:11px/1.5 var(--mono);margin:3px 0 0 25px;color:#a8b4bb}.travel{display:flex;align-items:center;justify-content:space-between;gap:15px;border-top:1px solid #3b4b5a;padding-top:13px;margin-top:14px}.traveltext{font:11px/1.5 var(--mono);color:var(--muted)}.dpad{display:grid;grid-template-columns:repeat(3,36px);grid-template-rows:repeat(2,31px);gap:4px;flex-shrink:0}.dpad button{background:#253542;border:1px solid #5b6875;border-radius:2px;color:#e6d1a6;font:15px var(--mono)}.dpad button:hover:not(:disabled){background:#38495a;border-color:var(--gold)}.dpad .north{grid-column:2}.dpad .west{grid-row:2;grid-column:1}.dpad .south{grid-row:2;grid-column:2}.dpad .east{grid-row:2;grid-column:3}.hero-name{font-size:22px;margin:0 0 2px}.hero-class{font:11px var(--mono);color:var(--muted);margin:0 0 15px}.meterblock{margin-bottom:13px}.metertop{display:flex;justify-content:space-between;font:11px var(--mono);color:#c1c9ce;margin-bottom:5px}.metertop strong{font-weight:500;color:#f1e4cd}.meter{height:7px;background:#0a1018;border:1px solid #384751;border-radius:2px;overflow:hidden}.meter>span{display:block;height:100%;transition:width .2s}.hp{background:#d77f73}.mp{background:#86afd5}.xp{background:#d7b36e}.mini-grid{border-top:1px solid #394755;margin:14px 0 3px;padding-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.mini-cell{text-align:center}.mini-cell b{display:block;color:#ebd6b2;font:700 19px var(--mono)}.mini-cell small{font:10px var(--mono);color:#9bacb4}.coins{margin-top:15px;border-top:1px solid #394755;padding-top:11px;font:12px var(--mono);display:flex;justify-content:space-between}.coins b{color:var(--gold)}.tabstrip{display:flex;gap:3px;border-bottom:1px solid #3b4c5b}.tabstrip button{flex:1;padding:11px 4px;background:transparent;border:none;border-bottom:2px solid transparent;color:#9aabb9;font:700 10px var(--mono);text-transform:uppercase;letter-spacing:.07em}.tabstrip button.active{color:#e6c486;border-color:#d7a862;background:#1f2b36}.details{padding:14px 17px 17px;min-height:210px;font:12px/1.65 var(--mono);color:#bfccd2}.details h3{font:700 12px var(--mono);color:#f0d39f;margin:0 0 9px}.details p{margin:0 0 10px}.details .item{border-bottom:1px solid #344350;padding:8px 0}.details .item:last-child{border:0}.details .item b{color:#f3e4ca}.details .dim{color:#93a7b4}.packbutton{background:#2a4037;border:1px solid #718e77;border-radius:2px;color:#e5f0de;padding:7px 10px;font:11px var(--mono);margin-top:7px}.packbutton:disabled{opacity:.3}.die-line{border-bottom:1px solid #3b4752;padding:8px 0}.footer{font:11px/1.7 var(--mono);color:#8194a4;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-top:17px}.footer strong{color:#b9b6ab}.setup{max-width:870px;margin:34px auto;background:linear-gradient(145deg,#192734,#101923);border:1px solid #5a574b;border-top:3px solid var(--gold);padding:27px 30px 31px;box-shadow:0 20px 50px #0005}.setup h2{font-size:34px;margin:9px 0;font-weight:400}.setup p{max-width:66ch;color:#c9cbc4;margin:8px 0 20px}.setup label{font:700 12px var(--mono);display:block;color:#e6d4b2;margin:0 0 7px}.nameinput{display:block;width:100%;max-width:390px;background:#0c1520;border:1px solid #66737a;border-radius:2px;color:white;font:16px var(--mono);padding:12px;margin-bottom:22px}.class-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:11px 0 24px}.class-card{border:1px solid #516171;border-radius:3px;color:#efe7d7;background:#1c2a37;padding:16px;text-align:left;min-height:158px}.class-card:hover{border-color:var(--gold)}.class-card.chosen{background:#2b332f;border:2px solid var(--gold);padding:15px}.class-card b{display:block;font:700 17px var(--mono);color:#f4d8a8}.class-card .glyph{font-size:28px;display:block;margin:3px 0}.class-card .stats{display:block;font:11px/1.6 var(--mono);color:#b2c2ca;margin:8px 0}.bigbutton{background:var(--gold);border:1px solid #ffdb9d;border-radius:3px;font:700 14px var(--mono);color:#171b1c;padding:12px 24px}.bigbutton:hover{background:#ffd590}.setup .continue{display:none;margin-left:9px}.setup-note{font:11px/1.6 var(--mono)!important;color:#95a6b2!important;margin-top:17px!important}.notice{border:1px solid #725e46;color:#f2d9b1;background:#3b3027;padding:8px 12px;font:12px var(--mono);margin-top:12px}.hidden{display:none!important}@media(max-width:1120px){.shell{padding:20px 17px}.layout{grid-template-columns:minmax(240px,310px) minmax(0,1fr)}.rightcolumn{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:17px}.chronicle{height:370px}}@media(max-width:710px){.mast{align-items:flex-start;flex-direction:column}.toolbar{justify-content:flex-start}.layout{display:flex;flex-direction:column}.layout>.panel{width:100%}.rightcolumn{display:flex;flex-direction:column;gap:15px;width:100%}.rightcolumn>.panel{width:100%}.mapgrid{max-width:340px}.tile{font-size:20px}.chronicle{height:300px}.setup{margin:18px 0;padding:20px}.class-grid{grid-template-columns:1fr;gap:9px}.class-card{min-height:0;padding:11px 15px}.class-card.chosen{padding:10px 14px}.class-card .glyph{display:inline;margin-right:10px}.class-card .stats{margin:3px 0}.actiongrid{grid-template-columns:1fr}.action{min-height:52px}.footer{flex-direction:column}.setup .continue{margin:10px 0 0;display:block}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Accessibility enhancements: keyboard landmarks, readable variants, screen reader updates. */
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.skip-link{position:absolute;top:-100px;left:12px;padding:12px 16px;background:#f5d6a2;color:#121820;border:3px solid #fff;font:700 17px var(--mono);z-index:100}
+.skip-link:focus{top:12px}
+#mainGame:focus,#chapterTitle:focus,#placeTitle:focus{outline:3px solid var(--gold);outline-offset:4px}
+.chronicle:focus-visible{outline:3px solid var(--gold);outline-offset:-4px}
+.dpad{grid-template-columns:repeat(3,44px);grid-template-rows:repeat(2,44px)}
+.tile.reachable:focus-visible{outline:3px solid #ffe6b4;outline-offset:1px;position:relative;z-index:2}
+body.font-large .entry{font-size:20px;line-height:1.8}
+body.font-large .entry.roll{font-size:16px}
+body.font-large .section-label,body.font-large .eyebrow,body.font-large .maplegend,body.font-large .maphelp,body.font-large .footer,body.font-large .topline,body.font-large .btn-minor,body.font-large .hero-class,body.font-large .metertop,body.font-large .coins,body.font-large .traveltext,body.font-large .setup label,body.font-large .setup-note,body.font-large .chapter-label,body.font-large .tabstrip button{font-size:14px}
+body.font-large .action .name,body.font-large .details,body.font-large .details h3,body.font-large .packbutton{font-size:16px}
+body.font-large .action .hint,body.font-large .place-desc{font-size:15px}
+body.font-large .mapgrid{max-width:340px}
+body.font-large .tile{font-size:19px}
+body.font-large .setup{font-size:19px}
+body.font-large .class-card .stats,body.font-large .class-card span:not(.glyph):not(.stats){font-size:15px!important}
+body.high-contrast{background:#000;color:#fff;--text:#fff;--gold:#ffe380;--muted:#fff;--edge:#fff}
+body.high-contrast .panel,body.high-contrast .setup,body.high-contrast .chapter,body.high-contrast .action-area,body.high-contrast .chronicle,body.high-contrast .mapbox{background:#000;color:#fff;border-color:#fff;box-shadow:none}
+body.high-contrast .action,body.high-contrast .dpad button,body.high-contrast .btn-minor,body.high-contrast .class-card,body.high-contrast .nameinput,body.high-contrast .tabstrip button{background:#000;color:#fff;border-color:#fff}
+body.high-contrast .action .name,body.high-contrast .action .hint,body.high-contrast .details,body.high-contrast .details .dim,body.high-contrast .maplegend,body.high-contrast .place-desc,body.high-contrast .maphelp,body.high-contrast .metertop,body.high-contrast .section-label em,body.high-contrast .footer,body.high-contrast .chapter p,body.high-contrast .hero-class,body.high-contrast .topline,body.high-contrast .traveltext{color:#fff}
+body.high-contrast .entry.reward{color:#b8ffca}body.high-contrast .entry.danger{color:#ffb8b8}
+body.high-contrast .tile{color:#fff;background:#000;box-shadow:inset 0 0 0 1px #777}
+body.high-contrast .tile.you{color:#000;background:#ffe380;box-shadow:inset 0 0 0 2px #fff}
+body.high-contrast .tile.reachable:not(.you){background:#263b50;box-shadow:inset 0 0 0 2px #fff}
+body.high-contrast button:focus-visible,body.high-contrast input:focus-visible{outline:4px solid #ffe380;outline-offset:3px}
+body.high-contrast .class-card.chosen,body.high-contrast .tabstrip button.active{border:3px solid #ffe380}
+@media(max-width:710px){.dpad{grid-template-columns:repeat(3,48px);grid-template-rows:repeat(2,48px)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Optional command line: large hit targets and clear focus in every mode. */
+.command-panel{border:1px solid var(--edge);background:#0a131c;padding:12px;margin-bottom:13px;border-radius:4px}
+.command-panel label{display:block;font:700 12px var(--mono);letter-spacing:.1em;color:var(--gold);margin-bottom:9px}
+.command-row{display:flex;gap:9px;flex-wrap:wrap}
+.command-row input{flex:1 1 200px;min-width:0;border:1px solid #8b9aab;border-radius:3px;background:#111d2a;color:#fff;padding:11px 13px;font:16px var(--mono)}
+.command-row button{font-size:13px;min-height:44px;min-width:82px}
+.command-panel p{font-size:12px;line-height:1.5;color:var(--muted);margin:9px 0 0}
+body.font-large .command-panel p{font-size:15px}
+body.high-contrast .command-panel{background:#000;border-color:#fff}
+body.high-contrast .command-row input{background:#000;color:#fff;border:2px solid #fff}
+body.high-contrast .command-panel p{color:#fff}
+
+/* The Cinder Road opening: deliberately original, retro BBS ASCII cinematic. */
+.intro-screen[hidden]{display:none!important}
+.intro-screen{position:fixed;inset:0;z-index:200;background:#050c13;color:#f1dab3;display:flex;align-items:center;justify-content:center;overflow:auto;padding:18px 12px;font-family:var(--mono)}
+.intro-terminal{width:min(100%,910px);border:2px solid #b79258;box-shadow:0 0 0 5px #121e26,0 0 0 6px #627388,0 18px 70px #000b;background:#07131d;padding:0;min-height:min(590px,91vh);display:flex;flex-direction:column}
+.intro-bar{background:#e5b96c;color:#0a1520;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 14px;font:700 12px/1.4 var(--mono);letter-spacing:.05em}
+.intro-body{padding:20px clamp(13px,4vw,34px) 12px;display:flex;flex-direction:column;flex:1;align-items:center;justify-content:center;min-height:0}
+.intro-overline{font:700 12px/1.5 var(--mono);letter-spacing:.17em;color:#9bd4b2;margin:0 0 13px;text-align:center}
+.intro-art{font-family:var(--mono);color:#e8c889;font-size:clamp(8px,1.55vw,14px);line-height:1.18;font-weight:700;white-space:pre;letter-spacing:0;margin:0;max-width:100%;min-height:22em;text-align:left;text-shadow:0 0 12px #bd985b36}
+.intro-art.narrow{display:none}
+.intro-line{text-align:center;font:700 clamp(13px,1.9vw,18px)/1.6 var(--mono);letter-spacing:.06em;color:#e7e5dc;min-height:3.2em;margin:12px 0 0;max-width:68ch}
+.intro-cursor{display:inline-block;color:#e5b96c;margin-left:2px;font-weight:700}
+.intro-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid #566875;padding:13px 15px;background:#0c1b26}
+.intro-progress{font:11px/1.5 var(--mono);color:#b9cbd4;letter-spacing:.04em;flex:1 1 180px}
+.intro-actions{display:flex;gap:8px;flex-wrap:wrap}
+.intro-actions button{min-height:44px;border:1px solid #c7af81;border-radius:2px;background:#1a2b38;color:#fff1ce;padding:9px 13px;font:700 12px/1.35 var(--mono)}
+.intro-actions button:hover{background:#344958}
+.intro-actions button:focus-visible{outline:3px solid #ffe8b2;outline-offset:3px}
+.intro-actions button.intro-skip{background:#e5b96c;color:#101a22;border-color:#ffe2a3}
+.intro-actions button.intro-skip:hover{background:#ffe1a5}
+body.high-contrast .intro-screen{background:#000;color:#fff}
+body.high-contrast .intro-terminal{background:#000;box-shadow:none;border-color:#fff}
+body.high-contrast .intro-bar{background:#ffe380;color:#000}
+body.high-contrast .intro-overline,body.high-contrast .intro-art,body.high-contrast .intro-line,body.high-contrast .intro-progress{color:#fff;text-shadow:none}
+body.high-contrast .intro-bottom{background:#000;border-color:#fff}
+body.high-contrast .intro-actions button{background:#000;color:#fff;border:2px solid #fff}
+body.high-contrast .intro-actions button.intro-skip{background:#ffe380;color:#000}
+body.font-large .intro-line{font-size:21px}
+body.font-large .intro-overline,body.font-large .intro-progress,body.font-large .intro-actions button{font-size:15px}
+body.font-large .intro-art{font-size:clamp(8px,1.55vw,14px)}
+@media(max-width:620px){.intro-screen{padding:8px}.intro-terminal{min-height:min(570px,96vh)}.intro-body{padding:15px 10px 8px}.intro-art.wide{display:none}.intro-art.narrow{display:block;font-size:clamp(9px,2.6vw,14px);min-height:19em}.intro-overline{font-size:11px;letter-spacing:.08em}.intro-line{min-height:4.7em;font-size:14px}.intro-bottom{padding:10px;gap:8px}.intro-progress{font-size:10px;flex-basis:120px}.intro-actions{width:100%}.intro-actions button{flex:1}}
+@media(max-height:600px){.intro-screen{align-items:flex-start}.intro-terminal{min-height:0}.intro-body{padding-top:10px}.intro-art{min-height:0}.intro-art.narrow{min-height:0}.intro-line{min-height:2.8em}}
+
+</style>
+</head>
+<body>
+
+<section id="introScreen" class="intro-screen" aria-label="Opening to The Cinder Road" hidden>
+  <div class="intro-terminal">
+    <div class="intro-bar"><span>THE CINDER ROAD // BRIARFALL BBS</span><span>CONNECTION: ESTABLISHED</span></div>
+    <div class="intro-body">
+      <p class="sr-only">The Cinder Road opening. Year 312 of the Third Ember. Briarfall's ancient bell has fallen silent. Across ten realms, a forgotten evil is stirring. A traveler approaches, and the tale begins. The cinematic progresses slowly. You can pause, skip, or choose Read at My Pace to advance each scene manually.</p>
+      <p id="introOverline" class="intro-overline" aria-hidden="true">[ ESTABLISHING CONNECTION . . . ]</p>
+      <pre id="introArtWide" class="intro-art wide" aria-hidden="true"></pre>
+      <pre id="introArtNarrow" class="intro-art narrow" aria-hidden="true"></pre>
+      <p id="introLine" class="intro-line" aria-hidden="true">&nbsp;</p><p id="introReadText" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+    </div>
+    <div class="intro-bottom">
+      <span id="introProgress" class="intro-progress" aria-hidden="true">WAITING FOR A SIGNAL . . .</span>
+      <div class="intro-actions"><button id="introPause" type="button" aria-pressed="false">PAUSE ANIMATION</button><button id="introMode" type="button">READ AT MY PACE</button><button id="introSkip" class="intro-skip" type="button">SKIP INTRO &gt;</button></div>
+    </div>
+  </div>
+</section>
+<a id="pageSkip" class="skip-link" href="#mainGame">Skip to game content</a>
+<div class="shell">
+<header class="mast"><div class="brand"><div class="eyebrow">An adventure from the age of dial-up dreams</div><h1>THE <span>CINDER</span> ROAD</h1><small>AN ORIGINAL SOLO FANTASY CHRONICLE  /  VERSION 0.6</small></div><div class="toolbar"><span id="autosave" class="autosave">OFFLINE • LOCAL SAVE</span><button id="textBtn" class="btn-minor" type="button" aria-pressed="false" title="Use larger type">LARGER TEXT</button><button id="contrastBtn" class="btn-minor" type="button" aria-pressed="false" title="Use a high-contrast palette">HIGH CONTRAST</button><button id="commandToggle" class="btn-minor" type="button" aria-pressed="false" aria-controls="commandPanel">TEXT COMMANDS: OFF</button><button id="replayIntroBtn" class="btn-minor" type="button">REPLAY INTRO</button><button id="helpBtn" class="btn-minor" type="button">HOW TO PLAY</button><button id="resetBtn" class="btn-minor" type="button">NEW CHRONICLE</button></div></header>
+<div id="setup" class="setup"><div class="eyebrow">The road begins · Briarfall</div><h2 id="setupTitle" tabindex="-1">Every legend begins with a name.</h2><p>One continuous fantasy adventure across ten realms. Beyond Briarfall's walls, something has silenced the old bell tower. The village keeper is searching for a traveler willing to follow a forgotten road. Take up your blade, your bow, or your magic.</p><label for="charName">NAME YOUR ADVENTURER</label><input id="charName" class="nameinput" type="text" maxlength="24" placeholder="e.g. Rowan" autocomplete="off" value="Rowan"><div class="eyebrow">Choose your calling</div><div id="classGrid" class="class-grid"></div><button id="startBtn" class="bigbutton" type="button">BEGIN THE ADVENTURE →</button><button id="continueBtn" class="bigbutton continue" type="button">CONTINUE SAVED GAME →</button><p class="setup-note">No account and no internet required. This single HTML file saves your hero and campaign progress in this browser when storage is available. Keyboard, mouse, touch, and screen-reader friendly.</p></div>
+<div id="play" class="hidden"><div class="topline"><div><strong id="storyDay">DAY 1</strong> <span aria-hidden="true">/</span> <span id="storyRegion">THE WESTERN MARCH</span></div><span id="questHeader">MAIN QUEST: A STRANGE SILENCE</span></div><p id="announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p><main id="mainGame" tabindex="-1" class="layout">
+<section class="panel" aria-label="Overworld map"><div class="panelpad"><div id="mapRegion" class="section-label">THE WESTERN MARCH <em>13 × 10</em></div><div class="mapbox"><div id="map" class="mapgrid" role="group" aria-label="Overworld map. Only adjacent traversable squares can be selected."></div></div><div class="maplegend"><span><b>@</b> You</span><span><b>⌂</b> Briarfall</span><span><b>♣</b> Forest</span><span><b>✧</b> Shrine</span><span><b>⌘</b> Ruins</span><span><b>♜</b> Tower</span></div><p class="maphelp">Move with arrow keys, WASD, the directional buttons, or click an adjacent map tile.</p><div class="locationbox"><div class="eyebrow">YOUR LOCATION</div><h3 id="placeTitle" class="place-title" tabindex="-1"></h3><p id="placeDesc" class="place-desc"></p><p id="routes" class="maphelp"></p></div></div></section>
+<section class="panel storypanel" aria-label="Adventure narrative"><div class="chapter"><div id="chapterLabel" class="chapter-label">CHAPTER I</div><h2 id="chapterTitle" tabindex="-1">The Silent Bell</h2><p id="chapterSub">A story written with your choices.</p></div><div id="chronicle" class="chronicle" role="log" aria-label="Adventure chronicle. Focus here to scroll through the narrative with arrow keys." aria-live="off" tabindex="0"></div><div class="action-area"><form id="commandPanel" class="command-panel hidden" autocomplete="off" aria-label="Optional text command input"><label for="commandInput">YOUR COMMAND</label><div class="command-row"><input id="commandInput" type="text" maxlength="140" spellcheck="false" aria-describedby="commandHelp" placeholder="go left · talk to Mara · pick up brick"><button type="submit" class="btn-minor">DO IT</button></div><p id="commandHelp">Examples: look, go north, talk to keeper, pick up brick, inventory, use potion, attack, help.</p></form><div class="section-label">YOUR NEXT MOVE <em>Press 1–9</em></div><div id="actions" class="actiongrid" role="group" aria-label="Available game actions"></div><div class="travel"><span id="travelText" class="traveltext">Travel across the map to explore the valley.</span><div class="dpad" role="group" aria-label="Travel controls"><button id="north" class="north" aria-label="Travel north" title="North (↑ / W)">↑</button><button id="west" class="west" aria-label="Travel west" title="West (← / A)">←</button><button id="south" class="south" aria-label="Travel south" title="South (↓ / S)">↓</button><button id="east" class="east" aria-label="Travel east" title="East (→ / D)">→</button></div></div></div></section>
+<div class="rightcolumn"><section class="panel" aria-label="Character statistics"><div class="panelpad"><div class="section-label">CHARACTER SHEET <em id="lvlDisplay">LV. 1</em></div><h3 id="heroName" class="hero-name"></h3><p id="heroClass" class="hero-class"></p><div class="meterblock"><div class="metertop"><span>HIT POINTS</span><strong id="hpText"></strong></div><div class="meter" role="progressbar" aria-label="Hit points" aria-valuemin="0"><span id="hpMeter" class="hp"></span></div></div><div class="meterblock"><div class="metertop"><span>FOCUS</span><strong id="mpText"></strong></div><div class="meter" role="progressbar" aria-label="Focus points" aria-valuemin="0"><span id="mpMeter" class="mp"></span></div></div><div class="meterblock"><div class="metertop"><span>EXPERIENCE</span><strong id="xpText"></strong></div><div class="meter" role="progressbar" aria-label="Experience points" aria-valuemin="0"><span id="xpMeter" class="xp"></span></div></div><div class="mini-grid"><div class="mini-cell"><b id="mightStat">0</b><small>MIGHT</small></div><div class="mini-cell"><b id="agilityStat">0</b><small>AGILITY</small></div><div class="mini-cell"><b id="spiritStat">0</b><small>SPIRIT</small></div></div><div class="coins"><span>DEFENSE <b id="defStat">0</b></span><span>GOLD <b id="goldStat">0</b></span></div></div></section><section class="panel" aria-label="Journal and items"><div class="tabstrip" role="group" aria-label="Character details"><button class="active" data-tab="journal" aria-pressed="true" aria-controls="tabContent">JOURNAL</button><button data-tab="pack" aria-pressed="false" aria-controls="tabContent">PACK</button><button data-tab="dice" aria-pressed="false" aria-controls="tabContent">DICE</button></div><div id="tabContent" class="details" role="region" aria-label="Character information"></div></section></div>
+</main><div class="footer"><span><strong>CONTROLS</strong> Arrows / WASD: travel · 1–9: choose · J: journal · I: inventory · Optional typed commands</span><span>Original adventure · No account · No network needed · Autosaves</span></div></div>
+</div>
+<dialog id="helpDialog" style="max-width:570px;background:#15212d;border:1px solid #cfaa73;color:#ece1c9;border-radius:4px;padding:25px;box-shadow:0 15px 55px #0009"><h2 style="margin:0 0 9px;font-weight:normal">Welcome to The Cinder Road</h2><p>A continuous, single-player fantasy RPG across ten realms inspired by keyboard-driven adventures of the early computer era. You make choices, explore a small world, fight turn-based battles, and roll a virtual twenty-sided die.</p><p><strong>Accessibility:</strong> Every location has a written description and a list of exits. Use the four labeled travel buttons if you cannot or do not want to use the map. The story and combat outcomes are announced to screen readers. The chronicle can be focused and scrolled with arrow keys. Larger Text and High Contrast are available in the header. No timers, sound cues, or flashing effects.</p><p><strong>Explore:</strong> Travel with the arrows, WASD, or map. At a special location, use the numbered choices to interact.</p><p><strong>Fight:</strong> Attacks roll a d20 plus bonuses against enemy defense. Your special class ability uses Focus. Guarding recovers 2 Focus and reduces the next hit. Potions restore HP.</p><p><strong>Quest:</strong> Speak to Keeper Mara in Briarfall. Your Journal tracks what to do next. Explore the cave and woods for extra encounters and treasure.</p><p><strong>Text commands:</strong> Optional, off by default. Enable TEXT COMMANDS in the header, then type commands such as “go left”, “talk to Mara”, “pick up brick”, “look”, “use potion”, “attack”, “journal”, and “help”. Buttons and keyboard shortcuts continue to work.</p><p><strong>Progress:</strong> The game autosaves in this browser. Defeat sends you back to town with a gold penalty, not a permanent game over. Your adventure continues automatically from one region to the next after you defeat its central foe. The journey leads to a final confrontation and two endings. Your character and journey progress save locally.</p><form method="dialog"><button class="bigbutton">BACK TO THE ROAD</button></form></dialog>
+<script>
+(()=>{'use strict';
+const KEY='the-cinder-road-save-v1';
+const CLASSES={knight:{name:'Knight',symbol:'⚔',desc:'Shield and steel. Steady in a fight.',hp:40,mp:9,might:3,agi:1,spirit:0,ac:14,skill:'Shield Bash',cost:3},ranger:{name:'Ranger',symbol:'➶',desc:'Quick eyes and a quicker bow.',hp:33,mp:13,might:1,agi:3,spirit:1,ac:13,skill:'Twin Shot',cost:4},mystic:{name:'Mystic',symbol:'✦',desc:'Ancient fire carried in the blood.',hp:28,mp:20,might:0,agi:1,spirit:4,ac:11,skill:'Cinder Bolt',cost:5}};
+let WORLD=[
+'^^^^^^^^^^^^^',
+'^...ff....r.^',
+'^..ffff.....^',
+'^...........^',
+'^.v..f...~..^',
+'^....f..~~..^',
+'^.s.....b...^',
+'^....c...~t.^',
+'^...........^',
+'^^^^^^^^^^^^^'];
+let PLACES={v:{title:'Briarfall Village',desc:'Hearth smoke, muddy lanes, and a watchful wooden palisade. The last safe lantern on the western road.',intro:'The village bell hangs silent. Keeper Mara waits beside the well, where travelers gather to trade rumors.'},r:{title:'Sunken Archive',desc:'Columns lean into the bracken. Beneath broken stone lies an age of stories better left sleeping.',intro:'The ruined archive smells of rain and old ash. Something shifts between the fallen shelves.'},s:{title:'Moonwell Shrine',desc:'Silver waters ripple beneath a stone arch. Even in daylight, pale stars glimmer on the surface.',intro:'The Moonwell murmurs like a voice just beyond hearing. A circle of candles is still warm.'},c:{title:'Hushed Cave',desc:'A small opening beneath a hillside, marked by ancient scratches on the rocks.',intro:'The cave exhales cold air. Old adventurers scratched warnings into the walls.'},t:{title:'The Bell Tower',desc:'A ruined watchtower cuts a jagged shape against the sky. Its bell has not rung for forty years.',intro:'There is no wind here. Yet the great brass bell moves, slowly, as if breathing.'},b:{title:'Oldstone Bridge',desc:'Water rushes below the mossy stones, carrying sparks of strange orange light.',intro:'The bridge trembles underfoot. Carved into its rails is a warning: “Only the cleansed flame may wake the bell.”'},f:{title:'Briarwood',desc:'Thorn bushes, tall firs, deer trails—and noises that never quite become footsteps.',intro:'Branches blot out the sky. You hear a distant howl, followed by a far less natural echo.'},'.':{title:'The Western Road',desc:'Narrow footpaths cut through rolling heather and pale grasses.',intro:'The road twists past ancient boundary stones and fields abandoned to the wild.'}};
+const SYMBOL={v:'⌂',r:'⌘',s:'✧',c:'◈',t:'♜',b:'═',f:'♣','.':'·','^':'▲','~':'≈'};
+const TERRAIN={v:'town',r:'ruins',s:'shrine',c:'cave',t:'tower',b:'bridge',f:'forest','.':'road','^':'wall','~':'water'};
+const ENEMIES={wolf:{name:'Thorn Wolf',hp:17,ac:11,attack:3,lo:2,hi:6,xp:12,gmin:4,gmax:9,intro:'A thorn-covered wolf bursts from the undergrowth, yellow eyes fixed on you.'},scout:{name:'Hollow Scout',hp:22,ac:12,attack:4,lo:3,hi:7,xp:17,gmin:6,gmax:11,intro:'A hollow-eyed scout in cracked leather armor draws a rusted blade.'},wisp:{name:'Bog Wisp',hp:15,ac:13,attack:3,lo:2,hi:6,xp:14,gmin:5,gmax:9,intro:'A pale light unfolds from the shadows. It has teeth of glass.'},sentinel:{name:'Ashbound Sentinel',hp:37,ac:12,attack:4,lo:3,hi:8,xp:35,gmin:19,gmax:26,boss:true,intro:'Stone grinds against stone. An armored sentinel rises from the rubble, blocking the ancient seal.'},castellan:{name:'The Dusk Castellan',hp:54,ac:14,attack:5,lo:4,hi:9,xp:75,gmin:36,gmax:45,boss:true,intro:'A figure in soot-black armor turns beneath the bell. “At last,” it whispers, “someone has come to remember.”'}};
+
+// Ten complete story arcs: Book I retains its original quests and map.
+const CAMPAIGN = [null, {n:1,title:'The Bell That Would Not Ring',region:'THE WESTERN MARCH',stages:['A Strange Silence','The Archive of Ash','A Flame in Shadow','The Moonwell Oath','The Bell Awakes']}, {"n": 2, "title": "The Salt King’s Bargain", "region": "THE TIDEBROKEN COAST", "hub": "Tidewatch Quay", "ally": "Captain Edda", "ruin": "Drowned Observatory", "shrine": "Sea-Gate Chapel", "tower": "Salt King’s Bastion", "cave": "Smuggler’s Grotto", "bridge": "Tidemark Causeway", "forest": "Saltwind Reeds", "relic": "Tideglass Lens", "guardian": "Brinebound Warden", "boss": "The Salt King", "hook": "Saltwater pours from dry wells. The tide has begun stealing the names of ships, and sailors vanish from their own logbooks.", "request": "The Salt King has hoarded a Tideglass Lens in the Drowned Observatory. Bring it to the Sea-Gate Chapel before you challenge his bastion.", "ruinStory": "At the bottom of the drowned observatory, a lens revolves in a cage of salt. A knight of living brine stands between you and the glass.", "relicStory": "When the warden breaks, you recover the Tideglass Lens. Through it you can see letters dissolving off the surface of the sea.", "ritual": "The chapel bells ring underwater. Raising the lens reveals a single name beneath every wave: KAEL VEYR.", "bossIntro": "The Salt King rises from a throne of barnacles. “I was promised a sea without storms,” he says. “Instead he is taking the very word for water.”", "victory": "The Salt King falls. The water retreats and every missing ship-name returns to its prow.", "clue": "A ruined treaty bears the signature of Kael Veyr, called the Unmaker. He offered safety in exchange for one word from the world.", "side": "Old smugglers hid a star chart in a dry cask. The markings point toward a forest where lanterns have gone dark.", "vowA": "Remember the lost sailors", "vowB": "Protect the coming voyage"}, {"n": 3, "title": "The Lanternless Court", "region": "GLOAMWOOD", "hub": "Ashglade Refuge", "ally": "Archivist Sive", "ruin": "The Thorn Court", "shrine": "Lantern Grove", "tower": "Hall of Masks", "cave": "Root-Twisted Hollow", "bridge": "Whispering Span", "forest": "The Gloam Boughs", "relic": "True-Name Leaf", "guardian": "Wraith Advocate", "boss": "The Masked Regent", "hook": "No one in Ashglade can recall the faces of their loved ones. The forest’s lanterns burn without light.", "request": "An ancient True-Name Leaf is kept in the Thorn Court. Bring it to Lantern Grove so the stolen faces can be remembered.", "ruinStory": "In a courthouse overtaken by vines, a pale advocate offers a verdict: “All names shall be struck.”", "relicStory": "The advocate dissolves into dry leaves. One living leaf remains; your own name is written across its veins.", "ritual": "The grove accepts the leaf. Faces return in flickers, and you witness Kael Veyr erasing his own childhood from history.", "bossIntro": "The Masked Regent steps from a hundred mirrors, wearing the faces of everyone you have met.", "victory": "The Regent’s masks shatter. Families recognize one another, and lanterns kindle across Gloamwood.", "clue": "The Unmaker cannot destroy what is still freely remembered. He must first persuade a world to forget.", "side": "A forgotten storyteller’s lantern glows once when you whisper someone’s true name.", "vowA": "Remember every forgotten face", "vowB": "Protect those who still remember"}, {"n": 4, "title": "The Clock Beneath the Mountain", "region": "IRONVALE", "hub": "Gearhaven", "ally": "Timekeeper Brann", "ruin": "Broken Orrery", "shrine": "The Heartforge", "tower": "Hour Vault", "cave": "The Copper Shaft", "bridge": "Pendulum Crossing", "forest": "The Iron Pines", "relic": "Secondhand Gear", "guardian": "Rust Automaton", "boss": "The Hour-Thief", "hook": "Midnight lasts for days in Ironvale. Children wake older; grandparents remember tomorrow.", "request": "Find the Secondhand Gear in the Broken Orrery and temper it at the Heartforge. The Hour-Thief has locked the valley between moments.", "ruinStory": "The orrery’s planets spin backward. An automaton forged of rust and abandoned minutes lurches toward you.", "relicStory": "You pry a silver gear from the machine. It ticks to the rhythm of a heartbeat instead of a clock.", "ritual": "The Heartforge heats the gear, and you see futures where the Cinder Road was never walked. Kael Veyr is stealing possible tomorrows.", "bossIntro": "The Hour-Thief steps out from between two seconds and demands the years you have left.", "victory": "The vault clock strikes morning. Time moves forward again; the people of Gearhaven reclaim the days they lost.", "clue": "Kael Veyr once tried to save someone from death by stopping time. His grief taught him the first forbidden spell.", "side": "The shaft holds an engineer’s notebook that explains how to mend a broken clock without stopping it.", "vowA": "Remember the years that passed", "vowB": "Protect the years ahead"}, {"n": 5, "title": "The Glass Desert", "region": "THE SHARD EXPANSE", "hub": "Saffron Rest", "ally": "Cartographer Ila", "ruin": "Fallen Sun Library", "shrine": "The Star Mirror", "tower": "Glass Citadel", "cave": "Sandglass Hollow", "bridge": "Suncrack Walk", "forest": "Mirrorbrush Thicket", "relic": "Star Compass", "guardian": "Prism Guardian", "boss": "The Mirage Empress", "hook": "The desert reflects a thousand histories. Some show kingdoms never founded, and others show you dying before you were born.", "request": "Retrieve the Star Compass from the Fallen Sun Library and align it at the Star Mirror. Only then will the Glass Citadel show its true door.", "ruinStory": "Past shelves of crystal books, a Prism Guardian splits into reflections and blocks the compass.", "relicStory": "The Star Compass points not north, but toward whichever story is true.", "ritual": "Under the Star Mirror, the compass shows Kael Veyr rewriting history one choice at a time. The dunes settle into a single reality.", "bossIntro": "The Mirage Empress offers you a perfect life in exchange for forgetting every sacrifice that brought you here.", "victory": "The glass court fractures; the false histories fall away like sand. Only the road you walked remains.", "clue": "The Unmaker’s power is strongest where people wish reality had been different.", "side": "A caravan’s lost water map saves travelers from chasing mirages.", "vowA": "Remember the roads not taken", "vowB": "Protect the road we chose"}, {"n": 6, "title": "The City That Forgot", "region": "THE HOLLOW CROWN", "hub": "Nevergate", "ally": "Bellkeeper Neri", "ruin": "The Census Hall", "shrine": "Memory Garden", "tower": "Palace of Echoes", "cave": "The Nameless Cellar", "bridge": "Citizen’s Arch", "forest": "The Pale Alleys", "relic": "Memory Key", "guardian": "Faceless Bailiff", "boss": "The King Without a Face", "hook": "A great city remains intact, but its citizens have forgotten its name. Doors no longer recognize their owners.", "request": "The Memory Key lies under the Census Hall. Awaken it in Memory Garden to unseal the Palace of Echoes.", "ruinStory": "The census books contain millions of blank lines. A Faceless Bailiff tries to arrest you for existing.", "relicStory": "You recover the Memory Key. It hums with a chorus of people insisting they were here.", "ritual": "The garden blooms with remembered names. You glimpse Kael Veyr’s lost sister, Elara, whose death began his war with existence.", "bossIntro": "The King Without a Face proclaims a kingdom with no people, no past, and no future.", "victory": "When the king falls, every door in Nevergate speaks its owner’s name. The city remembers itself.", "clue": "Kael wants to erase all loss by erasing everything that can be lost. His grief is real; his answer is monstrous.", "side": "The cellar holds a register of citizens who volunteered to remember for those who could not.", "vowA": "Remember the nameless", "vowB": "Protect the living city"}, {"n": 7, "title": "The Sky Below", "region": "THE AEROLITH ISLES", "hub": "Groundfall Dock", "ally": "Navigator Kesh", "ruin": "Starlit Aerie", "shrine": "The Wind Choir", "tower": "Storm Throne", "cave": "Cloudroot Cavern", "bridge": "Suspended Walkway", "forest": "Featherwood", "relic": "Feather of Dawn", "guardian": "Thunder Roc", "boss": "The Storm Herald", "hook": "The islands float beneath a darkening sky. Stars fall upward. The horizon is opening like a wound.", "request": "Take the Feather of Dawn from the Starlit Aerie. The Wind Choir must sing its true note before the Storm Throne can be reached.", "ruinStory": "High above the clouds, a Thunder Roc guards a single feather that has never touched the ground.", "relicStory": "The Feather of Dawn settles in your palm, impossibly light. The sky briefly turns blue.", "ritual": "The Wind Choir’s song restores the horizon. You see a vast blank place beyond the stars where the Unmaker has built his throne.", "bossIntro": "The Storm Herald descends in armor of lightning, announcing the end of all directions.", "victory": "The storm breaks. Islands steady and the stars return to their proper places.", "clue": "The barrier between the living world and the place of unwritten things is nearly gone.", "side": "An abandoned pilot’s journal contains a safe route between the floating islands.", "vowA": "Remember the sky we knew", "vowB": "Protect those beneath it"}, {"n": 8, "title": "The Roots of Night", "region": "THE VERDANT DEEP", "hub": "Rootrest", "ally": "Druid Tamsin", "ruin": "Buried Cathedral", "shrine": "Seed of First Light", "tower": "Blackroot Heart", "cave": "Fungal Hollow", "bridge": "Barkstone Crossing", "forest": "The Elderwood", "relic": "Living Seed", "guardian": "Thorn Colossus", "boss": "The Root-Eater", "hook": "The ancient trees are growing inward, folding whole villages into the dark. Every root points toward the same buried heart.", "request": "Free the Living Seed from the Buried Cathedral and awaken it at the Seed of First Light before confronting the Root-Eater.", "ruinStory": "Roots part around a stone giant entwined with thorns. The Living Seed shines behind it.", "relicStory": "When the Thorn Colossus falls, the Living Seed beats like a small green heart.", "ritual": "The seed takes root for one instant, showing a world that healed after countless sorrows without erasing them.", "bossIntro": "The Root-Eater uncoils from the black earth, swallowing the names of trees as it moves.", "victory": "Roots turn toward sunlight. The forest breathes again and sends one green shoot into every healed region.", "clue": "What Kael Veyr calls mercy is annihilation. The world has its own answer to grief: growth.", "side": "A gardener’s lost satchel holds seeds from a hundred distant homes.", "vowA": "Remember every fallen tree", "vowB": "Protect the new growth"}, {"n": 9, "title": "The Last Ember", "region": "THE ASHEN REACH", "hub": "Dawn’s End", "ally": "Keeper Mara", "ruin": "The First Forge", "shrine": "Hearth of Names", "tower": "Gate of Undoing", "cave": "The Ashen Vault", "bridge": "Oathstone Road", "forest": "Cinderwood", "relic": "First Flame", "guardian": "The Oathbreaker", "boss": "Herald of Nothing", "hook": "Keeper Mara has followed you across the kingdoms. At the edge of the world, the First Flame is guttering and all roads lead to a sealed gate.", "request": "Recover the First Flame from the First Forge and carry it to the Hearth of Names. The gate ahead must be opened without surrendering the world.", "ruinStory": "A guardian who broke every promise stands watch above the First Flame.", "relicStory": "The First Flame burns without fuel. Its warmth recalls the bell at Briarfall and every promise you have made.", "ritual": "In the Hearth of Names, the relics you gathered resonate. The names of all nine realms form one key.", "bossIntro": "The Herald of Nothing stands before the gate, its armor filled with unlit stars.", "victory": "The Herald cracks into white ash. Beyond the gate waits the Unmaker, and behind you gather the voices of every place you saved.", "clue": "Kael Veyr is no longer merely stealing the world’s names. In the Unwritten Seat, he is preparing to erase the idea that anything ever existed.", "side": "A chest holds nine letters thanking the traveler who kept the roads alive.", "vowA": "Remember all who carried the flame", "vowB": "Protect all who await its return"}, {"n": 10, "title": "The End of All Roads", "region": "THE UNWRITTEN EDGE", "hub": "Threshold Camp", "ally": "Mara and the Nine Witnesses", "ruin": "Hall of Unwritten Kings", "shrine": "The Forge of Dawn", "tower": "The Unmaking Seat", "cave": "The Silent Vault", "bridge": "Last Crossing", "forest": "The Emptywood", "relic": "Tenfold Sigil", "guardian": "The Last Witness", "boss": "Kael Veyr, the Unmaker", "hook": "The world has a final edge. Beyond it lies a blank horizon, and Kael Veyr has begun to unwrite the first sunrise.", "request": "Claim the Tenfold Sigil from the Hall of Unwritten Kings, kindle it at the Forge of Dawn, and confront Kael Veyr at the Unmaking Seat.", "ruinStory": "The Last Witness guards the unwritten kings. “If no one remembers us,” it asks, “did we ever live?”", "relicStory": "You recover the Tenfold Sigil. The nine earlier relics answer it, each carrying a voice from a world that chose to endure.", "ritual": "The Forge of Dawn ignites the sigil with the names you preserved. A path opens through the blank horizon to Kael Veyr.", "bossIntro": "Kael Veyr sits alone at a desk of white stone, writing the last sentence of creation. “Nothing will ever hurt again,” he says.", "victory": "The Unmaker’s power splinters. The white horizon fills with colors that have no names yet. One final choice remains: what should become of his power?", "clue": "Elara’s memory remains a single light within him. The world can be defended without erasing its sorrows.", "side": "Nine candles burn in a chamber that has never existed, one for every realm you defended.", "vowA": "Remember every world and every loss", "vowB": "Protect every future that may come"}];
+const REGION_MAPS = [["^^^^^^^^^^^^^", "^.....r...f.^", "^.ff......f.^", "^.....~.....^", "^.v...~~....^", "^..f..~~....^", "^.s...b.....^", "^.c...~...t.^", "^...........^", "^^^^^^^^^^^^^"], ["^^^^^^^^^^^^^", "^...f...r...^", "^..ff.......^", "^.......~...^", "^.v..f......^", "^...........^", "^...s..b....^", "^.c..~~...t.^", "^...........^", "^^^^^^^^^^^^^"], ["^^^^^^^^^^^^^", "^.r......ff.^", "^.....f.....^", "^..~........^", "^.v~....b...^", "^..~........^", "^..s....f...^", "^..c......t.^", "^...........^", "^^^^^^^^^^^^^"]];
+const FIRST_MAP = WORLD.slice();
+const FIRST_PLACES = {...PLACES};
+const PLACE_KEYS=['v','r','s','t','c','b','f'];
+function chapter(){return CAMPAIGN[G?.book||1]}
+function hydrateBook(){
+ if(!G)return;
+ G.book=Math.min(10,Math.max(1,Number(G.book)||1));
+ G.items=Array.isArray(G.items)?G.items:[];
+ G.pickups=G.pickups&&typeof G.pickups==='object'?G.pickups:{};
+ G.vows=G.vows&&typeof G.vows==='object'?G.vows:{};
+ G.history=Array.isArray(G.history)?G.history:[];
+ G.bookFlags=G.bookFlags&&typeof G.bookFlags==='object'?G.bookFlags:{};
+ G.trinkets=Number(G.trinkets)||0;
+ if(G.book===1){WORLD=FIRST_MAP;PLACES=FIRST_PLACES;return;}
+ const b=chapter();WORLD=REGION_MAPS[(G.book-2)%REGION_MAPS.length];
+ PLACES={
+ v:{title:b.hub,desc:`A refuge at the edge of ${b.region.toLowerCase()}. Travelers gather here to exchange news and mend their gear.`,intro:`${b.ally} watches the road. ${b.hook}`},
+ r:{title:b.ruin,desc:`Shattered stone and ancient testimony surround the hiding place of the ${b.relic}.`,intro:`You enter ${b.ruin}. ${b.ruinStory}`},
+ s:{title:b.shrine,desc:'A place where memory can be held against the emptiness. Two paths of oath-taking are carved in the stone.',intro:`The air shivers at ${b.shrine}. The ${b.relic} may be awakened here.`},
+ t:{title:b.tower,desc:`The final stronghold of this region. Beyond its gates, ${b.boss} holds the region in fear.`,intro:`You approach ${b.tower}. ${b.bossIntro}`},
+ c:{title:b.cave,desc:'A hidden place beyond the traveled road. Something useful may have been left by earlier explorers.',intro:`You find ${b.cave}. ${b.side}`},
+ b:{title:b.bridge,desc:'A dangerous crossing between old stones and a road not yet traveled.',intro:`You reach ${b.bridge}. A warning reads: “Remember the road. Resist the blank.”`},
+ f:{title:b.forest,desc:'An eerie stretch of wilderness where the Unmaker’s agents hunt unwary travelers.',intro:`You enter ${b.forest}. Every shadow seems to listen.`}
+ };
+}
+for(const b of CAMPAIGN.slice(2)){
+ const n=b.n,core=n>=10?10:n,guardianId=`guardian_${n}`,bossId=`boss_${n}`;
+ const template={ac:11+Math.floor(n/2),attack:3+Math.floor(n/2),lo:2+Math.floor(n/3),hi:6+Math.floor(n/2)};
+ ENEMIES[guardianId]={...template,name:b.guardian,hp:22+n*5,xp:24+n*7,gmin:12+n*2,gmax:22+n*3,boss:true,intro:b.ruinStory};
+ ENEMIES[bossId]={...template,name:b.boss,hp:35+n*8,ac:12+Math.floor(n/2),attack:4+Math.floor(n/2),lo:3+Math.floor(n/3),hi:8+Math.floor(n/2),xp:42+n*10,gmin:25+n*4,gmax:37+n*5,boss:true,intro:b.bossIntro};
+ ENEMIES[`roamer_${n}`]={...template,name:`Unwritten Wanderer of ${b.region}`,hp:13+n*3,xp:12+n*3,gmin:5+n,gmax:8+n,intro:'A figure whose outline is unfinished steps out of the trees. It has no shadow.'};
+}
+ENEMIES.unmakerTrue={name:'Kael Veyr — The Last Unmaking',hp:125,ac:18,attack:10,lo:7,hi:13,xp:190,gmin:0,gmax:0,boss:true,intro:'Kael tears the last page in two. The sky turns white. His grief becomes a storm of unwritten stars. “Then let there be NOTHING!”'};
+function bookStages(){const b=chapter();if(G.book===1)return b.stages;return [
+  `Speak to ${b.ally}`,`Seek the ${b.relic}`,`Awaken the ${b.relic}`,`Confront ${b.boss}`,G.book===10?'Choose the World’s Fate':'The road opens onward',...(G.book===10?['The World Remembered']:[])
+]}
+// These events bridge the regions without a manual chapter-select screen.
+// The numeric arc markers are internal; the player simply keeps traveling.
+const ROAD_BRIDGES={
+  1:'The bell’s echo reaches farther than Briarfall. Before dawn, a messenger arrives in a coat stiff with salt. Along the coast, wells are filling with seawater and the names of ships are disappearing from their hulls. Keeper Mara folds a map into your hand. The trail continues toward Tidewatch Quay.',
+  2:'When the tide retreats, a waterlogged chart washes onto the quay. Its ink forms a single path through the inland trees. Captain Edda gives you a lantern, but its flame dims as you turn toward Gloamwood. Someone in the forest is stealing the faces from living memory.',
+  3:'The lanterns of Gloamwood bloom into light once more. In their glow, an exhausted courier from Gearhaven appears with a pocket watch whose hands move backward. Midnight has lasted three days beneath the mountains, and the road to Ironvale is running out of hours.',
+  4:'The great clock begins to count forward. Its final chime rattles a brass star chart loose from the wall. Timekeeper Brann studies the pattern: a desert of living glass is reflecting histories that never happened. You take the southern road before the false futures spread.',
+  5:'As the mirrored dunes settle, a ledger is uncovered beneath the citadel floor. Its pages list a million citizens but leave the name of their city blank. A caravan heading north offers passage to Nevergate, where streets still stand though nobody remembers who built them.',
+  6:'With Nevergate’s names restored, every locked door in the city opens at once. One leads to an ancient observatory and a message from Navigator Kesh: islands are drifting beneath the sky and the stars have begun falling upward. Your next path climbs into the clouds.',
+  7:'The storm breaks, and a feather turns slowly in the clear air. Instead of falling, it points down through the clouds toward a forest older than the kingdoms. The Unmaker’s roots have reached the living earth. You follow the feather into the deep woods.',
+  8:'The oldest roots loosen their grip on the dark. Buried among them is a coal that has never cooled, and inside its glow you hear the distant Briarfall bell. The last ember is calling from a land where dawn no longer arrives. You carry its warmth toward the ashen frontier.',
+  9:'The last ember flares bright enough to cast shadows across every realm. For one heartbeat all ten roads become visible, converging at the Unmaking Seat. Kael Veyr is waiting there to erase the world’s final memory. You follow the light toward him.'
+};
+function advanceRoad(){
+ if(!G||G.combat||G.quest!==4||G.book>=10)return false;
+ const finished=G.book;
+ if(!G.history.includes(finished))G.history.push(finished);
+ push(ROAD_BRIDGES[finished]||'With the danger behind you, another distant road calls.');
+ G.book=finished+1;G.quest=0;G.bookFlags={};G.x=2;G.y=4;G.day++;
+ hydrateBook();G.hp=maxHp();G.mp=maxMp();G.potions+=2;
+ const next=chapter();
+ push(`The trail brings you to ${next.hub}. ${next.hook}`);
+ push(`${next.ally} is waiting in the settlement, ready to tell you what has happened here.`);
+ push('During the journey, you rest, replenish your Focus and wounds, and prepare two more healing tonics for the road.','reward');
+ return true;
+}
+function beginLaterQuest(){const b=chapter();if(G.quest>0){say(G.quest>=4?`${b.ally} says: “The world remembers what you did.”`:`${b.ally} points to ${b.ruin}. “Find the ${b.relic}, then take it to ${b.shrine}.”`);return}
+ G.quest=1;push(`${b.ally} tells you: “${b.request}”`);push(`From the old records: ${b.clue}`,'reward');done();}
+function laterRuin(){const b=chapter();if(G.quest===0){say(`You find traces of the ${b.relic}, but need to speak to ${b.ally} in ${b.hub}.`);return}if(G.quest>=2){say(`The ${b.guardian} has been defeated. Its chamber is empty; you carry the ${b.relic}.`);return}startCombat(`guardian_${G.book}`,true);done();}
+function laterShrine(vow){const b=chapter();if(G.quest<2){say(`The ${b.shrine} is waiting for the ${b.relic}. Seek it in ${b.ruin}.`);return}if(G.quest>2){say(`Your oath still warms the stones. The way to ${b.tower} lies open.`);return}
+ G.quest=3;G.vows[G.book]=vow;
+ push(b.ritual,'epilogue');
+ if(vow==='remember'){const heal=Math.min(maxHp()-G.hp,Math.max(10,Math.ceil(maxHp()*.24)));G.hp+=heal;push(`You swear: “${b.vowA}.” The oath restores ${heal} hit points.`,'reward');}
+ else {G.mp=maxMp();G.potions++;push(`You swear: “${b.vowB}.” Your Focus is restored and you gain a healing tonic.`,'reward');}
+ push(`The road to ${b.tower} is open. ${b.clue}`);done();}
+function laterTower(){const b=chapter();if(G.quest<3){say(`The way to ${b.tower} rejects you. Awaken the ${b.relic} at ${b.shrine} first.`);return}
+ if(G.quest===3){startCombat(`boss_${G.book}`,true);done();return}
+ if(G.book===10&&G.quest===4){say('The last two futures wait here. Choose how to settle the Unmaker’s power. Both choices end the campaign.');return}
+ say(G.book===10?'The world is no longer unwritten. The campaign is complete.':`${b.victory} The next road awaits.`,'reward');}
+function laterCave(){const b=chapter();if(G.bookFlags.cave){say(`The chamber is quiet. ${b.side}`);return}
+ G.bookFlags.cave=true;const gold=17+G.book*5;G.gold+=gold;G.potions++;G.trinkets++;G.hp=Math.min(maxHp(),G.hp+2);push(`${b.side} You recover ${gold} gold, a tonic, and a keepsake giving +2 permanent maximum HP.`,'reward');done();}
+function laterForge(){const cost=18+G.book*5;if(G.bookFlags.forged){say('Your weapon has already been forged in this region.');return}
+ if(G.gold<cost){say(`The forge-master asks ${cost} gold for the upgrade. You have ${G.gold}.`,'danger');return}
+ G.gold-=cost;G.weapon++;G.bookFlags.forged=true;say(`Your weapon is strengthened for ${cost} gold. You gain +1 on attack and damage rolls.`,'reward');}
+function laterBridge(){const b=chapter();say(`The stones of ${b.bridge} warn: “${b.ruin} → ${b.shrine} → ${b.tower}.” ${b.clue}`);}
+function laterInspect(){const b=chapter(),tile=here();const text={v:`You hear ${b.ally} telling travelers about ${b.relic}. A loose brick lies beside a wall.`,r:b.ruinStory,s:b.ritual,t:b.bossIntro,c:b.side,b:b.clue,f:'The woodland tracks belong to a wandering creature whose shape refuses to stay still.','.':'The road is dusty with ash. You find evidence that other travelers are still fighting the Unmaker.'};say(text[tile]||text['.']);}
+function chooseEnding(kind){if(G.book!==10||G.quest!==4||G.combat||here()!=='t')return;
+ G.quest=5;G.ending=kind;G.history.push(10);
+ if(kind==='bind'){
+ push('You bind Kael Veyr’s magic into the Tenfold Sigil, but spare the man himself. He must live and remember those he harmed. Elara’s name becomes the first word spoken in the renewed sky.','epilogue');
+ push('The bell in Briarfall rings ten times. The kingdoms remember their history, painful and precious. Your companions stand with you as a new morning begins.','epilogue');
+ }else{
+ push('You break the Tenfold Sigil and scatter the Unmaker’s power into every living hearth. No one person may again hold the power to erase a world. Kael is left with only his memories, and a chance to choose what comes next.','epilogue');
+ push('Across the ten realms, small flames answer one another. No road belongs to a single hero anymore. The world endures because its people remember together.','epilogue');
+ }
+ push(`The Cinder Road reaches its dawn. ${G.name}, your choices will be remembered wherever the roads continue.`, 'epilogue');done();}
+function brickCount(){return G.items.filter(x=>x==='brick').length}
+function pickBrick(){if(here()!=='v'||G.combat){say('There is no loose brick you can pick up here. Try looking around a settlement.');return}
+ if(G.pickups[G.book]){say('You already picked up the loose brick from this settlement.');return}
+ G.pickups[G.book]=true;G.items.push('brick');say('You pick up a loose brick and tuck it into your satchel. You can THROW BRICK during combat for a sure hit.','reward');}
+function throwBrick(){if(!G.combat){say('There is nothing to throw a brick at.');return}const i=G.items.indexOf('brick');if(i<0){say('You are not carrying a brick.');return}
+ G.items.splice(i,1);const dmg=9+Math.floor(G.level/2);G.combat.hp=Math.max(0,G.combat.hp-dmg);push(`You hurl a brick into ${G.combat.name} for ${dmg} unavoidable damage.`,'reward');endPlayerTurn();}
+function buildLaterActions(){const a=[];const add=(label,hint,fn)=>a.push({label,hint,fn});const b=chapter();
+ if(G.combat){add('Attack','Roll d20 against enemy defense',attack);add(cls().skill,`Special · ${cls().cost} Focus`,special);add('Guard','Reduce damage · regain 2 Focus',guard);add(`Drink potion (${G.potions})`,'Restore up to 17 HP',drinkPotion);add('Retreat',G.combat.boss?'Blocked in boss encounters':'Attempt escape',runAway);if(brickCount())add('Throw brick',`${brickCount()} remaining · guaranteed damage`,throwBrick);return a;}
+ if(G.book===10&&G.quest===4&&here()==='t'){add('Bind the Unmaker’s power','Spare Kael and guard the Tenfold Sigil',()=>chooseEnding('bind'));add('Share the final flame','Destroy the sigil and distribute its power',()=>chooseEnding('share'));}
+ switch(here()){
+ case 'v':add(`Speak to ${b.ally}`,'Ask about the main quest',beginLaterQuest);add('Rest at the inn','8 gold · restore HP and Focus',inn);add('Buy healing potion','12 gold · +1 potion',buyPotion);add('Upgrade your weapon',G.bookFlags.forged?'Already upgraded':`${18+G.book*5} gold · +1 attack and damage`,laterForge);add('Hear a traveler’s tale','A clue about this region',()=>say(b.clue));break;
+ case 'r':add(`Search ${b.ruin}`,`Find the ${b.relic}`,laterRuin);break;
+ case 's':add(`Swear: ${b.vowA}`,'Restore hit points · memory oath',()=>laterShrine('remember'));add(`Swear: ${b.vowB}`,'Restore Focus and receive a potion · guardian oath',()=>laterShrine('protect'));add('Offer a prayer','4 gold · recover HP and Focus',pray);break;
+ case 'c':add(`Search ${b.cave}`,G.bookFlags.cave?'Read the remaining inscriptions':'Find hidden supplies and a keepsake',laterCave);break;
+ case 't':add(`Enter ${b.tower}`,G.quest===3?'Challenge the ruling darkness':'Approach the final stronghold',laterTower);break;
+ case 'b':add('Read the carved warning','Learn the route of the quest',laterBridge);break;
+ case 'f':add('Track the unwritten','Seek experience through combat',()=>{startCombat(`roamer_${G.book}`);done()});add('Forage for herbs','Try to craft a potion',forage);break;
+ }
+ if(here()==='v'&&!G.pickups[G.book])add('Pick up loose brick','A throwable item · useful in combat',pickBrick);
+ if(here()!=='v')add('Make camp','Rest at the risk of an encounter',camp);
+ add('Inspect surroundings','Describe this place and visible details',laterInspect);
+ if(G.potions>0&&G.hp<maxHp())add(`Use potion (${G.potions})`,'Recover 17 HP',drinkPotion);
+ return a;
+}
+
+const $=id=>document.getElementById(id);
+let G=null,selectedClass='knight',activeTab='journal',actions=[],pendingNarration=[];
+const PREF_KEY='the-cinder-road-accessibility-v1';
+let prefs={large:false,contrast:false,commands:false};
+function savePrefs(){try{localStorage.setItem(PREF_KEY,JSON.stringify(prefs))}catch(_){}}
+function applyPrefs(){document.body.classList.toggle('font-large',prefs.large);document.body.classList.toggle('high-contrast',prefs.contrast);$('textBtn').setAttribute('aria-pressed',String(prefs.large));$('contrastBtn').setAttribute('aria-pressed',String(prefs.contrast));$('textBtn').textContent=prefs.large?'STANDARD TEXT':'LARGER TEXT';$('contrastBtn').textContent=prefs.contrast?'STANDARD CONTRAST':'HIGH CONTRAST';$('commandToggle').setAttribute('aria-pressed',String(prefs.commands));$('commandToggle').textContent=prefs.commands?'TEXT COMMANDS: ON':'TEXT COMMANDS: OFF';$('commandPanel').classList.toggle('hidden',!prefs.commands);}
+try{const stored=JSON.parse(localStorage.getItem(PREF_KEY));if(stored&&typeof stored==='object'){prefs.large=!!stored.large;prefs.contrast=!!stored.contrast;prefs.commands=!!stored.commands}}catch(_){}
+applyPrefs();
+const dice=n=>1+Math.floor(Math.random()*n);
+const between=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const here=()=>WORLD[G.y][G.x];
+const push=(message,type='story')=>{G.log.push({message,type});pendingNarration.push(message);if(G.log.length>110)G.log.splice(0,G.log.length-110)};
+const roll=(message)=>{G.rolls.unshift(message);G.rolls=G.rolls.slice(0,24);push(message,'roll')};
+const cls=()=>CLASSES[G.classId];
+const maxHp=()=>cls().hp+(G.level-1)*6+(G.flags.charm?4:0)+(G.trinkets||0)*2;
+const maxMp=()=>cls().mp+(G.level-1)*3;
+const armor=()=>cls().ac+Math.floor((G.level-1)/3);
+const threshold=()=>G.level*25;
+const storyStage=()=>bookStages()[G.quest]||"The Road Continues";
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(G));$('autosave').textContent='✓ SAVED LOCALLY'}catch(_){$('autosave').textContent='LOCAL SAVE UNAVAILABLE'}}
+function loadSaved(){try{const obj=JSON.parse(localStorage.getItem(KEY));if(obj&&obj.version===1&&CLASSES[obj.classId]&&obj.flags&&Array.isArray(obj.log)&&Number.isInteger(obj.x)&&Number.isInteger(obj.y)&&obj.x>=0&&obj.x<13&&obj.y>=0&&obj.y<10)return obj}catch(_){}return null}
+function starter(){if(loadSaved()&&!window.confirm('Begin a new chronicle? Your saved hero and progress will be replaced.'))return;const n=$('charName').value.trim().replace(/\s+/g,' ').slice(0,24)||'Wanderer';G={version:1,book:1,items:[],pickups:{},vows:{},history:[],bookFlags:{},trinkets:0,name:n,classId:selectedClass,level:1,xp:0,x:2,y:4,day:1,steps:0,hp:clsBaseHp(selectedClass),mp:CLASSES[selectedClass].mp,gold:24,potions:2,weapon:0,quest:0,flags:{charm:false,caveOpened:false,smith:false,blessed:false,rumor:false,seal:false},combat:null,log:[],rolls:[]};push(`Year 312 of the Third Ember. A thin dawn spreads over the village of Briarfall. Beyond its walls, the old watchtower bell has fallen mysteriously silent.`);push(`${G.name}, a ${cls().name.toLowerCase()} of the western roads, arrives with a few coins and the kind of courage that gets people into trouble.`);push(PLACES.v.intro);persist();showGame()}
+function clsBaseHp(id){return CLASSES[id].hp}
+function showGame(){hydrateBook();if(G.quest===4&&G.book<10&&!G.combat){advanceRoad();persist();}$('setup').classList.add('hidden');$('play').classList.remove('hidden');render();$('chapterTitle').focus()}
+function showSetup(){$('play').classList.add('hidden');$('setup').classList.remove('hidden');$('continueBtn').style.display=loadSaved()?'inline-block':'none';renderClassPicker();$('charName').focus()}
+function renderClassPicker(){const box=$('classGrid');box.replaceChildren();for(const [id,c] of Object.entries(CLASSES)){let btn=document.createElement('button');btn.type='button';btn.className='class-card'+(selectedClass===id?' chosen':'');btn.setAttribute('aria-pressed',String(selectedClass===id));btn.innerHTML=`<span class="glyph">${c.symbol}</span><b>${c.name}</b><span class="stats">HP ${c.hp} · Focus ${c.mp} · Defense ${c.ac}</span><span style="font-size:13px">${c.desc}</span>`;btn.onclick=()=>{selectedClass=id;renderClassPicker()};box.append(btn)}}
+function goodTile(x,y){return !!WORLD[y]?.[x]&&!'^~'.includes(WORLD[y][x])}
+function canMove(dx,dy){return !!G&&!G.combat&&goodTile(G.x+dx,G.y+dy)}
+function move(dx,dy){if(!canMove(dx,dy))return;const prev=here();G.x+=dx;G.y+=dy;G.steps++;if(G.steps%11===0)G.day++;const tile=here();if(PLACES[tile]&&tile!=='.')push(PLACES[tile].intro);else if(G.steps%4===0)push(['The grass sways against your boots. A distant bell seems to ring, but the sound vanishes when you listen.','A crow follows you from fencepost to fencepost. It seems disappointed when you keep walking.','An old milestone bears the words: “All roads lead home. Not all travelers do.”'][G.steps%3]);if((tile==='f'&&Math.random()<.24)||(tile==='.'&&prev==='f'&&Math.random()<.11)||(tile==='b'&&Math.random()<.13)){startCombat(randomEnemy(tile),false)}done()}
+function randomEnemy(tile){if(G.book>1)return `roamer_${G.book}`;let bag=tile==='f'?['wolf','wolf','scout','wisp']:['wolf','scout','wisp'];return bag[between(0,bag.length-1)]}
+function done(){persist();render()}
+function startCombat(id,boss=false){if(G.combat)return;const e=ENEMIES[id];G.combat={id,name:e.name,hp:e.hp,maxHp:e.hp,ac:e.ac,attack:e.attack,lo:e.lo,hi:e.hi,xp:e.xp,gmin:e.gmin,gmax:e.gmax,boss:boss||!!e.boss,guard:false,stunned:false};push(e.intro,'danger')}
+function attack(){if(!G.combat)return;const e=G.combat;const d=dice(20);const stat=G.classId==='knight'?cls().might:G.classId==='ranger'?cls().agi:cls().spirit;const bonus=stat+G.level+G.weapon;const hit=d===20||(d!==1&&d+bonus>=e.ac);const amount=hit?between(3,7)+stat+G.weapon+(d===20?between(3,7):0):0;roll(`${G.name}: d20 ${d} + ${bonus} = ${d+bonus} vs. AC ${e.ac}${d===20?' • CRITICAL':''}`);if(hit){e.hp=Math.max(0,e.hp-amount);push(`Your ${G.classId==='mystic'?'staff':G.classId==='ranger'?'arrow':'blade'} strikes ${e.name} for ${amount} damage.`,'reward')}else push(`You miss ${e.name}. The opening vanishes.`, 'danger');endPlayerTurn()}
+function special(){const e=G.combat;if(!e)return;if(G.mp<cls().cost){push(`Not enough Focus for ${cls().skill}. Guard to recover Focus.`,'danger');done();return}G.mp-=cls().cost;if(G.classId==='knight'){const d=dice(20),bonus=cls().might+G.level+G.weapon+2,hit=d===20||(d!==1&&d+bonus>=e.ac);roll(`Shield Bash: d20 ${d} + ${bonus} = ${d+bonus} vs. AC ${e.ac}`);if(hit){const hitDmg=between(6,11)+G.weapon;e.hp=Math.max(0,e.hp-hitDmg);e.stunned=d>=9;push(`Your shield crashes into ${e.name} for ${hitDmg} damage.${e.stunned?' The foe staggers and loses its next attack.':''}`,'reward')}else push('Your shield slams into empty air.','danger')}
+else if(G.classId==='ranger'){let hits=0,damage=0;for(let i=0;i<2;i++){const d=dice(20),bonus=cls().agi+G.level+G.weapon,hit=d===20||(d!==1&&d+bonus>=e.ac);roll(`Arrow ${i+1}: d20 ${d} + ${bonus} = ${d+bonus} vs. AC ${e.ac}`);if(hit){hits++;const dd=between(4,7)+G.weapon+(d===20?4:0);damage+=dd;e.hp=Math.max(0,e.hp-dd)}}push(`You loose two arrows. ${hits} find their mark, dealing ${damage} total damage.`,hits?'reward':'danger')}
+else{const power=between(12,17)+G.level+G.weapon;e.hp=Math.max(0,e.hp-power);roll(`Cinder Bolt: magic damage ${power} (Focus −${cls().cost})`);push(`A ribbon of living fire wraps around ${e.name}, dealing ${power} damage.`,'reward')}endPlayerTurn()}
+function guard(){if(!G.combat)return;G.combat.guard=true;G.mp=Math.min(maxMp(),G.mp+2);push('You brace yourself, reducing the next hit and recovering 2 Focus.');enemyTurn();done()}
+function drinkPotion(){if(G.potions<1){push('Your potion pouch is empty.','danger');done();return}if(G.hp>=maxHp()){push('Your health is already full.');done();return}G.potions--;const healed=Math.min(17,maxHp()-G.hp);G.hp+=healed;push(`You drink a crimson tonic and recover ${healed} HP.`,'reward');if(G.combat)enemyTurn();done()}
+function runAway(){const e=G.combat;if(!e)return;if(e.boss){push('The way out is sealed. You cannot flee from this guardian.','danger');done();return}const d=dice(20);const score=d+cls().agi+G.level;roll(`Escape: d20 ${d} + ${cls().agi+G.level} = ${score} vs. DC 11`);if(d===20||(d!==1&&score>=11)){push(`You slip away from ${e.name} and catch your breath.`, 'reward');G.combat=null}else{push(`${e.name} blocks your retreat!`,'danger');enemyTurn()}done()}
+function endPlayerTurn(){if(G.combat&&G.combat.hp<=0){winCombat();done();return}enemyTurn();done()}
+function enemyTurn(){const e=G.combat;if(!e)return;if(e.stunned){e.stunned=false;e.guard=false;push(`${e.name} reels, unable to attack.`,'reward');return}const d=dice(20),total=d+e.attack,hit=d===20||(d!==1&&total>=armor());roll(`${e.name}: d20 ${d} + ${e.attack} = ${total} vs. AC ${armor()}`);if(hit){let dmg=between(e.lo,e.hi)+(d===20?between(2,5):0);if(e.guard)dmg=Math.max(0,dmg-5);G.hp=Math.max(0,G.hp-dmg);push(`${e.name} hits you for ${dmg} damage${e.guard?' (guarded)':''}.`,'danger')}else push(`${e.name} attacks, but you avoid the blow.`,'reward');e.guard=false;if(G.hp<=0)knockout()}
+function knockout(){const lost=Math.ceil(G.gold/2);G.gold-=lost;G.hp=Math.ceil(maxHp()*.6);G.mp=Math.ceil(maxMp()*.5);G.x=2;G.y=4;G.day++;G.combat=null;push(`Darkness takes you. When you wake at ${PLACES.v.title}'s inn, someone has bandaged your wounds. You lost ${lost} gold along the road, but your story isn't over.`,'danger')}
+function winCombat(){const e=G.combat;if(!e)return;const money=between(e.gmin,e.gmax);G.gold+=money;G.xp+=e.xp;push(`${e.name} falls. You earn ${e.xp} experience and find ${money} gold.`, 'reward');if(e.id==='sentinel'&&G.quest===1){G.flags.seal=true;G.quest=2;push('Beneath the broken guardian rests a blackened iron seal, warm as a heartbeat. The old symbols point to the Moonwell Shrine.','epilogue')}if(e.id==='castellan'&&G.quest===3){G.quest=4;G.flags.blessed=false;push('With the final blow, the darkness inside the bell breaks apart like brittle glass. The great bell rings once, clear and true, across the valley.','epilogue');push('In Briarfall, people throw open their windows to listen. As the bell’s sound travels over the hills, a deeper silence answers from far beyond the valley.','epilogue')}let secondPhase=false;
+ if(G.book>1){const b=chapter();if(e.id===`guardian_${G.book}`&&G.quest===1){G.quest=2;G.items.push(b.relic);push(b.relicStory,'epilogue');push(`Bring the ${b.relic} to ${b.shrine}, marked with ✧ on the map.`,'reward');}
+ if(e.id===`boss_${G.book}`&&G.quest===3){
+  if(G.book===10){secondPhase=true;push('Kael Veyr staggers, then stands again. The Unmaker has not yet been defeated.','danger');}
+  else {G.quest=4;push(b.victory,'epilogue');push(b.clue);}
+ }
+ if(e.id==='unmakerTrue'&&G.book===10){G.quest=4;push(b.victory,'epilogue');push('Return your attention to the Unmaking Seat. Two final choices now await.','reward');}
+ }
+ G.combat=null;while(G.xp>=threshold()){G.xp-=threshold();G.level++;G.hp=maxHp();G.mp=maxMp();push(`LEVEL UP! You are now level ${G.level}. Your wounds heal and your strength grows.`, 'reward')}
+ if(G.quest===4&&G.book<10)advanceRoad();
+ if(secondPhase){G.hp=Math.min(maxHp(),G.hp+Math.ceil(maxHp()*.6));G.mp=maxMp();G.potions++;startCombat('unmakerTrue',true);push('You draw strength from every vow you kept. Your health and Focus are restored in part, and you gain one healing tonic.','reward');}
+}
+function say(message,type='story'){push(message,type);done()}
+function startQuest(){if(G.book>1)return beginLaterQuest();if(G.quest>0){say(G.quest===4?'Keeper Mara smiles. “You gave this valley its voice back.”':'Mara taps the map. “The Sunken Archive first. Find what was taken.”');return}G.quest=1;push('Keeper Mara speaks softly: “Forty years ago, our bell bound the dusk to the tower. Its Ember Seal was stolen and hidden in the Sunken Archive. Find it before the silence spreads.”');push('“The archive lies northeast. The Moonwell Shrine can cleanse the seal. Only then can you face what lives beneath the bell.”','reward');done()}
+function inn(){if(G.gold<8){say('The innkeeper looks at your purse and shakes his head. A warm bed costs 8 gold.');return}if(G.hp===maxHp()&&G.mp===maxMp()){say('You feel rested already. Save the room for someone in need.');return}G.gold-=8;G.hp=maxHp();G.mp=maxMp();G.day++;say('For 8 gold, the innkeeper offers stew and a clean bed. By morning your health and Focus are restored.','reward')}
+function buyPotion(){if(G.gold<12){say('The apothecary asks 12 gold for a healing tonic. You count your coins and step back.','danger');return}G.gold-=12;G.potions++;say('The apothecary slips a crimson tonic into your pouch. Healing potions restore up to 17 HP.','reward')}
+function smith(){if(G.book>1)return laterForge();if(G.flags.smith){say('The blacksmith nods at your gear. “My finest work already. Bring it back after a few more adventures.”');return}if(G.gold<20){say('The blacksmith quotes 20 gold to improve your weapon. It will have to wait.');return}G.gold-=20;G.weapon++;G.flags.smith=true;say('Sparks dance across the forge. Your weapon is honed and balanced: +1 to attack rolls and damage.','reward')}
+function tavern(){if(G.book>1)return say(chapter().clue);G.flags.rumor=true;say('A hooded traveler whispers, “There is a hidden cache in the Hushed Cave, south of the village. Old adventurers left something worth finding there.”')}
+function examineArchive(){if(G.book>1)return laterRuin();if(G.quest===0){say('You find references to an Ember Seal, but cannot make sense of them. Someone in Briarfall might know more.');return}if(G.quest>1){say('The Ashbound Sentinel lies still. Every scrap of paper here is blank now, as though the archive surrendered its last secret.');return}startCombat('sentinel',true);done()}
+function shrine(){if(G.book>1)return laterShrine('remember');if(G.quest===2&&G.flags.seal){G.quest=3;G.flags.blessed=true;push('You lower the Ember Seal into silver water. Black smoke coils into the air, and the iron glows like sunrise. The shrine speaks a single word: “REMEMBER.”','epilogue');push('The seal has been cleansed. Carry it to the Bell Tower southeast of the bridge.','reward');done();return}if(G.quest===3){say('The Moonwell pulses gently in answer to the cleansed seal. The Bell Tower awaits.');return}if(G.quest===4){say('The waters shine with the calm of a promise kept.');return}say('The shrine water reflects a bell that is not here. Words appear for an instant: “Bring what was burned. Leave with what remains.”')}
+function pray(){if(G.gold<4){say('The shrine accepts offerings of 4 gold. Your purse is too light.');return}G.gold-=4;const heal=Math.min(12,maxHp()-G.hp);G.hp+=heal;G.mp=Math.min(maxMp(),G.mp+4);say(`A cool hush settles around you. You recover ${heal} HP and up to 4 Focus.`, 'reward')}
+function cave(){if(G.book>1)return laterCave();if(G.flags.caveOpened){say('You find only the cold, empty chest and a few lines of poetry carved into stone: “The road remembers all its feet.”');return}G.flags.caveOpened=true;G.flags.charm=true;G.gold+=24;G.hp+=4;push('Behind a loose stone you discover a travel chest: 24 gold and an oak-bone charm. Its warmth gives you +4 maximum HP permanently.','reward');done()}
+function tower(){if(G.book>1)return laterTower();if(G.quest<3){say('Black thorns wind across the tower door. A voice from inside murmurs: “Only the cleansed flame enters.”');return}if(G.quest===4){say('The tower is quiet. Birds nest under the bell. You have brought the morning back.','reward');return}startCombat('castellan',true);done()}
+function forage(){const d=dice(20);roll(`Forage: d20 ${d} (11+ finds useful herbs)`);if(d>=11){G.potions++;push('You gather rare duskroot and brew a crude but effective healing tonic. +1 potion.','reward')}else if(d<=3)startCombat('wolf');else push('You collect a handful of berries and spot the prints of something large. No supplies this time.');done()}
+function camp(){if(G.combat)return;G.steps+=2;G.day++;if(Math.random()<.27){push('Your campfire draws an unwanted visitor from the dark.','danger');startCombat(randomEnemy(here()),false)}else{const hp=Math.min(9,maxHp()-G.hp);const mp=Math.min(6,maxMp()-G.mp);G.hp+=hp;G.mp+=mp;push(`You camp under a sky thick with stars, restoring ${hp} HP and ${mp} Focus. The road may not always be so peaceful.`, 'reward')}done()}
+function inspect(){if(G.book>1)return laterInspect();const t=here();const messages={v:'A faded notice reads: “Beware the eastward bells. Do not follow voices after nightfall.”',r:'A weathered inscription: “Stone stands guard when men are gone.”',s:'Tiny stars move in the Moonwell though the sky overhead is clear.',c:'Someone has scratched a crude sketch of a chest behind a stone.',t:'Soot-black armor has scored deep marks in the tower floor.',b:'A mason carved three symbols into the bridge: a book, a well, and a bell.',f:'Fox tracks cross the mud, then end abruptly beside a circle of pale mushrooms.','.':'The western roads are older than the kingdom. Travelers still leave pebbles atop the markers for good luck.'};say(messages[t]||messages['.'])}
+function buildActions(){if(G.book>1)return buildLaterActions();const a=[];function add(label,hint,fn){a.push({label,hint,fn})}if(G.combat){add('Attack','Roll a d20 against enemy defense',attack);add(cls().skill,`Special · ${cls().cost} Focus`,special);add('Guard','Reduce damage · regain 2 Focus',guard);add(`Drink potion (${G.potions})`,'Restore up to 17 HP',drinkPotion);add('Retreat',G.combat.boss?'Blocked during boss encounters':'Try to escape the encounter',runAway);if(brickCount())add('Throw brick',`${brickCount()} left · guaranteed damage`,throwBrick);return a}
+switch(here()){
+case 'v':add('Speak to Keeper Mara','Ask about the silent bell',startQuest);add('Rest at the inn','8 gold · full HP and Focus',inn);add('Buy healing potion','12 gold · +1 potion',buyPotion);add('Visit the blacksmith',G.flags.smith?'Already upgraded':'20 gold · +1 weapon',smith);add('Hear tavern rumors','Learn of places worth exploring',tavern);break;
+case 'r':add('Search the archive','Investigate the ancient vault',examineArchive);break;
+case 's':add('Approach the Moonwell','Seek the meaning of the seal',shrine);add('Offer a prayer','4 gold · recover HP and Focus',pray);break;
+case 'c':add('Search the hidden cave',G.flags.caveOpened?'Examine the empty chamber':'Look for old adventurers’ supplies',cave);break;
+case 't':add('Enter the bell tower',G.quest===3?'Challenge the darkness':'Face the tower’s silence',tower);break;
+case 'b':add('Read the carved warning','Study the old bridge',()=>say('“Archive, Moonwell, Tower.” The bridge builders knew the path long before you did.'));break;
+case 'f':add('Track the forest shadows','Seek a battle for experience',()=>{startCombat(randomEnemy('f'));done()});add('Forage for duskroot','Chance to find a healing potion',forage);break;
+}
+if(here()==='v'&&!G.pickups[G.book])add('Pick up loose brick','A throwable item · useful in combat',pickBrick);if(here()!=='v')add('Make camp','Rest, but risk an encounter',camp);
+add('Inspect surroundings','Find more detail about this place',inspect);if(G.potions>0&&G.hp<maxHp())add(`Use potion (${G.potions})`,'Restore 17 HP without combat',drinkPotion);return a}
+function render(){if(!G)return;const c=cls(),b=chapter();$('storyDay').textContent=`DAY ${G.day}`;$('storyRegion').textContent=G.combat?`IN BATTLE · ${G.combat.name.toUpperCase()}`:PLACES[here()]?.title.toUpperCase()||'THE WESTERN MARCH';$('questHeader').textContent=`YOUR PATH · ${storyStage().toUpperCase()}`;
+ $('chapterLabel').textContent=G.book===1?(G.quest>=3?'BENEATH THE BELL':G.quest>=2?'THE MOONWELL':G.quest>=1?'THE EMBER SEAL':'THE WESTERN MARCH'):(G.quest===5?'A NEW DAWN':b.region);
+ $('chapterTitle').textContent=G.book===1?(G.quest>=3?'The Tower of Dusk':G.quest>=2?'The Moonwell Oath':'The Silent Bell'):(G.quest===5?'The World Remembered':b.title);
+ $('mapRegion').textContent=b.region+' · 13 × 10';
+ $('chapterSub').textContent=G.combat?`⚔ ${G.combat.name} · ${G.combat.hp}/${G.combat.maxHp} HP · AC ${G.combat.ac}`:G.book>1?`${b.hook}`:'Your choices shape what the road remembers.';const t=PLACES[here()];$('placeTitle').textContent=t?.title||'The Western March';$('placeDesc').textContent=t?.desc||'';$('heroName').textContent=G.name;$('heroClass').textContent=`LEVEL ${G.level} ${c.name.toUpperCase()} · ${c.skill.toUpperCase()}`;$('lvlDisplay').textContent=`LV. ${G.level}`;$('hpText').textContent=`${G.hp} / ${maxHp()}`;$('hpMeter').style.width=(100*G.hp/maxHp())+'%';$('mpText').textContent=`${G.mp} / ${maxMp()}`;$('mpMeter').style.width=(100*G.mp/maxMp())+'%';$('xpText').textContent=`${G.xp} / ${threshold()}`;$('xpMeter').style.width=(100*G.xp/threshold())+'%';$('mightStat').textContent=c.might;$('agilityStat').textContent=c.agi;$('spiritStat').textContent=c.spirit;$('defStat').textContent=armor();$('goldStat').textContent=G.gold;for(const [id,value,maximum] of [['hpMeter',G.hp,maxHp()],['mpMeter',G.mp,maxMp()],['xpMeter',G.xp,threshold()]]){const el=$(id).parentElement;el.setAttribute('aria-valuenow',String(value));el.setAttribute('aria-valuemax',String(maximum));el.setAttribute('aria-valuetext',`${value} of ${maximum}`)}
+renderMap();renderLog();actions=buildActions();renderActions();renderTab();for(const [dir,delta] of Object.entries({north:[0,-1],south:[0,1],west:[-1,0],east:[1,0]}))$(dir).disabled=!canMove(...delta);$('travelText').textContent=G.combat?'Survive this encounter before traveling.':'Travel by arrow keys, buttons, map, or optional typed commands.';const exits=[['north',0,-1],['east',1,0],['south',0,1],['west',-1,0]].filter(d=>canMove(d[1],d[2])).map(d=>d[0]);$('routes').textContent=G.combat?'Travel is unavailable during combat.':`Available exits: ${exits.join(', ')||'none'}.`;const message=pendingNarration.join(' ');$('announcer').textContent=`${G.combat?'Combat against '+G.combat.name:`At ${t?.title||'The Western March'}`}. ${message} ${G.combat?`Your health: ${G.hp} of ${maxHp()}. Enemy health: ${G.combat.hp} of ${G.combat.maxHp}.`:`Exits: ${exits.join(', ')||'none'}.`}`;pendingNarration=[];}
+function renderMap(){const holder=$('map');holder.replaceChildren();for(let y=0;y<WORLD.length;y++)for(let x=0;x<WORLD[y].length;x++){const ch=WORLD[y][x];const reachable=Math.abs(G.x-x)+Math.abs(G.y-y)===1&&!G.combat&&goodTile(x,y);const current=G.x===x&&G.y===y;const b=document.createElement('button');b.type='button';b.className='tile '+TERRAIN[ch]+(current?' you':'')+(reachable?' reachable':'');b.textContent=current?'@':SYMBOL[ch];b.title=(current?'Your position · ':reachable?'Move to ':'')+(PLACES[ch]?.title||({'^':'Mountains','~':'Water'}[ch]||'Road'));b.setAttribute('aria-label',b.title);b.disabled=!reachable;if(reachable)b.onclick=()=>{move(x-G.x,y-G.y);(G.combat?$('actions').querySelector('button'):$('placeTitle')).focus()};holder.append(b)}}
+function renderLog(){const log=$('chronicle');log.replaceChildren();G.log.slice(-110).forEach(entry=>{const div=document.createElement('p');div.className='entry '+(entry.type||'story');div.textContent=entry.message;log.append(div)});log.scrollTop=log.scrollHeight}
+function renderActions(){const box=$('actions');const focused=box.contains(document.activeElement)?Array.from(box.querySelectorAll('button')).indexOf(document.activeElement):-1;box.replaceChildren();actions.slice(0,9).forEach((a,i)=>{const b=document.createElement('button');b.className='action';b.type='button';const label=document.createElement('div');label.className='name';const key=document.createElement('span');key.className='key';key.textContent=i+1;label.append(key,document.createTextNode(a.label));const hint=document.createElement('span');hint.className='hint';hint.textContent=a.hint;b.append(label,hint);b.onclick=a.fn;box.append(b)});if(focused>=0){const next=box.querySelectorAll('button')[Math.min(focused,Math.max(0,actions.length-1))];next?.focus()}}
+function itemRow(panel,title,desc){const d=document.createElement('div');d.className='item';const a=document.createElement('b');a.textContent=title;const p=document.createElement('div');p.className='dim';p.textContent=desc;d.append(a,p);panel.append(d)}
+function renderTab(){document.querySelectorAll('[data-tab]').forEach(el=>{const chosen=el.dataset.tab===activeTab;el.classList.toggle('active',chosen);el.setAttribute('aria-pressed',String(chosen))});const panel=$('tabContent');panel.replaceChildren();const h=document.createElement('h3');h.textContent=activeTab==='journal'?'QUEST LOG':activeTab==='pack'?'YOUR SATCHEL':'DICE & BATTLE RECORD';panel.append(h);if(activeTab==='journal'){
+ if(G.book>1){const b=chapter();const objective=[
+  `Speak with ${b.ally} in ${b.hub} (⌂)`,
+  `Search ${b.ruin} (⌘) for the ${b.relic}`,
+  `Awaken the ${b.relic} at ${b.shrine} (✧)`,
+  `Face ${b.boss} in ${b.tower} (♜)`,
+  G.book===10?'Choose the world’s fate at the Unmaking Seat':'Follow the road to the next region',
+  'The world has been saved.'
+ ][G.quest];
+ itemRow(panel,b.title,objective);
+ itemRow(panel,'The Unmaker',b.clue);
+ if(G.vows[G.book])itemRow(panel,'Your oath',G.vows[G.book]==='remember'?b.vowA:b.vowB);
+ if(G.bookFlags.cave)itemRow(panel,'Hidden cache',`You found the secret of ${b.cave}.`);
+ }else{const objectives=[
+  ['A strange silence','Speak with Keeper Mara in Briarfall (⌂)'],
+  ['The archive of ash','Search the Sunken Archive (⌘) in the northeast'],
+  ['A flame in shadow','Purify the Ember Seal at the Moonwell Shrine (✧)'],
+  ['The Moonwell oath','Carry the cleansed Ember Seal to the Bell Tower (♜)'],
+  ['The bell awakes','The bell has rung; see where its echo leads.']
+ ];
+ itemRow(panel,objectives[G.quest][0],objectives[G.quest][1]);
+ itemRow(panel,'Adventurer notes',`Days traveled: ${G.day} · Steps: ${G.steps}.`);
+ if(G.flags.rumor)itemRow(panel,'Tavern rumor','A hidden cache rests inside the southern Hushed Cave.');
+ if(G.flags.caveOpened)itemRow(panel,'Hushed Cave','You found the travel chest and the oak-bone charm.');
+ }
+ itemRow(panel,'Road traveled',`${G.history.length} regions freed. Currently in ${chapter().region.toLowerCase()}.`);
+ for(const info of CAMPAIGN.slice(1,G.book+1)){
+  itemRow(panel,info.title,G.history.includes(info.n)?'The darkness here was defeated':info.n===G.book?'The journey continues here':'A road already walked');
+ }
+}
+else if(activeTab==='pack'){itemRow(panel,`Healing tonic × ${G.potions}`,'Drink to recover up to 17 hit points.');const b=document.createElement('button');b.type='button';b.className='packbutton';b.textContent='DRINK POTION';b.disabled=G.potions<1||G.hp>=maxHp();b.onclick=drinkPotion;panel.append(b);itemRow(panel,G.weapon?'Tempered weapon (+1)':'Traveler’s weapon',G.weapon?'Improved by Briarfall’s blacksmith.':'Dependable, if not remarkable.');if(G.flags.charm)itemRow(panel,'Oak-bone charm','A permanent +4 maximum hit points.');if(G.trinkets)itemRow(panel,'Travel keepsakes',`${G.trinkets} keepsakes · +${G.trinkets*2} maximum HP`);if(brickCount())itemRow(panel,`Loose brick × ${brickCount()}`,'Throw during a fight for guaranteed damage.');if(G.book>1&&G.quest>=2)itemRow(panel,chapter().relic,`A relic from ${chapter().region.toLowerCase()}; ${G.quest>=3?'awakened':'needs awakening at the shrine'}.`);if(G.flags.seal)itemRow(panel,G.book>1||G.quest>=3?'Cleansed Ember Seal':'Ashen Ember Seal',G.book>1||G.quest>=3?'A gentle heat gathers beneath the metal.':'Cold iron holding a trapped ember.');if(G.book>1){for(const relic of G.items.filter(i=>i!=='brick')){itemRow(panel,relic,'A relic preserved from the journey against the Unmaker.')}}itemRow(panel,'Gold',`${G.gold} coins`)}
+else{if(!G.rolls.length){const p=document.createElement('p');p.textContent='Your dice are still quiet. Battle rolls and exploration checks appear here.';panel.append(p)}G.rolls.slice(0,9).forEach(r=>{let d=document.createElement('div');d.className='die-line';d.textContent=r;panel.append(d)})}}
+function reset(){if((G||loadSaved())&&!window.confirm('Start a new chronicle? Your saved hero and progress will be replaced.'))return;G=null;try{localStorage.removeItem(KEY)}catch(_){}$('charName').value='Rowan';selectedClass='knight';showSetup()}
+
+function textCommand(raw){
+ const command=raw.toLowerCase().trim().replace(/[.!?]+$/,'').replace(/\s+/g,' ');
+ if(!command)return;
+ push(`> ${raw.trim()}`,'roll');
+ const dirs={north:[0,-1],n:[0,-1],up:[0,-1],forward:[0,-1],south:[0,1],s:[0,1],down:[0,1],east:[1,0],e:[1,0],right:[1,0],west:[-1,0],w:[-1,0],left:[-1,0]};
+ const m=command.match(/^(?:(?:go|walk|move|travel|head|run)\s+(?:to\s+the\s+|to\s+|the\s+)?)?(north|south|east|west|left|right|up|down|n|s|e|w|forward)$/);
+ if(m){if(G.combat){say('Finish the battle before moving.');return}const [dx,dy]=dirs[m[1]];if(canMove(dx,dy))move(dx,dy);else say(`You cannot travel ${m[1]} from here. Consult the available exits.`);return;}
+ if(/^(help|commands|\?|what can i do)$/.test(command)){say('Commands: go left, go north, look, inspect, talk to Mara, pick up brick, throw brick, use potion, search, enter, pray, rest, camp, inventory, journal, status, attack, special, guard, retreat, save. These are interpreted locally, not by AI.');return;}
+ if(/^(look|l|look around|examine|inspect|survey|where am i|look at surroundings)$/.test(command)){const exits=[['north',0,-1],['east',1,0],['south',0,1],['west',-1,0]].filter(d=>canMove(d[1],d[2])).map(d=>d[0]);push(`${PLACES[here()]?.title||'The road'}. ${PLACES[here()]?.desc||'A long and dusty road.'} Exits: ${exits.join(', ')||'none'}. ${here()==='v'&&!G.pickups[G.book]?'A loose brick lies nearby.':''}`);done();return;}
+ if(/^(look at|examine|inspect)\s+/.test(command)){const target=command.replace(/^(look at|examine|inspect)\s+(the\s+)?/,'');if(target.includes('brick')){say(here()==='v'&&!G.pickups[G.book]?'A loose brick has come free from a wall. You may pick it up.':brickCount()?'You have a sturdy loose brick in your satchel.':'You do not see a loose brick here.');return}if(target.includes('relic')||chapter().relic?.toLowerCase().includes(target)){say(G.book>1&&G.quest>=2?`The ${chapter().relic} is a keystone against the Unmaker.`:'You have not found the relic yet.');return}return G.book>1?laterInspect():inspect();}
+ if(/^(take|grab|get|pickup|pick up|collect)\s+/.test(command)){let what=command.replace(/^(take|grab|get|pickup|pick up|collect)\s+(the\s+|a\s+|an\s+)?/,'');if(/brick|stone block|loose stone/.test(what)){pickBrick();return}if(G.book>1&&what.includes(chapter().relic.toLowerCase())){say(G.quest>=2?`You already have the ${chapter().relic}.`:`The ${chapter().relic} is guarded at ${chapter().ruin}.`);return}say(`You do not see “${what}” available to take. Try LOOK or the numbered actions.`);return;}
+ if(/^(inventory|inv|i|bag|pack|items|satchel)$/.test(command)){activeTab='pack';renderTab();say(`Satchel: ${G.potions} healing tonics, ${brickCount()} bricks, ${G.gold} gold. Your pack tab is open.`);return;}
+ if(/^(journal|quests|quest|objectives|mission|j)$/.test(command)){activeTab='journal';renderTab();say(`Current objective: ${storyStage()}. The journal is open.`);return;}
+ if(/^(status|stats|character|health|hp)$/.test(command)){say(`${G.name}, level ${G.level} ${cls().name}, traveling in ${chapter().region.toLowerCase()}. Health ${G.hp}/${maxHp()}, Focus ${G.mp}/${maxMp()}, gold ${G.gold}, tonics ${G.potions}. Objective: ${storyStage()}.`);return;}
+ if(/^(save|save game)$/.test(command)){say('Your progress is saved locally in this browser after each action.','reward');return;}
+  if(/^(use|drink|take)\s+(a\s+|the\s+)?(healing\s+)?(potion|tonic|medicine)$/.test(command)||/^(heal|drink potion)$/.test(command)){drinkPotion();return;}
+ if(/^(throw|hurl|use)\s+(a\s+|the\s+)?brick( at .*)?$/.test(command)){throwBrick();return;}
+ if(G.combat){if(/^(attack|hit|strike|fight|swing|slash|shoot)$/.test(command)){attack();return}if(/^(special|skill|cast|spell|magic|shield bash|twin shot|cinder bolt)$/.test(command)){special();return}if(/^(guard|block|defend|defense)$/.test(command)){guard();return}if(/^(run|run away|flee|retreat|escape)$/.test(command)){runAway();return}say('In combat, try ATTACK, SPECIAL, GUARD, USE POTION, THROW BRICK, or RETREAT.');return;}
+ if(/^(talk|speak|ask|chat)(\s+(to|with))?(\s+.*)?$/.test(command)){if(here()!=='v'){say('There is no quest giver to speak to here. Look for the settlement marked ⌂.');return}G.book===1?startQuest():beginLaterQuest();return;}
+ if(/^(search|explore|investigate|read|enter)(\s+.*)?$/.test(command)){const at=here();if(at==='r'){G.book===1?examineArchive():laterRuin();return}if(at==='c'){G.book===1?cave():laterCave();return}if(at==='t'){G.book===1?tower():laterTower();return}if(at==='b'){G.book===1?say('The bridge reads: “Archive, Moonwell, Tower.”'):laterBridge();return}if(at==='s'){G.book===1?shrine():laterShrine('remember');return}return G.book===1?inspect():laterInspect();}
+ if(/^(use|activate|bless|cleanse|purify|awaken|swear|remember|protect)(\s+.*)?$/.test(command)){if(here()==='s'){G.book===1?shrine():laterShrine(/protect|guard|defend/.test(command)?'protect':'remember');return}if(G.book===10&&G.quest===4&&here()==='t'){if(/bind|seal|spare/.test(command)){chooseEnding('bind');return}if(/share|break|scatter|destroy/.test(command)){chooseEnding('share');return}}say('This action requires the right location or relic. Check your journal for the next step.');return;}
+ if(/^(bind|seal|spare)\s+(unmaker|kael|power)$/.test(command)){if(G.book===10&&G.quest===4&&here()==='t')chooseEnding('bind');else say('That choice is not available yet.');return;}
+ if(/^(share|break|scatter|destroy)\s+(the\s+)?(sigil|power|flame)$/.test(command)){if(G.book===10&&G.quest===4&&here()==='t')chooseEnding('share');else say('That choice is not available yet.');return;}
+ if(/^(rest|sleep|inn|rent room|stay at inn)$/.test(command)){if(here()==='v')inn();else camp();return;}
+ if(/^(camp|make camp|set camp)$/.test(command)){camp();return;}
+ if(/^(forage|gather|gather herbs|pick herbs)$/.test(command)){forage();return;}
+ if(/^(pray|offer prayer|meditate)$/.test(command)){if(here()==='s')pray();else say('You need a shrine to offer a prayer.');return;}
+ if(/^(buy|purchase)\s+(a\s+|the\s+)?(potion|tonic)$/.test(command)){if(here()==='v')buyPotion();else say('No apothecary is here.');return;}
+ if(/^(smith|forge|upgrade|upgrade weapon|visit blacksmith)$/.test(command)){if(here()==='v')G.book===1?smith():laterForge();else say('Find a forge in the settlement.');return;}
+ say(`I don't understand “${raw.trim()}”. Try HELP for supported commands, or use the numbered buttons.`);
+}
+$('commandPanel').addEventListener('submit',event=>{event.preventDefault();if(!G||!prefs.commands)return;const input=$('commandInput');const raw=input.value.trim();input.value='';if(raw)textCommand(raw);input.focus();});
+$('commandToggle').onclick=()=>{prefs.commands=!prefs.commands;applyPrefs();savePrefs();if(prefs.commands&&G)$('commandInput').focus();else $('commandToggle').focus();};
+
+$('startBtn').onclick=starter;$('continueBtn').onclick=()=>{const saved=loadSaved();if(saved){G=saved;showGame()}};$('resetBtn').onclick=reset;$('textBtn').onclick=()=>{prefs.large=!prefs.large;applyPrefs();savePrefs()};$('contrastBtn').onclick=()=>{prefs.contrast=!prefs.contrast;applyPrefs();savePrefs()};$('helpBtn').onclick=()=>{const d=$('helpDialog');if(d.showModal)d.showModal();else window.alert(d.textContent)};
+for(const [dir,dx,dy] of [['north',0,-1],['south',0,1],['west',-1,0],['east',1,0]])$(dir).onclick=()=>move(dx,dy);
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{activeTab=b.dataset.tab;renderTab()});
+document.addEventListener('keydown',ev=>{if(!G||$('play').classList.contains('hidden')||$('helpDialog').open)return;if(ev.altKey||ev.ctrlKey||ev.metaKey||['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)||document.activeElement===$('chronicle'))return;const key=ev.key.toLowerCase();const dirs={arrowup:[0,-1],w:[0,-1],arrowdown:[0,1],s:[0,1],arrowleft:[-1,0],a:[-1,0],arrowright:[1,0],d:[1,0]};if(dirs[key]){if(!G.combat){ev.preventDefault();move(...dirs[key])}return}if(key==='i'){activeTab='pack';renderTab();return}if(key==='j'){activeTab='journal';renderTab();return}if(/^[1-9]$/.test(key)){const a=actions[Number(key)-1];if(a){ev.preventDefault();a.fn()}}});
+const saved=loadSaved();if(saved){$('continueBtn').style.display='inline-block'}renderClassPicker();
+
+// Opening cinematic: ASCII only, no external assets, no sound or flashing.
+// The art is hidden from assistive technology: the complete opening is supplied as prose.
+const INTRO_TOWER=String.raw`                  .       *       .
+                         /\
+                        /  \
+                   ____/____\____
+                  |              |
+                  |   []    []   |
+                  |              |
+                  |      __      |
+                  |     /()\     |
+                  |     \__/     |
+                  |      ||      |
+                  |______||______|
+                     /  ||  \
+                    /___||___\
+                       /  \
+                      /    \
+                  ___/______\___`;
+const INTRO_TOWER_MOBILE=String.raw`          .   *   .
+             /\
+            /  \
+        ___/____\___
+       |            |
+       | []      [] |
+       |     __     |
+       |    /()\    |
+       |    \__/    |
+       |     ||     |
+       |_____||_____|
+          /  ||  \
+         /___||___\
+            /  \
+          _/____\_`;
+const INTRO_LOGO=String.raw`  +------------------------------------------------+
+  |                                                |
+  |      T H E   C I N D E R   R O A D             |
+  |                                                |
+  |         A  F A N T A S Y  C H R O N I C L E    |
+  +------------------------------------------------+
+
+            WHERE THE LAST BELL FELL SILENT
+               THE FIRST ROAD BEGINS`;
+const INTRO_LOGO_MOBILE=String.raw`  +----------------------------+
+  |                            |
+  |      THE CINDER ROAD       |
+  |                            |
+  |    A FANTASY CHRONICLE     |
+  +----------------------------+
+
+    THE LAST BELL FELL SILENT
+      THE FIRST ROAD BEGINS`;
+// A ~28.5-second presentation: text character speeds are unchanged.
+// Shorter holds between scenes; Read at My Pace disables all timers.
+const INTRO_FIRST_END=9500,INTRO_SECOND_END=18100,INTRO_DURATION=28500;
+const INTRO_LINES=[
+ 'Thirteen nights. Not a single toll from the bell tower.',
+ 'Beyond the valley, a shadow waits at the end of every road.',
+ 'A story does not begin with a hero. It begins with a choice.'
+];
+const INTRO_MANUAL_TIMES=[INTRO_FIRST_END-100,INTRO_SECOND_END-100,INTRO_DURATION-100];
+let introClock=null,introElapsed=0,introPaused=false,introActive=false,introManual=false,introManualScene=0;
+function introType(str,elapsed,start,speed=60){return str.slice(0,Math.max(0,Math.floor((elapsed-start)/speed)));}
+function drawIntro(){
+ const t=introElapsed;
+ const towerLines=INTRO_TOWER.split('\n'),smallLines=INTRO_TOWER_MOBILE.split('\n');
+ let wide='',narrow='',heading='',line='',progress='';
+ if(t<INTRO_FIRST_END){
+  const n=Math.max(0,Math.floor(t/230));
+  wide=towerLines.slice(0,Math.min(n,towerLines.length)).join('\n');
+  narrow=smallLines.slice(0,Math.min(n,smallLines.length)).join('\n');
+  heading=t<3800?'[ CALLING BRIARFALL . . . ]':'[ SIGNAL FOUND: YEAR 312, THIRD EMBER ]';
+  line=introType(INTRO_LINES[0],t,4000,60);
+  progress=t<3800?'DIALING THE WESTERN MARCH . . .':'DECODING THE LAST TRANSMISSION . . .';
+ }else if(t<INTRO_SECOND_END){
+  wide=INTRO_TOWER;narrow=INTRO_TOWER_MOBILE;
+  heading='[ TRANSMISSION RECOVERED ]';
+  line=introType(INTRO_LINES[1],t,10500,60);
+  progress='THE WATCHTOWER IS SILENT.';
+ }else{
+  const n=Math.max(0,Math.floor((t-INTRO_SECOND_END)/260));
+  wide=INTRO_LOGO.split('\n').slice(0,n).join('\n');
+  narrow=INTRO_LOGO_MOBILE.split('\n').slice(0,n).join('\n');
+  heading='[ THE CHRONICLE AWAKENS ]';
+  line=introType(INTRO_LINES[2],t,21600,64);
+  progress=t<26500?'LOADING YOUR DESTINY . . .':'YOUR JOURNEY IS ABOUT TO BEGIN . . .';
+ }
+ $('introArtWide').textContent=wide;
+ $('introArtNarrow').textContent=narrow;
+ $('introOverline').textContent=heading;
+ $('introLine').textContent=line||' ';
+ $('introProgress').textContent=introManual?'READ AT YOUR OWN PACE. NO TIMER.':progress;
+}
+function endIntro(){
+ if(!introActive)return;
+ introActive=false;introManual=false;
+ if(introClock!==null){clearInterval(introClock);introClock=null;}
+ $('introScreen').hidden=true;
+ $('introPause').setAttribute('aria-pressed','false');
+ $('introPause').textContent='PAUSE ANIMATION';
+ $('introReadText').textContent='';
+ const shell=document.querySelector('.shell');shell.inert=false;shell.removeAttribute('aria-hidden');
+ $('pageSkip').hidden=false;
+ if(G&& !$('play').classList.contains('hidden'))$('chapterTitle').focus();
+ else $('setupTitle').focus();
+}
+function showManualScene(){
+ introElapsed=INTRO_MANUAL_TIMES[introManualScene];
+ drawIntro();
+ $('introReadText').textContent=INTRO_LINES[introManualScene];
+ $('introMode').textContent=introManualScene===2?'CONTINUE TO GAME >':'NEXT SCENE >';
+}
+function beginIntro(){
+ if(introActive)return;
+ introActive=true;introPaused=false;introElapsed=0;introManual=false;introManualScene=0;
+ const shell=document.querySelector('.shell');shell.inert=true;shell.setAttribute('aria-hidden','true');
+ $('pageSkip').hidden=true;
+ const intro=$('introScreen');intro.hidden=false;
+ $('introSkip').focus();
+ $('introPause').disabled=false;
+ $('introPause').hidden=false;
+ $('introPause').setAttribute('aria-pressed','false');
+ $('introPause').textContent='PAUSE ANIMATION';
+ $('introMode').hidden=false;
+ $('introMode').textContent='READ AT MY PACE';
+ $('introReadText').textContent='';
+ // Reduced-motion: present a static card with no timeout.
+ if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  $('introArtWide').textContent=INTRO_LOGO;
+  $('introArtNarrow').textContent=INTRO_LOGO_MOBILE;
+  $('introOverline').textContent='[ THE CHRONICLE AWAKENS ]';
+  $('introLine').textContent=INTRO_LINES[2];
+  $('introProgress').textContent='REDUCED MOTION: INTRO IS STATIC';
+  $('introPause').disabled=true;
+  $('introPause').hidden=true;
+  $('introMode').hidden=true;
+  $('introSkip').textContent='CONTINUE TO GAME >';
+  return;
+ }
+ $('introSkip').textContent='SKIP INTRO >';
+ drawIntro();
+ introClock=setInterval(()=>{
+  if(!introActive||introPaused||introManual)return;
+  introElapsed+=100;
+  drawIntro();
+  if(introElapsed>=INTRO_DURATION)endIntro();
+ },100);
+}
+$('introSkip').onclick=endIntro;
+$('introMode').onclick=()=>{
+ if(!introActive)return;
+ if(!introManual){
+  introManual=true;introPaused=false;
+  if(introClock!==null){clearInterval(introClock);introClock=null;}
+  introManualScene=introElapsed<INTRO_FIRST_END?0:introElapsed<INTRO_SECOND_END?1:2;
+  $('introPause').hidden=true;
+  showManualScene();
+ }else if(introManualScene<2){
+  introManualScene++;
+  showManualScene();
+ }else endIntro();
+};
+$('introPause').onclick=()=>{
+ if(!introActive||introManual||$('introPause').disabled)return;
+ introPaused=!introPaused;
+ $('introPause').setAttribute('aria-pressed',String(introPaused));
+ $('introPause').textContent=introPaused?'RESUME ANIMATION':'PAUSE ANIMATION';
+ $('introProgress').textContent=introPaused?'ANIMATION PAUSED. RESUME WHEN READY.':'TRANSMISSION RESUMED . . .';
+};
+$('replayIntroBtn').onclick=beginIntro;
+document.addEventListener('keydown',event=>{
+ if(introActive&&event.key==='Escape'){event.preventDefault();endIntro();}
+});
+
+// Show the opening on first load, then return to the existing setup screen.
+beginIntro();
+})();
+</script>
+</body>
+</html>
