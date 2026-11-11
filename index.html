@@ -132,7 +132,7 @@ body.high-contrast .interact-button,body.high-contrast .conversation button,body
 body.high-contrast button:focus-visible,body.high-contrast input:focus-visible{outline-color:#fff}
 @media (prefers-reduced-motion: reduce){.meter>span,.tile,button{transition:none!important;animation:none!important}}
 
-/* v1.0.1 — fictional, offline BBS dialing screen. No network request or audio. */
+/* v1.1.0 — fictional, offline BBS dialing screen. No network request or audio. */
 .bbs-screen{z-index:220}
 .bbs-terminal{min-height:min(570px,91vh)}
 .bbs-body{padding:25px clamp(16px,4vw,36px) 14px;display:flex;flex:1;flex-direction:column;justify-content:center;gap:10px;min-height:0}
@@ -162,7 +162,7 @@ body.font-large .bbs-badge,body.font-large .bbs-tagline,body.font-large .bbs-log
       <h2 id="bbsTitle" class="bbs-title">THE CINDER ROAD BBS</h2>
       <p id="bbsDescription" class="bbs-tagline">One strange bell. Ten roads. An adventure waiting on the other end of the line.</p>
       <p class="bbs-divider" aria-hidden="true">+ - - - - - - - - - - - - - - - - - - - - - +</p>
-      <pre id="bbsLog" class="bbs-log" aria-hidden="true">CINDER TERMINAL v1.0.1
+      <pre id="bbsLog" class="bbs-log" aria-hidden="true">CINDER TERMINAL v1.1.0
 NODE 01 / BRIARFALL
 MODEM READY
 
@@ -199,11 +199,11 @@ MODEM READY
 </section>
 <a id="pageSkip" class="skip-link" href="#mainGame">Skip to game content</a>
 <div class="shell">
-<header class="mast"><div class="brand"><div class="eyebrow">An adventure from the age of dial-up dreams</div><h1>THE <span>CINDER</span> ROAD</h1><small>AN ORIGINAL SOLO FANTASY CHRONICLE  /  VERSION 1.0.1</small></div><div class="toolbar"><span id="autosave" class="autosave">OFFLINE • LOCAL SAVE</span><button id="textBtn" class="btn-minor" type="button" aria-pressed="false" title="Use larger type">LARGER TEXT</button><button id="contrastBtn" class="btn-minor" type="button" aria-pressed="false" title="Use a high-contrast palette">HIGH CONTRAST</button><button id="commandToggle" class="btn-minor" type="button" aria-pressed="false" aria-controls="commandPanel">TEXT COMMANDS: OFF</button><button id="combatBtn" class="btn-minor" type="button" aria-pressed="false" title="Toggle gentler combat damage and fewer random encounters">COMBAT: CLASSIC</button><button id="exportBtn" class="btn-minor" type="button">EXPORT SAVE</button><button id="importBtn" class="btn-minor" type="button">IMPORT SAVE</button><button id="restoreBtn" class="btn-minor hidden" type="button" title="Restore an earlier local snapshot of your character">RESTORE BACKUP</button><input id="importFile" type="file" accept=".json,application/json" tabindex="-1" class="sr-only" aria-label="Choose a Cinder Road save file"><button id="replayIntroBtn" class="btn-minor" type="button">REPLAY OPENING</button><button id="helpBtn" class="btn-minor" type="button">HOW TO PLAY</button><button id="resetBtn" class="btn-minor" type="button">NEW CHRONICLE</button></div></header>
-<p id="saveTransferStatus" class="sr-only" role="status" aria-live="polite"></p><div id="setup" class="setup"><div class="eyebrow">The road begins · Briarfall</div><h2 id="setupTitle" tabindex="-1">Every legend begins with a name.</h2><p>One continuous fantasy adventure across ten realms. Beyond Briarfall's walls, something has silenced the old bell tower. The village keeper is searching for a traveler willing to follow a forgotten road. Take up your blade, your bow, or your magic.</p><label for="charName">NAME YOUR ADVENTURER</label><input id="charName" class="nameinput" type="text" maxlength="24" placeholder="e.g. Rowan" autocomplete="off" value="Rowan"><div class="eyebrow">Choose your calling</div><div id="classGrid" class="class-grid"></div><button id="startBtn" class="bigbutton" type="button">BEGIN THE ADVENTURE →</button><button id="continueBtn" class="bigbutton continue" type="button">CONTINUE SAVED GAME →</button><p class="setup-note">No account or internet required. Game progress stays in your browser when storage is available. Export your save to protect it when switching devices. Keyboard, mouse, touch, and screen-reader controls are included.</p></div>
+<header class="mast"><div class="brand"><div class="eyebrow">An adventure from the age of dial-up dreams</div><h1>THE <span>CINDER</span> ROAD</h1><small>AN ORIGINAL SOLO FANTASY CHRONICLE  /  VERSION 1.1.0</small></div><div class="toolbar"><span id="autosave" class="autosave">OFFLINE • LOCAL SAVE</span><button id="textBtn" class="btn-minor" type="button" aria-pressed="false" title="Use larger type">LARGER TEXT</button><button id="contrastBtn" class="btn-minor" type="button" aria-pressed="false" title="Use a high-contrast palette">HIGH CONTRAST</button><button id="commandToggle" class="btn-minor" type="button" aria-pressed="false" aria-controls="commandPanel">TEXT COMMANDS: OFF</button><button id="combatBtn" class="btn-minor" type="button" aria-pressed="false" title="Toggle gentler combat damage and fewer random encounters">COMBAT: CLASSIC</button><button id="exportBtn" class="btn-minor" type="button">EXPORT SAVE</button><button id="importBtn" class="btn-minor" type="button">IMPORT SAVE</button><button id="restoreBtn" class="btn-minor hidden" type="button" title="Restore an earlier local snapshot of your character">RESTORE BACKUP</button><input id="importFile" type="file" accept=".json,application/json" tabindex="-1" class="sr-only" aria-label="Choose a Cinder Road save file"><button id="replayIntroBtn" class="btn-minor" type="button">REPLAY OPENING</button><button id="helpBtn" class="btn-minor" type="button">HOW TO PLAY</button><button id="resetBtn" class="btn-minor" type="button">NEW CHRONICLE</button></div></header>
+<p id="saveTransferStatus" class="sr-only" role="status" aria-live="polite"></p><div id="setup" class="setup"><div class="eyebrow">The road begins · Briarfall</div><h2 id="setupTitle" tabindex="-1">Every legend begins with a name.</h2><p>One continuous fantasy adventure across ten realms. Beyond Briarfall's walls, something has silenced the old bell tower. The village keeper is searching for a traveler willing to follow a forgotten road. Take up your blade, your bow, or your magic.</p><label for="charName">NAME YOUR ADVENTURER</label><input id="charName" class="nameinput" type="text" maxlength="24" placeholder="e.g. Rowan" autocomplete="off" value="Rowan"><div class="eyebrow">Choose your calling</div><div id="classGrid" class="class-grid"></div><button id="startBtn" class="bigbutton" type="button">BEGIN THE ADVENTURE →</button><button id="continueBtn" class="bigbutton continue" type="button">CONTINUE SAVED GAME →</button><p class="setup-note">No account or internet required. The road contains optional noncombat encounters, equipable items, and tavern tales. Game progress stays in your browser when storage is available. Export your save to protect it when switching devices. Keyboard, mouse, touch, and screen-reader controls are included.</p></div>
 <div id="play" class="hidden"><div class="topline"><div><strong id="storyDay">DAY 1</strong> <span aria-hidden="true">/</span> <span id="storyRegion">THE WESTERN MARCH</span></div><span id="questHeader">MAIN QUEST: A STRANGE SILENCE</span></div><p id="announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p><main id="mainGame" tabindex="-1" class="layout">
 <section class="panel" aria-label="Overworld map"><div class="panelpad"><div id="mapRegion" class="section-label">THE WESTERN MARCH <em>13 × 10</em></div><div class="mapbox"><div id="map" class="mapgrid" role="group" aria-label="Overworld map. Only adjacent traversable squares can be selected."></div></div><div class="maplegend"><span><b>@</b> You</span><span><b>⌂</b> Briarfall</span><span><b>♣</b> Forest</span><span><b>✧</b> Shrine</span><span><b>⌘</b> Ruins</span><span><b>♜</b> Tower</span></div><p class="maphelp">Move with arrow keys, WASD, the directional buttons, or click an adjacent map tile.</p><div class="locationbox"><div class="eyebrow">YOUR LOCATION</div><h3 id="placeTitle" class="place-title" tabindex="-1"></h3><p id="placeDesc" class="place-desc"></p><p id="routes" class="maphelp"></p></div></div></section>
-<section class="panel storypanel" aria-label="Adventure narrative"><div class="chapter"><div id="chapterLabel" class="chapter-label">CHAPTER I</div><h2 id="chapterTitle" tabindex="-1">The Silent Bell</h2><p id="chapterSub">A story written with your choices.</p></div><div id="chronicle" class="chronicle" role="log" aria-label="Adventure chronicle. Focus here to scroll through the narrative with arrow keys." aria-live="off" tabindex="0"></div><div class="action-area"><form id="commandPanel" class="command-panel hidden" autocomplete="off" aria-label="Optional text command input"><label for="commandInput">YOUR COMMAND</label><div class="command-row"><input id="commandInput" type="text" maxlength="140" spellcheck="false" aria-describedby="commandHelp" placeholder="go left · talk to Mara · pick up brick"><button type="submit" class="btn-minor">DO IT</button></div><p id="commandHelp">Examples: look, go north, ask innkeeper about rumors, take iron key, use key on coffer, use herb, give token to warden, enter dungeon, gallery, cistern, use gate, leave dungeon, talk to innkeeper, raise spirit, inventory, attack, help.</p></form><div class="section-label">YOUR NEXT MOVE <em>Press 1–9</em></div><div id="actions" class="actiongrid" role="group" aria-label="Available game actions"></div><div id="interactPanel" class="interactions" role="group" aria-label="People and objects at this location"></div><div class="travel"><span id="travelText" class="traveltext">Travel across the map to explore the valley.</span><div class="dpad" role="group" aria-label="Travel controls"><button id="north" class="north" aria-label="Travel north" title="North (↑ / W)">↑</button><button id="west" class="west" aria-label="Travel west" title="West (← / A)">←</button><button id="south" class="south" aria-label="Travel south" title="South (↓ / S)">↓</button><button id="east" class="east" aria-label="Travel east" title="East (→ / D)">→</button></div></div></div></section>
+<section class="panel storypanel" aria-label="Adventure narrative"><div class="chapter"><div id="chapterLabel" class="chapter-label">CHAPTER I</div><h2 id="chapterTitle" tabindex="-1">The Silent Bell</h2><p id="chapterSub">A story written with your choices.</p></div><div id="chronicle" class="chronicle" role="log" aria-label="Adventure chronicle. Focus here to scroll through the narrative with arrow keys." aria-live="off" tabindex="0"></div><div class="action-area"><form id="commandPanel" class="command-panel hidden" autocomplete="off" aria-label="Optional text command input"><label for="commandInput">YOUR COMMAND</label><div class="command-row"><input id="commandInput" type="text" maxlength="140" spellcheck="false" aria-describedby="commandHelp" placeholder="go left · talk to Mara · pick up brick"><button type="submit" class="btn-minor">DO IT</button></div><p id="commandHelp">Examples: look, go north, help traveler, negotiate, sneak, buy stew, play bones, equip reedcloak, ask innkeeper about rumors, take iron key, use key on coffer, enter dungeon, leave dungeon, inventory, attack, help.</p></form><div class="section-label">YOUR NEXT MOVE <em>Press 1–9</em></div><div id="actions" class="actiongrid" role="group" aria-label="Available game actions"></div><div id="interactPanel" class="interactions" role="group" aria-label="People and objects at this location"></div><div class="travel"><span id="travelText" class="traveltext">Travel across the map to explore the valley.</span><div class="dpad" role="group" aria-label="Travel controls"><button id="north" class="north" aria-label="Travel north" title="North (↑ / W)">↑</button><button id="west" class="west" aria-label="Travel west" title="West (← / A)">←</button><button id="south" class="south" aria-label="Travel south" title="South (↓ / S)">↓</button><button id="east" class="east" aria-label="Travel east" title="East (→ / D)">→</button></div></div></div></section>
 <div class="rightcolumn"><section class="panel" aria-label="Character statistics"><div class="panelpad"><div class="section-label">CHARACTER SHEET <em id="lvlDisplay">LV. 1</em></div><h3 id="heroName" class="hero-name"></h3><p id="heroClass" class="hero-class"></p><div class="meterblock"><div class="metertop"><span>HIT POINTS</span><strong id="hpText"></strong></div><div class="meter" role="progressbar" aria-label="Hit points" aria-valuemin="0"><span id="hpMeter" class="hp"></span></div></div><div class="meterblock"><div class="metertop"><span>FOCUS</span><strong id="mpText"></strong></div><div class="meter" role="progressbar" aria-label="Focus points" aria-valuemin="0"><span id="mpMeter" class="mp"></span></div></div><div class="meterblock"><div class="metertop"><span>EXPERIENCE</span><strong id="xpText"></strong></div><div class="meter" role="progressbar" aria-label="Experience points" aria-valuemin="0"><span id="xpMeter" class="xp"></span></div></div><div class="mini-grid"><div class="mini-cell"><b id="mightStat">0</b><small>MIGHT</small></div><div class="mini-cell"><b id="agilityStat">0</b><small>AGILITY</small></div><div class="mini-cell"><b id="spiritStat">0</b><small>SPIRIT</small></div></div><div class="coins"><span>DEFENSE <b id="defStat">0</b></span><span>GOLD <b id="goldStat">0</b></span></div><div id="growthPanel" class="growth" role="group" aria-label="Character ability improvements"></div></div></section><section class="panel" aria-label="Journal and items"><div class="tabstrip" role="group" aria-label="Character details"><button class="active" data-tab="journal" aria-pressed="true" aria-controls="tabContent">JOURNAL</button><button data-tab="pack" aria-pressed="false" aria-controls="tabContent">PACK</button><button data-tab="dice" aria-pressed="false" aria-controls="tabContent">DICE</button></div><div id="tabContent" class="details" role="region" aria-label="Character information"></div></section></div>
 </main><div class="footer"><span><strong>CONTROLS</strong> Arrows / WASD: travel · 1–9: choose · J: journal · I: inventory · Optional typed commands</span><span>Original adventure · No account · No network needed · Autosaves</span></div></div>
 </div>
@@ -246,6 +246,7 @@ function hydrateBook(){
  G.trinkets=Number(G.trinkets)||0;
  G.ground=G.ground&&typeof G.ground==='object'&&!Array.isArray(G.ground)?G.ground:{};
  G.goodwill=Math.max(0,Math.min(10,Number(G.goodwill)||0));
+ hydrateRoad();
  hydrateWorld();
  G.talents=G.talents&&typeof G.talents==='object'&&!Array.isArray(G.talents)?G.talents:{};
  for(const key of ['might','agi','spirit'])G.talents[key]=Number.isInteger(G.talents[key])?Math.max(0,Math.min(100,G.talents[key])):0;
@@ -377,9 +378,9 @@ const here=()=>WORLD[G.y][G.x];
 const push=(message,type='story')=>{G.log.push({message,type});pendingNarration.push(message);if(G.log.length>110)G.log.splice(0,G.log.length-110)};
 const roll=(message)=>{G.rolls.unshift(message);G.rolls=G.rolls.slice(0,24);push(message,'roll')};
 const cls=()=>CLASSES[G.classId];
-const maxHp=()=>cls().hp+(G.level-1)*6+(G.flags.charm?4:0)+(G.trinkets||0)*2+2*(G.talents?.might||0);
+const maxHp=()=>cls().hp+(G.level-1)*6+(G.flags.charm?4:0)+(G.trinkets||0)*2+2*(G.talents?.might||0)+gearBonus('hp');
 const maxMp=()=>cls().mp+(G.level-1)*3+2*(G.talents?.spirit||0);
-const armor=()=>cls().ac+Math.floor((G.level-1)/3)+Math.floor((G.talents?.agi||0)/2)+(G.combat?.watchShield?2:0);
+const armor=()=>cls().ac+Math.floor((G.level-1)/3)+Math.floor((G.talents?.agi||0)/2)+(G.combat?.watchShield?2:0)+gearBonus('defense');
 const threshold=()=>G.level*25;
 const ability=(stat)=>cls()[stat]+(G.talents?.[stat]||0);
 const unspent=()=>Math.max(0,G.level-1-Object.values(G.talents||{}).reduce((a,b)=>a+b,0));
@@ -441,15 +442,15 @@ function showGame(){hydrateBook();if(G.quest===4&&G.book<10&&!G.combat){advanceR
 function showSetup(){updateBackupButton();$('play').classList.add('hidden');$('setup').classList.remove('hidden');$('continueBtn').style.display=loadSaved()?'inline-block':'none';renderClassPicker();$('charName').focus()}
 function renderClassPicker(){const box=$('classGrid');box.replaceChildren();for(const [id,c] of Object.entries(CLASSES)){let btn=document.createElement('button');btn.type='button';btn.className='class-card'+(selectedClass===id?' chosen':'');btn.setAttribute('aria-pressed',String(selectedClass===id));btn.innerHTML=`<span class="glyph">${c.symbol}</span><b>${c.name}</b><span class="stats">HP ${c.hp} · Focus ${c.mp} · Defense ${c.ac}</span><span style="font-size:13px">${c.desc}</span>`;btn.onclick=()=>{selectedClass=id;renderClassPicker()};box.append(btn)}}
 function goodTile(x,y){return !!WORLD[y]?.[x]&&!'^~'.includes(WORLD[y][x])}
-function canMove(dx,dy){return !!G&&!G.combat&&!G.dungeon&&goodTile(G.x+dx,G.y+dy)}
-function move(dx,dy){if(!canMove(dx,dy))return;conversation=null;const prev=here();G.x+=dx;G.y+=dy;G.steps++;if(G.steps%11===0)G.day++;const tile=here();if(tile==='b'&&!memorialRecord())push(`A roadside memorial stands here: ${ROAD_MEMORIALS[G.book].title}. You may study its inscription or restore it without a dice roll.`);if(tile==='f'&&letterToFind())push('Something folded and sealed catches the light among the roots. The nearby interaction list offers a search for a lost letter.');if(PLACES[tile]&&tile!=='.')push(PLACES[tile].intro);else if(G.steps%4===0)push(['The grass sways against your boots. A distant bell seems to ring, but the sound vanishes when you listen.','A crow follows you from fencepost to fencepost. It seems disappointed when you keep walking.','An old milestone bears the words: “All roads lead home. Not all travelers do.”'][G.steps%3]);if((tile==='f'&&Math.random()<(prefs.storyCombat?.10:.24))||(tile==='.'&&prev==='f'&&Math.random()<(prefs.storyCombat?.05:.11))||(tile==='b'&&Math.random()<(prefs.storyCombat?.06:.13))){startCombat(randomEnemy(tile),false)}done()}
+function canMove(dx,dy){return !!G&&!G.combat&&!G.dungeon&&!G.road?.pending&&goodTile(G.x+dx,G.y+dy)}
+function move(dx,dy){if(!canMove(dx,dy))return;conversation=null;const prev=here();G.x+=dx;G.y+=dy;G.steps++;if(G.steps%11===0)G.day++;const tile=here();if(tile==='b'&&!memorialRecord())push(`A roadside memorial stands here: ${ROAD_MEMORIALS[G.book].title}. You may study its inscription or restore it without a dice roll.`);if(tile==='f'&&letterToFind())push('Something folded and sealed catches the light among the roots. The nearby interaction list offers a search for a lost letter.');if(PLACES[tile]&&tile!=='.')push(PLACES[tile].intro);else if(G.steps%4===0)push(['The grass sways against your boots. A distant bell seems to ring, but the sound vanishes when you listen.','A crow follows you from fencepost to fencepost. It seems disappointed when you keep walking.','An old milestone bears the words: “All roads lead home. Not all travelers do.”'][G.steps%3]);if(!maybeRoadEncounter(tile)&&((tile==='f'&&Math.random()<(prefs.storyCombat?.10:.24))||(tile==='.'&&prev==='f'&&Math.random()<(prefs.storyCombat?.05:.11))||(tile==='b'&&Math.random()<(prefs.storyCombat?.06:.13)))){startCombat(randomEnemy(tile),false)}done()}
 function randomEnemy(tile){if(G.book>1)return `roamer_${G.book}`;let bag=tile==='f'?['wolf','wolf','scout','wisp']:['wolf','scout','wisp'];return bag[between(0,bag.length-1)]}
 function done(){persist();render()}
 function startCombat(id,boss=false){if(G.combat)return;const e=ENEMIES[id];G.combat={id,name:e.name,hp:e.hp,maxHp:e.hp,ac:e.ac,attack:e.attack,lo:e.lo,hi:e.hi,xp:e.xp,gmin:e.gmin,gmax:e.gmax,boss:boss||!!e.boss,guard:false,stunned:false};push(e.intro,'danger');if((id===`boss_${G.book}`||(G.book===1&&id==='castellan'))&&G.bookFlags.insight){const bonus=Math.min(20,8+G.book);G.combat.hp=Math.max(1,G.combat.hp-bonus);push(`Your research into the Unmaker's methods weakens ${e.name} by ${bonus} HP.`, 'reward')}if((id===`boss_${G.book}`||(G.book===1&&id==='castellan'))&&G.bookFlags.watchShield){G.combat.watchShield=true;push('The town watch lends you courage. Your armor receives +2 defense for this fight.', 'reward')}if(id==='boss_10'&&Object.keys(G.world?.memorials||{}).length>=3){const saved=Object.keys(G.world.memorials).length;const reduced=Math.min(20,saved*2);G.combat.hp=Math.max(1,G.combat.hp-reduced);push(`The roadside memorials are still standing. Their remembered names weaken the Unmaker by ${reduced} HP.`, 'reward')}if(id==='unmakerTrue'&&(G.world?.lettersDelivered?.length||0)>=3){const letters=G.world.lettersDelivered.length;const reduced=letters===5?24:letters*4;G.combat.hp=Math.max(1,G.combat.hp-reduced);push(`Sera's ${letters} recovered letters preserve Elara's name. The Unmaker loses ${reduced} HP to the memory he could not erase.`, 'reward')}if(id==='boss_10'&&G.goodwill>=3){const bonus=Math.min(24,G.goodwill*3);G.combat.hp=Math.max(1,G.combat.hp-bonus);push(`People you helped on earlier roads send their strength into the final battle. Your ${G.goodwill} friendships weaken the Unmaker by ${bonus} HP.`,'reward')}}
-function attack(){if(!G.combat)return;const e=G.combat;const d=dice(20);const stat=ability(G.classId==='knight'?'might':G.classId==='ranger'?'agi':'spirit');const bonus=stat+G.level+G.weapon;const hit=d===20||(d!==1&&d+bonus>=e.ac);const amount=hit?between(3,7)+stat+G.weapon+(d===20?between(3,7):0):0;roll(`${G.name}: d20 ${d} + ${bonus} = ${d+bonus} vs. AC ${e.ac}${d===20?' • CRITICAL':''}`);if(hit){e.hp=Math.max(0,e.hp-amount);push(`Your ${G.classId==='mystic'?'staff':G.classId==='ranger'?'arrow':'blade'} strikes ${e.name} for ${amount} damage.`,'reward')}else push(`You miss ${e.name}. The opening vanishes.`, 'danger');endPlayerTurn()}
-function special(){const e=G.combat;if(!e)return;if(G.mp<cls().cost){push(`Not enough Focus for ${cls().skill}. Guard to recover Focus.`,'danger');done();return}G.mp-=cls().cost;if(G.classId==='knight'){const d=dice(20),bonus=ability('might')+G.level+G.weapon+2,hit=d===20||(d!==1&&d+bonus>=e.ac);roll(`Shield Bash: d20 ${d} + ${bonus} = ${d+bonus} vs. AC ${e.ac}`);if(hit){const hitDmg=between(6,11)+G.weapon;e.hp=Math.max(0,e.hp-hitDmg);e.stunned=d>=9;push(`Your shield crashes into ${e.name} for ${hitDmg} damage.${e.stunned?' The foe staggers and loses its next attack.':''}`,'reward')}else push('Your shield slams into empty air.','danger')}
-else if(G.classId==='ranger'){let hits=0,damage=0;for(let i=0;i<2;i++){const d=dice(20),bonus=ability('agi')+G.level+G.weapon,hit=d===20||(d!==1&&d+bonus>=e.ac);roll(`Arrow ${i+1}: d20 ${d} + ${bonus} = ${d+bonus} vs. AC ${e.ac}`);if(hit){hits++;const dd=between(4,7)+G.weapon+(d===20?4:0);damage+=dd;e.hp=Math.max(0,e.hp-dd)}}push(`You loose two arrows. ${hits} find their mark, dealing ${damage} total damage.`,hits?'reward':'danger')}
-else{const power=between(12,17)+G.level+G.weapon+(G.talents?.spirit||0);e.hp=Math.max(0,e.hp-power);roll(`Cinder Bolt: magic damage ${power} (Focus −${cls().cost})`);push(`A ribbon of living fire wraps around ${e.name}, dealing ${power} damage.`,'reward')}endPlayerTurn()}
+function attack(){if(!G.combat)return;const e=G.combat;const d=dice(20);const stat=ability(G.classId==='knight'?'might':G.classId==='ranger'?'agi':'spirit');const bonus=stat+G.level+G.weapon+gearBonus('attack');const hit=d===20||(d!==1&&d+bonus>=e.ac);const amount=hit?between(3,7)+stat+G.weapon+gearBonus('attack')+(d===20?between(3,7):0):0;roll(`${G.name}: d20 ${d} + ${bonus} = ${d+bonus} vs. AC ${e.ac}${d===20?' • CRITICAL':''}`);if(hit){e.hp=Math.max(0,e.hp-amount);push(`Your ${G.classId==='mystic'?'staff':G.classId==='ranger'?'arrow':'blade'} strikes ${e.name} for ${amount} damage.`,'reward')}else push(`You miss ${e.name}. The opening vanishes.`, 'danger');endPlayerTurn()}
+function special(){const e=G.combat;if(!e)return;if(G.mp<cls().cost){push(`Not enough Focus for ${cls().skill}. Guard to recover Focus.`,'danger');done();return}G.mp-=cls().cost;if(G.classId==='knight'){const d=dice(20),bonus=ability('might')+G.level+G.weapon+gearBonus('attack')+2,hit=d===20||(d!==1&&d+bonus>=e.ac);roll(`Shield Bash: d20 ${d} + ${bonus} = ${d+bonus} vs. AC ${e.ac}`);if(hit){const hitDmg=between(6,11)+G.weapon+gearBonus('attack');e.hp=Math.max(0,e.hp-hitDmg);e.stunned=d>=9;push(`Your shield crashes into ${e.name} for ${hitDmg} damage.${e.stunned?' The foe staggers and loses its next attack.':''}`,'reward')}else push('Your shield slams into empty air.','danger')}
+else if(G.classId==='ranger'){let hits=0,damage=0;for(let i=0;i<2;i++){const d=dice(20),bonus=ability('agi')+G.level+G.weapon+gearBonus('attack'),hit=d===20||(d!==1&&d+bonus>=e.ac);roll(`Arrow ${i+1}: d20 ${d} + ${bonus} = ${d+bonus} vs. AC ${e.ac}`);if(hit){hits++;const dd=between(4,7)+G.weapon+gearBonus('attack')+(d===20?4:0);damage+=dd;e.hp=Math.max(0,e.hp-dd)}}push(`You loose two arrows. ${hits} find their mark, dealing ${damage} total damage.`,hits?'reward':'danger')}
+else{const power=between(12,17)+G.level+G.weapon+gearBonus('attack')+(G.talents?.spirit||0);e.hp=Math.max(0,e.hp-power);roll(`Cinder Bolt: magic damage ${power} (Focus −${cls().cost})`);push(`A ribbon of living fire wraps around ${e.name}, dealing ${power} damage.`,'reward')}endPlayerTurn()}
 function guard(){if(!G.combat)return;G.combat.guard=true;G.mp=Math.min(maxMp(),G.mp+2);push('You brace yourself, reducing the next hit and recovering 2 Focus.');enemyTurn();done()}
 function drinkPotion(){if(G.potions<1){push('Your potion pouch is empty.','danger');done();return}if(G.hp>=maxHp()){push('Your health is already full.');done();return}G.potions--;const healed=Math.min(17,maxHp()-G.hp);G.hp+=healed;push(`You drink a crimson tonic and recover ${healed} HP.`,'reward');if(G.combat)enemyTurn();done()}
 function runAway(){const e=G.combat;if(!e)return;if(e.boss){push('The way out is sealed. You cannot flee from this guardian.','danger');done();return}const d=dice(20);const score=d+ability('agi')+G.level;roll(`Escape: d20 ${d} + ${ability('agi')+G.level} = ${score} vs. DC 11`);if(d===20||(d!==1&&score>=11)){push(`You slip away from ${e.name} and catch your breath.`, 'reward');G.combat=null}else{push(`${e.name} blocks your retreat!`,'danger');enemyTurn()}done()}
@@ -495,19 +496,19 @@ case 'f':add('Track the forest shadows','Seek a battle for experience',()=>{star
 }
 if(here()==='c')add('Descend into the undercroft','Optional six-room puzzle dungeon with a guardian',enterDungeon);if(here()==='v'&&!G.pickups[G.book])add('Pick up loose brick','A throwable item · useful in combat',pickBrick);if(here()!=='v')add('Make camp','Rest, but risk an encounter',camp);
 add('Inspect surroundings','Find more detail about this place',inspect);if(G.potions>0&&G.hp<maxHp())add(`Use potion (${G.potions})`,'Restore 17 HP without combat',drinkPotion);return a}
-function render(){if(!G)return;const newCombatId=G.combat?.id||null;const combatPhaseChanged=previousCombatId!==newCombatId;previousCombatId=newCombatId;const c=cls(),b=chapter();$('storyDay').textContent=`DAY ${G.day}`;$('storyRegion').textContent=G.combat?`IN BATTLE · ${G.combat.name.toUpperCase()}`:G.dungeon?`IN THE UNDERCROFT · ${DUNGEON_ROOMS[G.dungeon.room].name.toUpperCase()}`:PLACES[here()]?.title.toUpperCase()||'THE WESTERN MARCH';$('questHeader').textContent=`YOUR PATH · ${storyStage().toUpperCase()}`;
+function render(){if(!G)return;hydrateRoad();const newCombatId=G.combat?.id||null;const combatPhaseChanged=previousCombatId!==newCombatId;previousCombatId=newCombatId;const c=cls(),b=chapter();$('storyDay').textContent=`DAY ${G.day}`;$('storyRegion').textContent=G.combat?`IN BATTLE · ${G.combat.name.toUpperCase()}`:G.dungeon?`IN THE UNDERCROFT · ${DUNGEON_ROOMS[G.dungeon.room].name.toUpperCase()}`:PLACES[here()]?.title.toUpperCase()||'THE WESTERN MARCH';$('questHeader').textContent=`YOUR PATH · ${storyStage().toUpperCase()}`;
  $('chapterLabel').textContent=G.book===1?(G.quest>=3?'BENEATH THE BELL':G.quest>=2?'THE MOONWELL':G.quest>=1?'THE EMBER SEAL':'THE WESTERN MARCH'):(G.quest===5?'A NEW DAWN':b.region);
  $('chapterTitle').textContent=G.book===1?(G.quest>=3?'The Tower of Dusk':G.quest>=2?'The Moonwell Oath':'The Silent Bell'):(G.quest===5?'The World Remembered':b.title);
  $('mapRegion').textContent=G.dungeon?'OPTIONAL DUNGEON · ROOM MAP':b.region+' · 13 × 10';
- $('chapterSub').textContent=G.combat?`⚔ ${G.combat.name} · ${G.combat.hp}/${G.combat.maxHp} HP · AC ${G.combat.ac}`:G.dungeon?'An optional labyrinth of choices beneath the road.':G.book>1?`${b.hook}`:'Your choices shape what the road remembers.';const t=G.dungeon?DUNGEON_ROOMS[G.dungeon.room]:PLACES[here()];$('placeTitle').textContent=t?.name||t?.title||'The Western March';$('placeDesc').textContent=G.dungeon?dungeonDescription():t?.desc||'';$('heroName').textContent=G.name;$('heroClass').textContent=`LEVEL ${G.level} ${c.name.toUpperCase()} · ${c.skill.toUpperCase()}`;$('lvlDisplay').textContent=`LV. ${G.level}`;$('hpText').textContent=`${G.hp} / ${maxHp()}`;$('hpMeter').style.width=(100*G.hp/maxHp())+'%';$('mpText').textContent=`${G.mp} / ${maxMp()}`;$('mpMeter').style.width=(100*G.mp/maxMp())+'%';$('xpText').textContent=`${G.xp} / ${threshold()}`;$('xpMeter').style.width=(100*G.xp/threshold())+'%';$('mightStat').textContent=ability('might');$('agilityStat').textContent=ability('agi');$('spiritStat').textContent=ability('spirit');$('defStat').textContent=armor();$('goldStat').textContent=G.gold;for(const [id,value,maximum] of [['hpMeter',G.hp,maxHp()],['mpMeter',G.mp,maxMp()],['xpMeter',G.xp,threshold()]]){const el=$(id).parentElement;el.setAttribute('aria-valuenow',String(value));el.setAttribute('aria-valuemax',String(maximum));el.setAttribute('aria-valuetext',`${value} of ${maximum}`)}
-renderGrowth();renderMap();renderLog();actions=G.dungeon?buildDungeonActions():buildActions();renderActions();renderInteractions();renderTab();for(const [dir,delta] of Object.entries({north:[0,-1],south:[0,1],west:[-1,0],east:[1,0]}))$(dir).disabled=!canMove(...delta);$('travelText').textContent=G.combat?'Survive this encounter before traveling.':G.dungeon?'Explore using the dungeon room buttons or typed commands. The overworld travel arrows are inactive.':'Travel by arrow keys, buttons, map, or optional typed commands.';const exits=[['north',0,-1],['east',1,0],['south',0,1],['west',-1,0]].filter(d=>canMove(d[1],d[2])).map(d=>d[0]);$('routes').textContent=G.combat?'Travel is unavailable during combat.':G.dungeon?`Dungeon exits: ${dungeonExits(G.dungeon.room).map(r=>DUNGEON_ROOMS[r].name).join(', ')||'none'}.`:`Available exits: ${exits.join(', ')||'none'}.`;const message=pendingNarration.join(' ');if(pendingNarration.length)$('announcer').textContent=`${G.combat?'Combat against '+G.combat.name:`At ${t?.name||t?.title||'The Western March'}`}. ${message} ${G.combat?`Your health: ${G.hp} of ${maxHp()}. Enemy health: ${G.combat.hp} of ${G.combat.maxHp}.`:G.dungeon?`Dungeon exits: ${dungeonExits(G.dungeon.room).map(r=>DUNGEON_ROOMS[r].name).join(', ')||'none'}.`:`Exits: ${exits.join(', ')||'none'}.`}`;pendingNarration=[];if(combatPhaseChanged){const focus=G.combat?$('actions').querySelector('button'):$('placeTitle');focus?.focus();}}
+ $('chapterSub').textContent=G.combat?`⚔ ${G.combat.name} · ${G.combat.hp}/${G.combat.maxHp} HP · AC ${G.combat.ac}`:G.dungeon?'An optional labyrinth of choices beneath the road.':G.road.pending?'A choice on the road awaits. Respond through the numbered actions.':G.book>1?`${b.hook}`:'Your choices shape what the road remembers. Roadside encounters and equipment rewards are optional.';const t=G.dungeon?DUNGEON_ROOMS[G.dungeon.room]:PLACES[here()];$('placeTitle').textContent=t?.name||t?.title||'The Western March';$('placeDesc').textContent=G.road.pending?ROAD_EVENTS[G.road.pending.type].desc:G.dungeon?dungeonDescription():t?.desc||'';$('heroName').textContent=G.name;$('heroClass').textContent=`LEVEL ${G.level} ${c.name.toUpperCase()} · ${c.skill.toUpperCase()}`;$('lvlDisplay').textContent=`LV. ${G.level}`;$('hpText').textContent=`${G.hp} / ${maxHp()}`;$('hpMeter').style.width=(100*G.hp/maxHp())+'%';$('mpText').textContent=`${G.mp} / ${maxMp()}`;$('mpMeter').style.width=(100*G.mp/maxMp())+'%';$('xpText').textContent=`${G.xp} / ${threshold()}`;$('xpMeter').style.width=(100*G.xp/threshold())+'%';$('mightStat').textContent=ability('might');$('agilityStat').textContent=ability('agi');$('spiritStat').textContent=ability('spirit');$('defStat').textContent=armor();$('goldStat').textContent=G.gold;for(const [id,value,maximum] of [['hpMeter',G.hp,maxHp()],['mpMeter',G.mp,maxMp()],['xpMeter',G.xp,threshold()]]){const el=$(id).parentElement;el.setAttribute('aria-valuenow',String(value));el.setAttribute('aria-valuemax',String(maximum));el.setAttribute('aria-valuetext',`${value} of ${maximum}`)}
+renderGrowth();renderMap();renderLog();actions=G.road.pending?roadActions():G.dungeon?buildDungeonActions():buildActions();renderActions();renderInteractions();renderTab();for(const [dir,delta] of Object.entries({north:[0,-1],south:[0,1],west:[-1,0],east:[1,0]}))$(dir).disabled=!canMove(...delta);$('travelText').textContent=G.road.pending?'Choose how to respond to this event before traveling.':G.combat?'Survive this encounter before traveling.':G.dungeon?'Explore using the dungeon room buttons or typed commands. The overworld travel arrows are inactive.':'Travel by arrow keys, buttons, map, or optional typed commands.';const exits=[['north',0,-1],['east',1,0],['south',0,1],['west',-1,0]].filter(d=>canMove(d[1],d[2])).map(d=>d[0]);$('routes').textContent=G.road.pending?'Roadside encounter: choose an action or Walk away.':G.combat?'Travel is unavailable during combat.':G.dungeon?`Dungeon exits: ${dungeonExits(G.dungeon.room).map(r=>DUNGEON_ROOMS[r].name).join(', ')||'none'}.`:`Available exits: ${exits.join(', ')||'none'}.`;const message=pendingNarration.join(' ');if(pendingNarration.length)$('announcer').textContent=`${G.combat?'Combat against '+G.combat.name:`At ${G.road.pending?ROAD_EVENTS[G.road.pending.type].title:t?.name||t?.title||'The Western March'}`}. ${message} ${G.combat?`Your health: ${G.hp} of ${maxHp()}. Enemy health: ${G.combat.hp} of ${G.combat.maxHp}.`:G.dungeon?`Dungeon exits: ${dungeonExits(G.dungeon.room).map(r=>DUNGEON_ROOMS[r].name).join(', ')||'none'}.`:`Exits: ${exits.join(', ')||'none'}.`}`;pendingNarration=[];if(combatPhaseChanged||G.road.pending){const focus=G.combat||G.road.pending?$('actions').querySelector('button'):$('placeTitle');focus?.focus();}}
 function renderMap(){const holder=$('map');holder.replaceChildren();
  if(G.dungeon){holder.className='dungeon-map';holder.setAttribute('aria-label','Optional dungeon rooms. Use action buttons or select an adjoining room.');
   const state=dungeonState(),room=G.dungeon.room;
   for(const key of DUNGEON_ORDER){const info=DUNGEON_ROOMS[key],accessible=dungeonExits(room).includes(key);const button=document.createElement('button');button.type='button';button.className=room===key?'current':'';button.textContent=info.name+(state.cleared&&key==='sanctum'?' ✓':'');button.setAttribute('aria-label',`${info.name}${room===key?', current location':accessible?', reachable':' , not adjacent'}`);button.disabled=!accessible;button.onclick=()=>dungeonTravel(key);holder.append(button)}return;
- }holder.className='mapgrid';holder.setAttribute('aria-label','Overworld map. Only adjacent traversable squares can be selected.');for(let y=0;y<WORLD.length;y++)for(let x=0;x<WORLD[y].length;x++){const ch=WORLD[y][x];const reachable=Math.abs(G.x-x)+Math.abs(G.y-y)===1&&!G.combat&&goodTile(x,y);const current=G.x===x&&G.y===y;const b=document.createElement('button');b.type='button';b.className='tile '+TERRAIN[ch]+(current?' you':'')+(reachable?' reachable':'');b.textContent=current?'@':SYMBOL[ch];b.title=(current?'Your position · ':reachable?'Move to ':'')+(PLACES[ch]?.title||({'^':'Mountains','~':'Water'}[ch]||'Road'));b.setAttribute('aria-label',b.title);b.disabled=!reachable;if(reachable)b.onclick=()=>{move(x-G.x,y-G.y);(G.combat?$('actions').querySelector('button'):$('placeTitle')).focus()};holder.append(b)}}
+ }holder.className='mapgrid';holder.setAttribute('aria-label','Overworld map. Only adjacent traversable squares can be selected.');for(let y=0;y<WORLD.length;y++)for(let x=0;x<WORLD[y].length;x++){const ch=WORLD[y][x];const reachable=Math.abs(G.x-x)+Math.abs(G.y-y)===1&&!G.combat&&!G.road?.pending&&goodTile(x,y);const current=G.x===x&&G.y===y;const b=document.createElement('button');b.type='button';b.className='tile '+TERRAIN[ch]+(current?' you':'')+(reachable?' reachable':'');b.textContent=current?'@':SYMBOL[ch];b.title=(current?'Your position · ':reachable?'Move to ':'')+(PLACES[ch]?.title||({'^':'Mountains','~':'Water'}[ch]||'Road'));b.setAttribute('aria-label',b.title);b.disabled=!reachable;if(reachable)b.onclick=()=>{move(x-G.x,y-G.y);(G.combat?$('actions').querySelector('button'):$('placeTitle')).focus()};holder.append(b)}}
 function renderLog(){const log=$('chronicle'),wasReading=document.activeElement===log,scrollTop=log.scrollTop;log.replaceChildren();G.log.slice(-110).forEach(entry=>{const div=document.createElement('p');div.className='entry '+(entry.type||'story');div.textContent=entry.message;log.append(div)});log.scrollTop=wasReading?scrollTop:log.scrollHeight}
-function renderActions(){const box=$('actions');const focused=box.contains(document.activeElement)?Array.from(box.querySelectorAll('button')).indexOf(document.activeElement):-1;box.replaceChildren();actions.slice(0,9).forEach((a,i)=>{const b=document.createElement('button');b.className='action';b.type='button';const label=document.createElement('div');label.className='name';const key=document.createElement('span');key.className='key';key.textContent=i+1;label.append(key,document.createTextNode(a.label));const hint=document.createElement('span');hint.className='hint';hint.textContent=a.hint;b.append(label,hint);b.onclick=a.fn;box.append(b)});if(focused>=0){const next=box.querySelectorAll('button')[Math.min(focused,Math.max(0,actions.length-1))];next?.focus()}}
+function renderActions(){const box=$('actions');const focused=box.contains(document.activeElement)?Array.from(box.querySelectorAll('button')).indexOf(document.activeElement):-1;box.replaceChildren();actions.slice(0,9).forEach((a,i)=>{const b=document.createElement('button');b.className='action';b.type='button';const label=document.createElement('div');label.className='name';const key=document.createElement('span');key.className='key';key.textContent=i+1;label.append(key,document.createTextNode(a.label));const hint=document.createElement('span');hint.className='hint';hint.textContent=a.hint;b.append(label,hint);b.disabled=!!a.disabled;b.onclick=a.fn;box.append(b)});if(focused>=0){const next=box.querySelectorAll('button')[Math.min(focused,Math.max(0,actions.length-1))];next?.focus()}}
 function itemRow(panel,title,desc){const d=document.createElement('div');d.className='item';const a=document.createElement('b');a.textContent=title;const p=document.createElement('div');p.className='dim';p.textContent=desc;d.append(a,p);panel.append(d)}
 function renderTab(){document.querySelectorAll('[data-tab]').forEach(el=>{const chosen=el.dataset.tab===activeTab;el.classList.toggle('active',chosen);el.setAttribute('aria-pressed',String(chosen))});const panel=$('tabContent');panel.replaceChildren();const h=document.createElement('h3');h.textContent=activeTab==='journal'?'QUEST LOG':activeTab==='pack'?'YOUR SATCHEL':'DICE & BATTLE RECORD';panel.append(h);if(activeTab==='journal'){
  if(G.book>1){const b=chapter();const objective=[
@@ -536,6 +537,8 @@ function renderTab(){document.querySelectorAll('[data-tab]').forEach(el=>{const 
  }
  if(G.bookFlags.wardenHelped)itemRow(panel,'A friend on this road',`${wardenName()} remembers you returned a missing traveler’s token.`);
  if(G.bookFlags.cofferOpened)itemRow(panel,'Hidden coffer','You recovered a secret cache among the ruins.');
+ itemRow(panel,'Road encounters',`${Object.keys(G.road.completed).length} roadside stories resolved. Town goodwill: ${G.goodwill}. These choices can influence the final battle.`);
+ if(G.road.tavern[G.book]?.meal)itemRow(panel,'The common table','You shared a hot meal with travelers in this settlement. The innkeeper remembers.');
  if(!G.bookFlags.wardenHelped)itemRow(panel,'Optional favor',`A lost traveler’s token can be found at the bridge (═). Return it to ${wardenName()} at the settlement (⌂).`);
  if(!G.bookFlags.cofferOpened)itemRow(panel,'Optional discovery','A key in the cave (◈) might open a coffer in the ruins (⌘), or you could try one d20 ability check. Beneath every cave is an optional six-room undercroft.');
  itemRow(panel,'Goodwill',`${G.goodwill||0} settlements remember your help. These friendships can aid the final battle.`);
@@ -552,7 +555,7 @@ function renderTab(){document.querySelectorAll('[data-tab]').forEach(el=>{const 
   itemRow(panel,info.title,G.history.includes(info.n)?'The darkness here was defeated':info.n===G.book?'The journey continues here':'A road already walked');
  }
 }
-else if(activeTab==='pack'){itemRow(panel,`Healing tonic × ${G.potions}`,'Drink to recover up to 17 hit points.');const b=document.createElement('button');b.type='button';b.className='packbutton';b.textContent='DRINK POTION';b.disabled=G.potions<1||G.hp>=maxHp();b.onclick=drinkPotion;panel.append(b);itemRow(panel,G.weapon?'Tempered weapon (+1)':'Traveler’s weapon',G.weapon?'Improved by Briarfall’s blacksmith.':'Dependable, if not remarkable.');if(G.flags.charm)itemRow(panel,'Oak-bone charm','A permanent +4 maximum hit points.');if(G.trinkets)itemRow(panel,'Travel keepsakes',`${G.trinkets} keepsakes · +${G.trinkets*2} maximum HP`);if(brickCount())itemRow(panel,`Loose brick × ${brickCount()}`,'Throw during a fight for guaranteed damage.');if(G.book>1&&G.quest>=2)itemRow(panel,chapter().relic,`A relic from ${chapter().region.toLowerCase()}; ${G.quest>=3?'awakened':'needs awakening at the shrine'}.`);if(G.flags.seal)itemRow(panel,G.book>1||G.quest>=3?'Cleansed Ember Seal':'Ashen Ember Seal',G.book>1||G.quest>=3?'A gentle heat gathers beneath the metal.':'Cold iron holding a trapped ember.');for(const [item,count] of Object.entries(G.items.reduce((a,i)=>{if(typeof i==='string'&&i!=='brick'){a[i]=(a[i]||0)+1}return a},{}))){
+else if(activeTab==='pack'){renderEquipment(panel);itemRow(panel,`Healing tonic × ${G.potions}`,'Drink to recover up to 17 hit points.');const b=document.createElement('button');b.type='button';b.className='packbutton';b.textContent='DRINK POTION';b.disabled=G.potions<1||G.hp>=maxHp();b.onclick=drinkPotion;panel.append(b);itemRow(panel,G.weapon?'Tempered weapon (+1)':'Traveler’s weapon',G.weapon?'Improved by Briarfall’s blacksmith.':'Dependable, if not remarkable.');if(G.flags.charm)itemRow(panel,'Oak-bone charm','A permanent +4 maximum hit points.');if(G.trinkets)itemRow(panel,'Travel keepsakes',`${G.trinkets} keepsakes · +${G.trinkets*2} maximum HP`);if(brickCount())itemRow(panel,`Loose brick × ${brickCount()}`,'Throw during a fight for guaranteed damage.');if(G.book>1&&G.quest>=2)itemRow(panel,chapter().relic,`A relic from ${chapter().region.toLowerCase()}; ${G.quest>=3?'awakened':'needs awakening at the shrine'}.`);if(G.flags.seal)itemRow(panel,G.book>1||G.quest>=3?'Cleansed Ember Seal':'Ashen Ember Seal',G.book>1||G.quest>=3?'A gentle heat gathers beneath the metal.':'Cold iron holding a trapped ember.');for(const [item,count] of Object.entries(G.items.reduce((a,i)=>{if(typeof i==='string'&&i!=='brick'){a[i]=(a[i]||0)+1}return a},{}))){
  const info=itemDetails(item);
  itemRow(panel,`${info.name}${count>1?' × '+count:''}`,info.description);
  const buttons=document.createElement('div');buttons.className='pack-actions';
@@ -573,6 +576,179 @@ else if(activeTab==='pack'){itemRow(panel,`Healing tonic × ${G.potions}`,'Drink
  itemRow(panel,'Gold',`${G.gold} coins`)}
 else{if(!G.rolls.length){const p=document.createElement('p');p.textContent='Your dice are still quiet. Battle rolls and exploration checks appear here.';panel.append(p)}G.rolls.slice(0,9).forEach(r=>{let d=document.createElement('div');d.className='die-line';d.textContent=r;panel.append(d)})}}
 function reset(){if((G||loadSaved())&&!window.confirm('Start a new chronicle? Your saved hero and progress will be replaced.'))return;if(loadSaved())snapshotCurrent();G=null;try{localStorage.removeItem(KEY)}catch(_){}updateBackupButton();$('charName').value='Rowan';selectedClass='knight';showSetup()}
+
+// v1.1: memorable roadside scenes, earned equipment, and convivial taverns.
+// Every scene has deterministic, button-operated alternatives to optional typed commands.
+const CINDER_GEAR={
+ trailknife:{name:'Wayfarer Knife',slot:'weapon',attack:1,desc:'A traveler\'s keen blade, fit for any fighting style.'},
+ reedcloak:{name:'Reedcloak',slot:'armor',defense:1,desc:'A weatherproof cloak lined with flexible scales.'},
+ embercord:{name:'Embercord',slot:'charm',hp:4,desc:'A knotted cord that holds the memory of a campfire.'},
+ nightsteel:{name:'Nightsteel Edge',slot:'weapon',attack:2,desc:'A dark blade that glows faintly when courage is needed.'},
+ stoneward:{name:'Stoneward Mantle',slot:'armor',defense:2,desc:'Stitched with old warding marks; stout in a fight.'},
+ starglass:{name:'Starglass Pendant',slot:'charm',hp:8,desc:'A pendant that reflects paths through impossible skies.'},
+ dawnbrand:{name:'Dawnbrand',slot:'weapon',attack:3,desc:'The blade carries a sliver of the first morning.'},
+ elderguard:{name:'Elderguard Cloak',slot:'armor',defense:3,desc:'Woven from protective threads older than any city.'},
+ heartember:{name:'Heart-Ember Sigil',slot:'charm',hp:12,desc:'The warmth of promises kept.'},
+ lastlight:{name:'Lastlight Blade',slot:'weapon',attack:3,desc:'A sword whose gleam refuses to be erased.'}
+};
+const ROAD_REWARDS=[null,'trailknife','reedcloak','embercord','nightsteel','stoneward','starglass','dawnbrand','elderguard','heartember','lastlight'];
+const ROAD_EVENTS={
+ cart:{title:'The Broken Cart',desc:'A merchant kneels beside a broken wagon axle. A nervous mule shies from the road. The merchant asks for help before nightfall.',intro:'A broken wagon blocks the trail. Its driver calls out for a hand.'},
+ toll:{title:'The Unwanted Toll',desc:'Two road thieves have tied a rope across the path. Their leader demands six gold to let you through, but other approaches might work.',intro:'Two figures step out of the brush and demand a toll.'},
+ lantern:{title:'The Failing Lantern',desc:'A pilgrim shelters a sputtering lantern against the wind. They fear losing their way before reaching the next safe village.',intro:'A pilgrim clutches a failing lantern. They ask for help.'},
+ courier:{title:'The Lost Courier',desc:'A tired courier has lost the safest route through the nearby hills. A fallen tree and strange markings make the way uncertain.',intro:'A courier examines a confusing map and asks for guidance.'}
+};
+function hydrateRoad(){
+ if(!G)return;
+ if(!Array.isArray(G.gearBag))G.gearBag=[];
+ G.gearBag=Array.from(new Set(G.gearBag.filter(id=>typeof id==='string'&&CINDER_GEAR[id]))).slice(0,20);
+ if(!G.equipped||typeof G.equipped!=='object'||Array.isArray(G.equipped))G.equipped={};
+ for(const slot of ['weapon','armor','charm'])if(!G.gearBag.includes(G.equipped[slot])||CINDER_GEAR[G.equipped[slot]]?.slot!==slot)G.equipped[slot]=null;
+ if(!G.road||typeof G.road!=='object'||Array.isArray(G.road))G.road={};
+ if(!G.road.completed||typeof G.road.completed!=='object'||Array.isArray(G.road.completed))G.road.completed={};
+ if(!G.road.tavern||typeof G.road.tavern!=='object'||Array.isArray(G.road.tavern))G.road.tavern={};
+ if(!Number.isFinite(G.road.lastStep))G.road.lastStep=-10;
+ if(!G.road.pending)G.road.pending=null;
+ if(G.road.pending&&(!ROAD_EVENTS[G.road.pending.type]||G.road.pending.book!==G.book||G.combat||G.dungeon))G.road.pending=null;
+}
+function gearBonus(field){if(!G)return 0;return ['weapon','armor','charm'].reduce((total,slot)=>total+(CINDER_GEAR[G.equipped?.[slot]]?.[field]||0),0)}
+function equipGear(id){
+ hydrateRoad();const gear=CINDER_GEAR[id];
+ if(!gear||!G.gearBag.includes(id)){say('You do not have that piece of equipment.');return}
+ if(G.combat||G.road.pending){say('Finish the current encounter before changing your equipment.');return}
+ G.equipped[gear.slot]=id;G.hp=Math.min(G.hp,maxHp());
+ say(`Equipped ${gear.name}. ${gear.attack?`Attack +${gear.attack}.`:gear.defense?`Defense +${gear.defense}.`:`Maximum HP +${gear.hp}.`}`,'reward');
+}
+function renderEquipment(panel){
+ const equipped=G.equipped||{};
+ for(const slot of ['weapon','armor','charm']){
+  const id=equipped[slot],gear=CINDER_GEAR[id];
+  itemRow(panel,`${slot.toUpperCase()}: ${gear?.name||'None equipped'}`,gear?.desc||'Find equipment by helping travelers on the road. Your existing blacksmith upgrades still apply.');
+ }
+ for(const id of G.gearBag){
+  const item=CINDER_GEAR[id],on=equipped[item.slot]===id;
+  itemRow(panel,`${item.name}${on?' · EQUIPPED':''}`,`${item.desc} ${item.attack?`+${item.attack} attack`:item.defense?`+${item.defense} defense`:`+${item.hp} maximum HP`}.`);
+  const btn=document.createElement('button');btn.type='button';btn.className='packbutton';btn.textContent=on?'EQUIPPED':`EQUIP ${item.name.toUpperCase()}`;
+  btn.disabled=on||!!G.combat||!!G.road.pending;btn.onclick=()=>equipGear(id);panel.append(btn);
+ }
+}
+function maybeRoadEncounter(tile){
+ if(G.combat||G.dungeon||G.road.pending||!['f','.','b'].includes(tile))return false;
+ if(G.steps-G.road.lastStep<5||Math.random()> (prefs.storyCombat?.13:.25))return false;
+ const available=Object.keys(ROAD_EVENTS).filter(type=>!G.road.completed[`${G.book}:${type}`]);
+ if(!available.length)return false;
+ const type=available[between(0,available.length-1)];G.road.pending={book:G.book,type};G.road.lastStep=G.steps;
+ push(ROAD_EVENTS[type].intro);push('Choose a response with the numbered actions. You can always walk away; no timer is running.');return true;
+}
+function grantRoadReward(){
+ const id=ROAD_REWARDS[G.book];
+ if(!G.gearBag.includes(id)){
+  G.gearBag.push(id);const item=CINDER_GEAR[id];
+  push(`${G.road.pending?.type==='toll'?'Among the thieves’ abandoned supplies, you find':'The grateful traveler offers'} ${item.name}. Open your Pack to equip it when you are ready.`, 'reward');
+ }
+}
+function roadClear(){G.road.pending=null;G.road.lastStep=G.steps}
+function roadSuccess(text,{gold=0,goodwill=false,gear=true}={}){
+ const type=G.road.pending.type,key=`${G.book}:${type}`;
+ if(!G.road.completed[key]){
+  G.road.completed[key]=true;
+  if(goodwill){G.goodwill=Math.min(10,G.goodwill+1);push('Word of your kindness travels to the nearest settlement. +1 goodwill.','reward')}
+ }
+ G.gold+=gold;push(text,'reward');if(gold)push(`You receive ${gold} gold.`, 'reward');
+ if(gear)grantRoadReward();roadClear();done();
+}
+function roadSkill(stat){
+ if(!G.road.pending)return;
+ const type=G.road.pending.type;
+ if(G.road.pending.tried?.[stat]){say('You already tried that approach. Choose another ability, an alternative, or walk away.');return}
+ if(!G.road.pending.tried)G.road.pending.tried={};
+ G.road.pending.tried[stat]=true;
+ const desc={cart:{might:'You lift the wagon while the axle is reset.',agi:'You find a safe route and replacement wood.',spirit:'The mule calms under your steady words.'},toll:{might:'You stand firm until the thieves retreat.',agi:'You pass unseen through the brush.',spirit:'You convince the thieves to make an honest bargain.'},lantern:{might:'You raise a windbreak from fallen stone.',agi:'You find shelter among the trees.',spirit:'You return a warm light to the pilgrim’s lantern.'},courier:{might:'You clear the fallen tree from the courier’s path.',agi:'You scout a safe passage.',spirit:'You decipher old waymarks and restore the route.'}};
+ const best={knight:'might',ranger:'agi',mystic:'spirit'}[G.classId];
+ const dc=11+Math.floor((G.book-1)/3)-(stat===best?2:0);
+ if(abilityCheck(stat,dc,`Roadside ${ROAD_EVENTS[type].title}`)){
+  roadSuccess(desc[type][stat],{goodwill:type!=='toll',gold:type==='courier'?8:0});
+ }else{
+  push('The attempt falls short. Try a different approach, spend supplies, or walk away.','danger');done();
+ }
+}
+function roadAlternative(kind){
+ if(!G.road.pending)return;
+ const type=G.road.pending.type;
+ if(kind==='leave'){push('You leave the scene behind. The road keeps its secrets.');roadClear();done();return}
+ if(kind==='pay'){
+  const cost=type==='toll'?6:5;
+  if(G.gold<cost){push(`You need ${cost} gold to offer that help. Try another approach.`, 'danger');done();return}
+  G.gold-=cost;
+  roadSuccess(type==='toll'?'The thieves take the coins and let you pass.':'You pay for the supplies needed to solve the problem.',{goodwill:type!=='toll',gear:type!=='toll'});return;
+ }
+ if(kind==='potion'){
+  if(G.potions<1){push('There is no potion to offer. Try a skill instead.','danger');done();return}
+  G.potions--;roadSuccess('The pilgrim drinks your tonic, steadies themselves, and lights the lamp.',{goodwill:true});return;
+ }
+ if(kind==='fight'){
+  G.road.completed[`${G.book}:toll`]=true;
+  roadClear();startCombat(randomEnemy(here()),false);done();return;
+ }
+}
+function roadActions(){
+ const type=G.road.pending.type,offers={
+  cart:['Lift the axle','Find replacement parts','Soothe the mule'],
+  toll:['Stand your ground','Slip into the brush','Negotiate passage'],
+  lantern:['Build a windbreak','Find shelter','Rekindle the lantern'],
+  courier:['Move the fallen tree','Scout a safe passage','Read the old waymarks']
+ }[type];
+ const choices=['might','agi','spirit'].map((stat,index)=>({label:offers[index],hint:G.road.pending.tried?.[stat]?'Already attempted · try a different tactic':`${stat==='might'?'Might':stat==='agi'?'Agility':'Spirit'} check${stat==={knight:'might',ranger:'agi',mystic:'spirit'}[G.classId]?' · class advantage':''}`,disabled:!!G.road.pending.tried?.[stat],fn:()=>roadSkill(stat)}));
+ if(type==='toll'){choices.push({label:'Pay the 6 gold toll',hint:'Pass without a dice roll',fn:()=>roadAlternative('pay')});choices.push({label:'Refuse and fight',hint:'Fight a regular road enemy',fn:()=>roadAlternative('fight')})}
+ else if(type==='lantern')choices.push({label:'Give a healing tonic',hint:`${G.potions} carried · guaranteed help`,fn:()=>roadAlternative('potion')});
+ else choices.push({label:'Buy replacement supplies',hint:'5 gold · guaranteed help',fn:()=>roadAlternative('pay')});
+ choices.push({label:'Walk away',hint:'Leave without penalty',fn:()=>roadAlternative('leave')});return choices;
+}
+function roadCommand(command){
+ if(!G.road?.pending)return;
+ if(/^(?:walk away|leave|ignore|decline|pass|no thanks|go back)$/.test(command)){roadAlternative('leave');return}
+ if(/^(?:pay|pay toll|offer gold|buy supplies|give gold)$/.test(command)){roadAlternative('pay');return}
+ if(/^(?:give|use|offer) (?:a |the )?(?:potion|tonic)$/.test(command)){if(G.road.pending.type==='lantern')roadAlternative('potion');else say('That does not help with this problem.');return}
+ if(/^(?:fight|attack|draw weapon|refuse)$/.test(command)){if(G.road.pending.type==='toll')roadAlternative('fight');else say('There is no need to fight here.');return}
+ if(/^(?:might|strength|lift|push|move tree|build|stand|force)$/.test(command)){roadSkill('might');return}
+ if(/^(?:agility|sneak|scout|track|find parts|find shelter|slip)$/.test(command)){roadSkill('agi');return}
+ if(/^(?:spirit|magic|soothe|persuade|negotiate|read|reignite|rekindle|calm)$/.test(command)){roadSkill('spirit');return}
+ const n=command.match(/^(?:choose|option|select)\s+([1-6])$/);
+ if(n&&roadActions()[Number(n[1])-1]){roadActions()[Number(n[1])-1].fn();return}
+ say('Choose MIGHT, AGILITY, or SPIRIT, or try PAY, LEAVE, and other displayed options. Buttons 1–6 work too.');
+}
+function tavernTale(){
+ if(G.combat||G.dungeon||G.road.pending||here()!=='v'){say('The common room is in the settlement, marked ⌂.');return}
+ const tales=[
+ 'A farmer insists the road chooses whom to test: the brave, the clever, and the kind.',
+ 'An old soldier says not every traveler in trouble needs a sword.',
+ 'The innkeeper describes a road thief who once spared a stranger, then disappeared.',
+ 'A courier claims the Unmaker fears the stories that strangers tell one another.'
+ ];
+ push(`By the hearth, a traveler tells you: “${tales[(G.book-1)%tales.length]}”`);
+ if(!G.road.tavern[G.book])G.road.tavern[G.book]={};
+ G.road.tavern[G.book].heard=true;done();
+}
+function shareTavernStew(){
+ if(G.combat||G.dungeon||G.road.pending||here()!=='v'){say('The common table is in town.');return}
+ const status=G.road.tavern[G.book]||{};
+ if(status.meal){say('The travelers already shared a meal with you here. They remember it warmly.');return}
+ if(G.gold<6){say('A communal pot of stew costs six gold. You do not have enough yet.');return}
+ G.gold-=6;G.road.tavern[G.book]={...status,meal:true};G.goodwill=Math.min(10,G.goodwill+1);
+ G.hp=Math.min(maxHp(),G.hp+8);
+ push('You buy a warm pot of stew for tired travelers. The innkeeper remembers your generosity. +1 goodwill, recover up to 8 HP.','reward');done();
+}
+function playTavernBones(){
+ if(G.combat||G.dungeon||G.road.pending||here()!=='v'){say('You can play bones at a tavern in town.');return}
+ const status=G.road.tavern[G.book]||{};
+ if(status.bones){say('Your one round of bones in this settlement is finished. Perhaps another town will offer a fresh game.');return}
+ if(G.gold<3){say('You need three gold to enter this friendly dice game.');return}
+ G.gold-=3;G.road.tavern[G.book]={...status,bones:true};const d=dice(20);
+ roll(`Tavern bones: d20 rolled ${d}; 11 or higher wins six gold.`);
+ if(d>=11){G.gold+=6;push('The table cheers as you win the round of bones. You receive six gold!','reward')}
+ else push('The travelers laugh, and you lose your three-gold stake. You earned a story instead.');
+ done();
+}
 
 // v0.7: local, save-compatible exploration objects and NPC memory.
 const ITEM_INFO={
@@ -939,6 +1115,7 @@ function renderInteractions(){
  const panel=$('interactPanel');if(!panel)return;
  const prevFocus=panel.contains(document.activeElement)?document.activeElement.textContent.trim():null;
  panel.replaceChildren();if(!G)return;
+ if(G.road.pending){const h=document.createElement('h3');h.textContent=ROAD_EVENTS[G.road.pending.type].title.toUpperCase();panel.append(h);const p=document.createElement('p');p.textContent=ROAD_EVENTS[G.road.pending.type].desc+' Choose a numbered action above or use an optional text command.';panel.append(p);return;}
  if(G.dungeon){const h=document.createElement('h3');h.textContent='UNDERCROFT DISCOVERIES';panel.append(h);const p=document.createElement('p');p.textContent=dungeonDescription();panel.append(p);return;}
  if(renderConversation(panel))return;
  const h=document.createElement('h3');h.textContent=G.combat?'OBJECTS AT HAND':'PEOPLE & OBJECTS NEARBY';panel.append(h);
@@ -948,6 +1125,9 @@ function renderInteractions(){
   if(brickCount())add('Throw brick','Guaranteed damage · consumes brick',throwBrick);
  }else{
   if(here()==='v'){
+   add('Hear a tavern tale','Discover what has been happening on the roads',tavernTale);
+   if(!G.road.tavern[G.book]?.meal)add('Buy stew for the common table','6 gold · help fellow travelers · builds goodwill',shareTavernStew);
+   if(!G.road.tavern[G.book]?.bones)add('Play tavern bones','3 gold · one optional d20 dice game in this region',playTavernBones);
    add('Speak to innkeeper','Rumors, local history, and people you have helped',()=>openConversation('innkeeper'));
    add(`Speak to ${wardenName()}`,'An optional favor: a lost traveler’s token',()=>openConversation('warden'));
    if(hasRegionItem('road-token'))add('Return traveler’s token','Help the road warden · earn a lasting favor',giveToken);
@@ -972,6 +1152,12 @@ function textCommand(raw){
  const command=raw.toLowerCase().trim().replace(/[.!?]+$/,'').replace(/\s+/g,' ');
  if(!command)return;
  push(`> ${raw.trim()}`,'roll');
+ if(G.road?.pending){roadCommand(command);return}
+ if(/^(?:equip|wear|wield)\s+(.+)$/.test(command)){const query=command.replace(/^(?:equip|wear|wield)\s+/,'').replace(/^the /,'');const id=G.gearBag.find(k=>CINDER_GEAR[k].name.toLowerCase()===query||k===query||CINDER_GEAR[k].name.toLowerCase().includes(query));if(id)equipGear(id);else say('You do not carry matching equipment. Open your Pack to see available items.');return}
+ if(/^(?:tavern|hear rumor|hear tale|listen to tavern|talk about roads)$/.test(command)){tavernTale();return}
+ if(/^(?:buy|share|serve)\s+(?:a |some |the )?(?:stew|meal|supper|food)(?: for travelers)?$/.test(command)){shareTavernStew();return}
+ if(/^(?:play|roll|gamble)\s+(?:tavern )?(?:bones|dice)$/.test(command)){playTavernBones();return}
+
  if(/^(?:raise|train|improve|increase|spend point on)\s+(might|agility|agi|spirit)$/.test(command)){train(command.match(/(might|agility|agi|spirit)$/)[1]==='agility'?'agi':command.match(/(might|agility|agi|spirit)$/)[1]);return;}
  if(G.dungeon){
   if(G.combat){if(/^(attack|hit|strike)$/.test(command)){attack();return}if(/^(special|skill|spell|cast)$/.test(command)){special();return}if(/^(guard|defend)$/.test(command)){guard();return}if(/^(use|drink) (potion|tonic)$/.test(command)){drinkPotion();return}say('In a dungeon battle, try ATTACK, SPECIAL, GUARD, or USE POTION.');return}
@@ -1019,7 +1205,7 @@ function textCommand(raw){
  const dirs={north:[0,-1],n:[0,-1],up:[0,-1],forward:[0,-1],south:[0,1],s:[0,1],down:[0,1],east:[1,0],e:[1,0],right:[1,0],west:[-1,0],w:[-1,0],left:[-1,0]};
  const m=command.match(/^(?:(?:go|walk|move|travel|head|run)\s+(?:to\s+the\s+|to\s+|the\s+)?)?(north|south|east|west|left|right|up|down|n|s|e|w|forward)$/);
  if(m){if(G.combat){say('Finish the battle before moving.');return}const [dx,dy]=dirs[m[1]];if(canMove(dx,dy))move(dx,dy);else say(`You cannot travel ${m[1]} from here. Consult the available exits.`);return;}
- if(/^(help|commands|\?|what can i do)$/.test(command)){say('Commands: GO NORTH, LOOK, TALK TO SERA, FIND LETTER, RETURN LETTER, STUDY MEMORIAL, RESTORE MEMORIAL, BUY WARDSTONE, TAKE KEY, USE KEY ON COFFER, INVENTORY, ATTACK, USE POTION, JOURNAL, HELP. Everything can also be done through buttons.');return;}
+ if(/^(help|commands|\?|what can i do)$/.test(command)){say('Commands: GO NORTH, LOOK, TALK TO SERA, TAVERN, BUY STEW, PLAY BONES, EQUIP [ITEM], HELP TRAVELER, NEGOTIATE, SNEAK, FIGHT, FIND LETTER, RESTORE MEMORIAL, INVENTORY, ATTACK, USE POTION, JOURNAL, HELP. Everything can also be done through buttons.');return;}
  if(/^(look|l|look around|examine|inspect|survey|where am i|look at surroundings)$/.test(command)){const exits=[['north',0,-1],['east',1,0],['south',0,1],['west',-1,0]].filter(d=>canMove(d[1],d[2])).map(d=>d[0]);push(`${PLACES[here()]?.title||'The road'}. ${PLACES[here()]?.desc||'A long and dusty road.'} Exits: ${exits.join(', ')||'none'}. ${here()==='v'&&!G.pickups[G.book]?'A loose brick lies nearby.':''}`);done();return;}
  if(/^(look at|examine|inspect)\s+/.test(command)){const target=command.replace(/^(look at|examine|inspect)\s+(the\s+)?/,'');if(target.includes('brick')){say(here()==='v'&&!G.pickups[G.book]?'A loose brick has come free from a wall. You may pick it up.':brickCount()?'You have a sturdy loose brick in your satchel.':'You do not see a loose brick here.');return}if(target.includes('relic')||chapter().relic?.toLowerCase().includes(target)){say(G.book>1&&G.quest>=2?`The ${chapter().relic} is a keystone against the Unmaker.`:'You have not found the relic yet.');return}return G.book>1?laterInspect():inspect();}
  if(/^(take|grab|get|pickup|pick up|collect)\s+/.test(command)){let what=command.replace(/^(take|grab|get|pickup|pick up|collect)\s+(the\s+|a\s+|an\s+)?/,'');if(/brick|stone block|loose stone/.test(what)){pickBrick();return}if(G.book>1&&what.includes(chapter().relic.toLowerCase())){say(G.quest>=2?`You already have the ${chapter().relic}.`:`The ${chapter().relic} is guarded at ${chapter().ruin}.`);return}say(`You do not see “${what}” available to take. Try LOOK or the numbered actions.`);return;}
@@ -1062,6 +1248,10 @@ function validateImportedSave(o){
  if(o.talents&&(['might','agi','spirit'].some(k=>!Number.isInteger(o.talents[k])||o.talents[k]<0||o.talents[k]>100)))return false;
  if(o.dungeon&&(!Number.isInteger(o.dungeon.book)||o.dungeon.book<1||o.dungeon.book>10||!DUNGEON_ORDER.includes(o.dungeon.room)))return false;
  if(o.combat!==null&&o.combat!==undefined&&(!o.combat.id||!ENEMIES[o.combat.id]||!Number.isFinite(o.combat.hp)))return false;
+ if(o.road&&(typeof o.road!=='object'||Array.isArray(o.road)))return false;
+ if(o.road?.pending&&(!ROAD_EVENTS[o.road.pending.type]||!Number.isInteger(o.road.pending.book)||o.road.pending.book!==o.book))return false;
+ if(o.gearBag&&(!Array.isArray(o.gearBag)||o.gearBag.length>30||o.gearBag.some(id=>!CINDER_GEAR[id])))return false;
+ if(o.equipped&&Object.entries(o.equipped).some(([slot,id])=>!['weapon','armor','charm'].includes(slot)||(id!==null&&(!CINDER_GEAR[id]||CINDER_GEAR[id].slot!==slot))))return false;
  return true;
 }
 $('exportBtn').onclick=()=>{
@@ -1267,9 +1457,9 @@ $('introPause').onclick=()=>{
  $('introPause').textContent=introPaused?'RESUME ANIMATION':'PAUSE ANIMATION';
  $('introProgress').textContent=introPaused?'ANIMATION PAUSED. RESUME WHEN READY.':'TRANSMISSION RESUMED . . .';
 };
-// v1.0.1: an entirely simulated, never-networked BBS connection before the cinematic.
+// v1.1.0: an entirely simulated, never-networked BBS connection before the cinematic.
 // Status is announced by screen readers at major milestones only.
-const BBS_IDLE=String.raw`CINDER TERMINAL v1.0.1
+const BBS_IDLE=String.raw`CINDER TERMINAL v1.1.0
 NODE 01 / BRIARFALL
 MODEM READY
 
@@ -1325,7 +1515,7 @@ function connectBbs(){
  $('bbsSkipDial').focus();
  $('bbsLink').textContent='LINE: DIALING';
  $('bbsStatus').textContent='INITIALIZING MODEM . . .';
- $('bbsLog').textContent='CINDER TERMINAL v1.0.1\nNODE 01 / BRIARFALL\n';
+ $('bbsLog').textContent='CINDER TERMINAL v1.1.0\nNODE 01 / BRIARFALL\n';
  $('bbsAnnouncement').textContent='Simulated modem dialing sequence started. Skip dialing at any time.';
  bbsTimer=setInterval(()=>{
   if(!bbsActive||!bbsConnecting){clearBbsClock();return;}
