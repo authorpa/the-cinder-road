@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- v1.2.2: Cloudflare Web Analytics on the public GitHub Pages game only. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-tSFLLxD1AfkSFoat6ZCCR8vrjpfj8WEUZUWUv20nqWo=' 'sha256-G+sVnT/yyl0SaAUzSw0C7eUKdXPxxTkGvXpMV/sZzrA=' https://static.cloudflareinsights.com/beacon.min.js; script-src-attr 'none'; style-src 'sha256-4rcpeLqyp6Z2rWLIDqQrNnxwDMkJysWR3OzVJ/GWBxM='; style-src-attr 'none'; connect-src https://cloudflareinsights.com; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; frame-src 'none'; worker-src 'none'; form-action 'self'">
+<!-- Cloudflare Web Analytics runs only on the GitHub Pages game; never in local downloads. -->
 <script>
 (function () {
   'use strict';
@@ -253,6 +254,11 @@ body.font-large .bbs-badge,body.font-large .bbs-tagline,body.font-large .bbs-log
   #play #storyPanel .action-area{min-height:145px}
   #play #storyPanel .dpad{grid-template-columns:repeat(3,38px);grid-template-rows:repeat(2,33px)}
 }
+
+/* v1.2.3: style elements use a pinned content hash; no raw style attributes. */
+#helpDialog{max-width:570px;background:#15212d;border:1px solid #cfaa73;color:#ece1c9;border-radius:4px;padding:25px;box-shadow:0 15px 55px #0009}
+#helpDialog h2{margin:0 0 9px;font-weight:normal}
+.class-card .class-description{font-size:13px}
 </style>
 </head>
 <body>
@@ -265,7 +271,7 @@ body.font-large .bbs-badge,body.font-large .bbs-tagline,body.font-large .bbs-log
       <h2 id="bbsTitle" class="bbs-title">THE CINDER ROAD BBS</h2>
       <p id="bbsDescription" class="bbs-tagline">One strange bell. Ten roads. An adventure waiting on the other end of the line.</p>
       <p class="bbs-divider" aria-hidden="true">+ - - - - - - - - - - - - - - - - - - - - - +</p>
-      <pre id="bbsLog" class="bbs-log" aria-hidden="true">CINDER TERMINAL v1.2.2
+      <pre id="bbsLog" class="bbs-log" aria-hidden="true">CINDER TERMINAL v1.2.3
 NODE 01 / BRIARFALL
 MODEM READY
 
@@ -302,7 +308,7 @@ MODEM READY
 </section>
 <a id="pageSkip" class="skip-link" href="#mainGame">Skip to game content</a>
 <div class="shell">
-<header class="mast"><div class="brand"><div class="eyebrow">An adventure from the age of dial-up dreams</div><h1>THE <span>CINDER</span> ROAD</h1><small>AN ORIGINAL SOLO FANTASY CHRONICLE  /  VERSION 1.2.2</small></div><button id="mobileMenuToggle" class="btn-minor mobile-menu-toggle" type="button" aria-controls="gameToolbar" aria-expanded="false">⚙ Options</button><div id="gameToolbar" class="toolbar"><span id="autosave" class="autosave">OFFLINE • LOCAL SAVE</span><button id="textBtn" class="btn-minor" type="button" aria-pressed="false" title="Use larger type">LARGER TEXT</button><button id="contrastBtn" class="btn-minor" type="button" aria-pressed="false" title="Use a high-contrast palette">HIGH CONTRAST</button><button id="commandToggle" class="btn-minor" type="button" aria-pressed="false" aria-controls="commandPanel">TEXT COMMANDS: OFF</button><button id="combatBtn" class="btn-minor" type="button" aria-pressed="false" title="Toggle gentler combat damage and fewer random encounters">COMBAT: CLASSIC</button><button id="exportBtn" class="btn-minor" type="button">EXPORT SAVE</button><button id="importBtn" class="btn-minor" type="button">IMPORT SAVE</button><button id="restoreBtn" class="btn-minor hidden" type="button" title="Restore an earlier local snapshot of your character">RESTORE BACKUP</button><input id="importFile" type="file" accept=".json,application/json" tabindex="-1" class="sr-only" aria-label="Choose a Cinder Road save file"><button id="replayIntroBtn" class="btn-minor" type="button">REPLAY OPENING</button><button id="helpBtn" class="btn-minor" type="button">HOW TO PLAY</button><button id="resetBtn" class="btn-minor" type="button">NEW CHRONICLE</button></div></header>
+<header class="mast"><div class="brand"><div class="eyebrow">An adventure from the age of dial-up dreams</div><h1>THE <span>CINDER</span> ROAD</h1><small>AN ORIGINAL SOLO FANTASY CHRONICLE  /  VERSION 1.2.3</small></div><button id="mobileMenuToggle" class="btn-minor mobile-menu-toggle" type="button" aria-controls="gameToolbar" aria-expanded="false">⚙ Options</button><div id="gameToolbar" class="toolbar"><span id="autosave" class="autosave">OFFLINE • LOCAL SAVE</span><button id="textBtn" class="btn-minor" type="button" aria-pressed="false" title="Use larger type">LARGER TEXT</button><button id="contrastBtn" class="btn-minor" type="button" aria-pressed="false" title="Use a high-contrast palette">HIGH CONTRAST</button><button id="commandToggle" class="btn-minor" type="button" aria-pressed="false" aria-controls="commandPanel">TEXT COMMANDS: OFF</button><button id="combatBtn" class="btn-minor" type="button" aria-pressed="false" title="Toggle gentler combat damage and fewer random encounters">COMBAT: CLASSIC</button><button id="exportBtn" class="btn-minor" type="button">EXPORT SAVE</button><button id="importBtn" class="btn-minor" type="button">IMPORT SAVE</button><button id="restoreBtn" class="btn-minor hidden" type="button" title="Restore an earlier local snapshot of your character">RESTORE BACKUP</button><input id="importFile" type="file" accept=".json,application/json" tabindex="-1" class="sr-only" aria-label="Choose a Cinder Road save file"><button id="replayIntroBtn" class="btn-minor" type="button">REPLAY OPENING</button><button id="helpBtn" class="btn-minor" type="button">HOW TO PLAY</button><button id="resetBtn" class="btn-minor" type="button">NEW CHRONICLE</button></div></header>
 <p id="saveTransferStatus" class="sr-only" role="status" aria-live="polite"></p><div id="setup" class="setup"><div class="eyebrow">The road begins · Briarfall</div><h2 id="setupTitle" tabindex="-1">Every legend begins with a name.</h2><p>One continuous fantasy adventure across ten realms. Beyond Briarfall's walls, something has silenced the old bell tower. The village keeper is searching for a traveler willing to follow a forgotten road. Choose a calling: steel, arrows, magic, music, or shadows.</p><label for="charName">NAME YOUR ADVENTURER</label><input id="charName" class="nameinput" type="text" maxlength="24" placeholder="e.g. Rowan" autocomplete="off" value="Rowan"><div class="eyebrow">Choose your calling</div><div id="classGrid" class="class-grid"></div><button id="startBtn" class="bigbutton" type="button">BEGIN THE ADVENTURE →</button><button id="continueBtn" class="bigbutton continue" type="button">CONTINUE SAVED GAME →</button><p class="setup-note">No account or internet required. Five distinct classes, optional class-specific interactions, noncombat encounters, equipment, and tavern tales. Game progress stays in your browser when storage is available. Export your save to protect it when switching devices. Keyboard, mouse, touch, and screen-reader controls are included. On the public GitHub Pages website, Cloudflare collects basic website visit analytics; no character names, saved games, or gameplay choices are sent by the game. Downloaded copies do not load analytics.</p></div>
 <div id="play" class="hidden" data-mobile-view="adventure"><div class="topline"><div><strong id="storyDay">DAY 1</strong> <span aria-hidden="true">/</span> <span id="storyRegion">THE WESTERN MARCH</span></div><span id="questHeader">MAIN QUEST: A STRANGE SILENCE</span></div><div class="mobile-vitals" id="mobileVitals"><span id="mobileHeroName">Adventurer</span><span id="mobileVitalValues" class="mobile-vitals-values">HP — · Focus —</span></div><p id="announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p><main id="mainGame" tabindex="-1" class="layout">
 <section id="mapPanel" class="panel" aria-label="Overworld map"><div class="panelpad"><div id="mapRegion" class="section-label">THE WESTERN MARCH <em>13 × 10</em></div><div class="mapbox"><div id="map" class="mapgrid" role="group" aria-label="Overworld map. Only adjacent traversable squares can be selected."></div></div><div class="maplegend"><span><b>@</b> You</span><span><b>⌂</b> Briarfall</span><span><b>♣</b> Forest</span><span><b>✧</b> Shrine</span><span><b>⌘</b> Ruins</span><span><b>♜</b> Tower</span></div><p class="maphelp">Move with arrow keys, WASD, the directional buttons, or click an adjacent map tile.</p><div class="locationbox"><div class="eyebrow">YOUR LOCATION</div><h3 id="placeTitle" class="place-title" tabindex="-1"></h3><p id="placeDesc" class="place-desc"></p><p id="routes" class="maphelp"></p></div></div></section>
@@ -310,7 +316,7 @@ MODEM READY
 <div class="rightcolumn"><section id="characterPanel" class="panel" aria-label="Character statistics"><div class="panelpad"><div class="section-label">CHARACTER SHEET <em id="lvlDisplay">LV. 1</em></div><h3 id="heroName" class="hero-name" tabindex="-1"></h3><p id="heroClass" class="hero-class"></p><div class="meterblock"><div class="metertop"><span>HIT POINTS</span><strong id="hpText"></strong></div><div class="meter" role="progressbar" aria-label="Hit points" aria-valuemin="0"><span id="hpMeter" class="hp"></span></div></div><div class="meterblock"><div class="metertop"><span>FOCUS</span><strong id="mpText"></strong></div><div class="meter" role="progressbar" aria-label="Focus points" aria-valuemin="0"><span id="mpMeter" class="mp"></span></div></div><div class="meterblock"><div class="metertop"><span>EXPERIENCE</span><strong id="xpText"></strong></div><div class="meter" role="progressbar" aria-label="Experience points" aria-valuemin="0"><span id="xpMeter" class="xp"></span></div></div><div class="mini-grid"><div class="mini-cell"><b id="mightStat">0</b><small>MIGHT</small></div><div class="mini-cell"><b id="agilityStat">0</b><small>AGILITY</small></div><div class="mini-cell"><b id="spiritStat">0</b><small>SPIRIT</small></div></div><div class="coins"><span>DEFENSE <b id="defStat">0</b></span><span>GOLD <b id="goldStat">0</b></span></div><div id="growthPanel" class="growth" role="group" aria-label="Character ability improvements"></div></div></section><section id="detailsPanel" class="panel" aria-label="Journal and items"><div class="tabstrip" role="group" aria-label="Character details"><button class="active" data-tab="journal" aria-pressed="true" aria-controls="tabContent">JOURNAL</button><button data-tab="pack" aria-pressed="false" aria-controls="tabContent">PACK</button><button data-tab="dice" aria-pressed="false" aria-controls="tabContent">DICE</button></div><div id="tabContent" class="details" role="region" aria-label="Character information"></div></section></div>
 </main><nav id="mobileViewbar" class="mobile-viewbar" aria-label="Mobile game views"><button type="button" data-mobile-tab="adventure" aria-controls="storyPanel" aria-pressed="true">Story</button><button type="button" data-mobile-tab="map" aria-controls="mapPanel" aria-pressed="false">Map</button><button type="button" data-mobile-tab="character" aria-controls="characterPanel" aria-pressed="false">Hero</button><button type="button" data-mobile-tab="pack" aria-controls="detailsPanel" aria-pressed="false">Pack</button><button type="button" data-mobile-tab="journal" aria-controls="detailsPanel" aria-pressed="false">Journal</button></nav><div class="footer"><span><strong>CONTROLS</strong> Arrows / WASD: travel · 1–9: choose · J: journal · I: inventory · Optional typed commands</span><span>Original adventure · No account · No network needed · Autosaves</span></div></div>
 </div>
-<dialog id="helpDialog" style="max-width:570px;background:#15212d;border:1px solid #cfaa73;color:#ece1c9;border-radius:4px;padding:25px;box-shadow:0 15px 55px #0009"><h2 style="margin:0 0 9px;font-weight:normal">Welcome to The Cinder Road</h2><p>A continuous, single-player fantasy RPG across ten realms inspired by keyboard-driven adventures of the early computer era. You make choices, explore a small world, fight turn-based battles, and roll a virtual twenty-sided die.</p><p><strong>Mobile play:</strong> Use the fixed Story, Map, Hero, Pack, and Journal buttons at the bottom to change views. Story keeps recent narration, choices, and travel controls in one place. Scroll inside the story or choices to read older entries. The Options button opens accessibility settings and save tools.</p><p><strong>Accessibility:</strong> Every location has a written description and a list of exits. Use the four labeled travel buttons if you cannot or do not want to use the map. The story and combat outcomes are announced to screen readers. The chronicle can be focused and scrolled with arrow keys. Larger Text and High Contrast are available in the header. No timers, sound cues, or flashing effects.</p><p><strong>Explore:</strong> Travel with the arrows, WASD, or map. At a special location, use the numbered choices to interact.</p><p><strong>Fight:</strong> Attacks roll a d20 plus bonuses against enemy defense. Your special class ability uses Focus. Guarding recovers 2 Focus and reduces the next hit. Potions restore HP.</p><p><strong>Quest:</strong> Speak to Keeper Mara in Briarfall. Your Journal tracks what to do next. Explore the cave and woods for extra encounters and treasure.</p><p><strong>World interactions:</strong> Buttons beneath the numbered moves list nearby people and items. Each town offers optional branching conversations. Explore deeper caves for puzzle dungeons with no timed inputs. Find keys, unlock optional coffers, return lost tokens for favors, brew healing herbs, and use protective wardstones in battle. All are usable without text commands.</p><p><strong>Living world:</strong> Speak with Sera the traveling chronicler in each settlement. Look for lost letters in certain forests, study or restore memorials at bridges, and meet an optional roadside trader. These activities have persistent consequences and are never mandatory. They are accessible through both buttons and text commands.</p><p><strong>Character growth:</strong> Each level above one earns an ability point, including older saves. Spend it on Might (power and health), Agility (accuracy and protection), or Spirit (magic and Focus). These are also used in dungeon skill checks.</p><p><strong>Combat pace:</strong> CLASSIC keeps original combat. STORY reduces incoming damage and random road encounters. It changes no quests or rewards and can be toggled at any time.</p><p><strong>Save recovery:</strong> The game keeps an additional local autosave snapshot where storage permits. Use RESTORE BACKUP if something goes wrong. Backups are on the same device, so Export Save is still the safest option.</p><p><strong>Save transfer:</strong> Export Save downloads a JSON file you can import on another device. Import replaces the current browser save after confirmation. No server is involved.</p><p><strong>Text commands:</strong> Optional, off by default. Enable TEXT COMMANDS in the header, then type commands such as “go left”, “talk to Mara”, “pick up brick”, “look”, “use potion”, “attack”, “journal”, and “help”. Buttons and keyboard shortcuts continue to work.</p><p><strong>Progress:</strong> The game autosaves in this browser. Defeat sends you back to town with a gold penalty, not a permanent game over. Your adventure continues automatically from one region to the next after you defeat its central foe. The journey leads to a final confrontation and two endings. Your character and journey progress save locally.</p><form method="dialog"><button class="bigbutton">BACK TO THE ROAD</button></form></dialog>
+<dialog id="helpDialog"><h2>Welcome to The Cinder Road</h2><p>A continuous, single-player fantasy RPG across ten realms inspired by keyboard-driven adventures of the early computer era. You make choices, explore a small world, fight turn-based battles, and roll a virtual twenty-sided die.</p><p><strong>Mobile play:</strong> Use the fixed Story, Map, Hero, Pack, and Journal buttons at the bottom to change views. Story keeps recent narration, choices, and travel controls in one place. Scroll inside the story or choices to read older entries. The Options button opens accessibility settings and save tools.</p><p><strong>Accessibility:</strong> Every location has a written description and a list of exits. Use the four labeled travel buttons if you cannot or do not want to use the map. The story and combat outcomes are announced to screen readers. The chronicle can be focused and scrolled with arrow keys. Larger Text and High Contrast are available in the header. No timers, sound cues, or flashing effects.</p><p><strong>Explore:</strong> Travel with the arrows, WASD, or map. At a special location, use the numbered choices to interact.</p><p><strong>Fight:</strong> Attacks roll a d20 plus bonuses against enemy defense. Your special class ability uses Focus. Guarding recovers 2 Focus and reduces the next hit. Potions restore HP.</p><p><strong>Quest:</strong> Speak to Keeper Mara in Briarfall. Your Journal tracks what to do next. Explore the cave and woods for extra encounters and treasure.</p><p><strong>World interactions:</strong> Buttons beneath the numbered moves list nearby people and items. Each town offers optional branching conversations. Explore deeper caves for puzzle dungeons with no timed inputs. Find keys, unlock optional coffers, return lost tokens for favors, brew healing herbs, and use protective wardstones in battle. All are usable without text commands.</p><p><strong>Living world:</strong> Speak with Sera the traveling chronicler in each settlement. Look for lost letters in certain forests, study or restore memorials at bridges, and meet an optional roadside trader. These activities have persistent consequences and are never mandatory. They are accessible through both buttons and text commands.</p><p><strong>Character growth:</strong> Each level above one earns an ability point, including older saves. Spend it on Might (power and health), Agility (accuracy and protection), or Spirit (magic and Focus). These are also used in dungeon skill checks.</p><p><strong>Combat pace:</strong> CLASSIC keeps original combat. STORY reduces incoming damage and random road encounters. It changes no quests or rewards and can be toggled at any time.</p><p><strong>Save recovery:</strong> The game keeps an additional local autosave snapshot where storage permits. Use RESTORE BACKUP if something goes wrong. Backups are on the same device, so Export Save is still the safest option.</p><p><strong>Save transfer:</strong> Export Save downloads a JSON file you can import on another device. Import replaces the current browser save after confirmation. No server is involved.</p><p><strong>Text commands:</strong> Optional, off by default. Enable TEXT COMMANDS in the header, then type commands such as “go left”, “talk to Mara”, “pick up brick”, “look”, “use potion”, “attack”, “journal”, and “help”. Buttons and keyboard shortcuts continue to work.</p><p><strong>Progress:</strong> The game autosaves in this browser. Defeat sends you back to town with a gold penalty, not a permanent game over. Your adventure continues automatically from one region to the next after you defeat its central foe. The journey leads to a final confrontation and two endings. Your character and journey progress save locally.</p><form method="dialog"><button class="bigbutton">BACK TO THE ROAD</button></form></dialog>
 <script>
 (()=>{'use strict';
 const KEY='the-cinder-road-save-v1',BACKUP_KEY='the-cinder-road-save-backup-v1';
@@ -538,7 +544,7 @@ function abilityCheck(stat,dc,label){const d=dice(20),bonus=ability(stat)+Math.f
 const storyStage=()=>bookStages()[G.quest]||"The Road Continues";
 let backupCounter=0,skipBackupOnce=false;
 function readSaveSlot(key){
- try {const raw=localStorage.getItem(key);if(!raw)return null;const obj=JSON.parse(raw);return validateImportedSave(obj)?obj:null;}catch(_){return null;}
+ try {const raw=localStorage.getItem(key);if(!raw||raw.length>2*1024*1024)return null;const obj=JSON.parse(raw);return validateImportedSave(obj)?obj:null;}catch(_){return null;}
 }
 function loadSaved(){return readSaveSlot(KEY)}
 function updateBackupButton(){const b=$('restoreBtn');if(b)b.classList.toggle('hidden',!readSaveSlot(BACKUP_KEY));}
@@ -573,7 +579,14 @@ function starter(){if(loadSaved()&&!window.confirm('Begin a new chronicle? Your 
 function clsBaseHp(id){return CLASSES[id].hp}
 function showGame(){hydrateBook();if(G.quest===4&&G.book<10&&!G.combat){advanceRoad();persist();}$('setup').classList.add('hidden');$('play').classList.remove('hidden');render();$('chapterTitle').focus()}
 function showSetup(){updateBackupButton();$('play').classList.add('hidden');$('setup').classList.remove('hidden');$('continueBtn').style.display=loadSaved()?'inline-block':'none';renderClassPicker();$('charName').focus()}
-function renderClassPicker(){const box=$('classGrid');box.replaceChildren();for(const [id,c] of Object.entries(CLASSES)){let btn=document.createElement('button');btn.type='button';btn.className='class-card'+(selectedClass===id?' chosen':'');btn.setAttribute('aria-pressed',String(selectedClass===id));btn.innerHTML=`<span class="glyph">${c.symbol}</span><b>${c.name}</b><span class="stats">HP ${c.hp} · Focus ${c.mp} · Defense ${c.ac}</span><span style="font-size:13px">${c.desc}</span>`;btn.onclick=()=>{selectedClass=id;renderClassPicker()};box.append(btn)}}
+function renderClassPicker(){const box=$('classGrid');box.replaceChildren();for(const [id,c] of Object.entries(CLASSES)){
+ const btn=document.createElement('button');btn.type='button';btn.className='class-card'+(selectedClass===id?' chosen':'');btn.setAttribute('aria-pressed',String(selectedClass===id));
+ const glyph=document.createElement('span');glyph.className='glyph';glyph.textContent=c.symbol;
+ const label=document.createElement('b');label.textContent=c.name;
+ const stats=document.createElement('span');stats.className='stats';stats.textContent=`HP ${c.hp} · Focus ${c.mp} · Defense ${c.ac}`;
+ const desc=document.createElement('span');desc.className='class-description';desc.textContent=c.desc;
+ btn.append(glyph,label,stats,desc);btn.onclick=()=>{selectedClass=id;renderClassPicker()};box.append(btn);
+}}
 function goodTile(x,y){return !!WORLD[y]?.[x]&&!'^~'.includes(WORLD[y][x])}
 function canMove(dx,dy){return !!G&&!G.combat&&!G.dungeon&&!G.road?.pending&&goodTile(G.x+dx,G.y+dy)}
 function move(dx,dy){if(!canMove(dx,dy))return;conversation=null;const prev=here();G.x+=dx;G.y+=dy;G.steps++;if(G.steps%11===0)G.day++;const tile=here();if(tile==='b'&&!memorialRecord())push(`A roadside memorial stands here: ${ROAD_MEMORIALS[G.book].title}. You may study its inscription or restore it without a dice roll.`);if(tile==='f'&&letterToFind())push('Something folded and sealed catches the light among the roots. The nearby interaction list offers a search for a lost letter.');if(PLACES[tile]&&tile!=='.')push(PLACES[tile].intro);else if(G.steps%4===0)push(['The grass sways against your boots. A distant bell seems to ring, but the sound vanishes when you listen.','A crow follows you from fencepost to fencepost. It seems disappointed when you keep walking.','An old milestone bears the words: “All roads lead home. Not all travelers do.”'][G.steps%3]);if(!maybeRoadEncounter(tile)&&((tile==='f'&&Math.random()<(prefs.storyCombat?.10:.24))||(tile==='.'&&prev==='f'&&Math.random()<(prefs.storyCombat?.05:.11))||(tile==='b'&&Math.random()<(prefs.storyCombat?.06:.13)))){startCombat(randomEnemy(tile),false)}done()}
@@ -1406,24 +1419,50 @@ $('commandToggle').onclick=()=>{prefs.commands=!prefs.commands;applyPrefs();save
 
 // Portable, user-controlled save transfers. No network calls are made.
 function transferStatus(message){$('saveTransferStatus').textContent=message;if(G){push(message,'reward');done()}else $('autosave').textContent=message.slice(0,42)}
+// All save inputs are data, never code. Keep the v1 format compatible while
+// rejecting reserved keys, nested payload bombs and invalid built-in identifiers.
+const OWN=(obj,key)=>typeof key==='string'&&Object.prototype.hasOwnProperty.call(obj,key);
+const RECORD=obj=>obj!==null&&typeof obj==='object'&&!Array.isArray(obj)&&Object.getPrototypeOf(obj)===Object.prototype;
+const SAFE_KEY=/^(?!__proto__$|constructor$|prototype$)[\w:.-]{1,90}$/;
+function safeSaveTree(value,depth=0,limits={count:0}){
+ if(++limits.count>9500||depth>18)return false;
+ if(value===null||typeof value==='boolean')return true;
+ if(typeof value==='string')return value.length<=5000;
+ if(typeof value==='number')return Number.isFinite(value)&&Math.abs(value)<=10000000;
+ if(Array.isArray(value))return value.length<=1100&&value.every(item=>safeSaveTree(item,depth+1,limits));
+ if(!RECORD(value))return false;
+ const keys=Object.keys(value);
+ if(keys.length>240)return false;
+ return keys.every(key=>SAFE_KEY.test(key)&&safeSaveTree(value[key],depth+1,limits));
+}
 function validateImportedSave(o){
- if(!o||typeof o!=='object'||Array.isArray(o))return false;
- if(o.version!==1||!CLASSES[o.classId]||typeof o.name!=='string'||o.name.length>60||!o.name.trim())return false;
+ if(!RECORD(o)||!safeSaveTree(o))return false;
+ if(o.version!==1||!OWN(CLASSES,o.classId)||typeof o.name!=='string'||o.name.length>60||!o.name.trim())return false;
  if(!Number.isInteger(o.book)||o.book<1||o.book>10||!Number.isInteger(o.quest)||o.quest<0||o.quest>5)return false;
  if(!Number.isInteger(o.x)||o.x<0||o.x>12||!Number.isInteger(o.y)||o.y<0||o.y>9)return false;
  if(!Number.isInteger(o.level)||o.level<1||o.level>200)return false;
- for(const field of ['hp','mp','xp','gold','potions','day','steps','weapon'])if(!Number.isFinite(o[field])||o[field]<0||o[field]>1000000)return false;
- if(!o.flags||typeof o.flags!=='object'||Array.isArray(o.flags)||!Array.isArray(o.log)||o.log.length>1100||!Array.isArray(o.rolls)||o.rolls.length>100)return false;
+ for(const field of ['hp','mp','xp','gold','potions','day','steps','weapon'])if(!Number.isSafeInteger(o[field])||o[field]<0||o[field]>1000000)return false;
+ if(!RECORD(o.flags)||!Array.isArray(o.log)||o.log.length>1100||!Array.isArray(o.rolls)||o.rolls.length>100)return false;
+ for(const key of ['pickups','vows','bookFlags','ground','world','talents','choices','dungeons','road','equipped']){
+  if(o[key]!==undefined&&!RECORD(o[key]))return false;
+ }
+ if(o.history!==undefined&&(!Array.isArray(o.history)||o.history.length>100))return false;
  if(o.items!==undefined&&(!Array.isArray(o.items)||o.items.length>400||o.items.some(v=>typeof v!=='string'||v.length>140)))return false;
- if(o.log.some(e=>!e||typeof e.message!=='string'||e.message.length>5000)||o.rolls.some(e=>typeof e!=='string'||e.length>5000))return false;
- if(o.talents&&(['might','agi','spirit'].some(k=>!Number.isInteger(o.talents[k])||o.talents[k]<0||o.talents[k]>100)))return false;
- if(o.dungeon&&(!Number.isInteger(o.dungeon.book)||o.dungeon.book<1||o.dungeon.book>10||!DUNGEON_ORDER.includes(o.dungeon.room)))return false;
- if(o.combat!==null&&o.combat!==undefined&&(!o.combat.id||!ENEMIES[o.combat.id]||!Number.isFinite(o.combat.hp)))return false;
+ if(o.log.some(e=>!RECORD(e)||typeof e.message!=='string'||e.message.length>5000||(e.type!==undefined&&!['story','reward','danger','roll','epilogue'].includes(e.type)))||o.rolls.some(e=>typeof e!=='string'||e.length>5000))return false;
+ if(o.talents&&['might','agi','spirit'].some(k=>!Number.isInteger(o.talents[k])||o.talents[k]<0||o.talents[k]>100))return false;
+ if(o.dungeon!==null&&o.dungeon!==undefined&&(!RECORD(o.dungeon)||!Number.isInteger(o.dungeon.book)||o.dungeon.book<1||o.dungeon.book>10||!DUNGEON_ORDER.includes(o.dungeon.room)))return false;
+ if(o.combat!==null&&o.combat!==undefined&&(!RECORD(o.combat)||!OWN(ENEMIES,o.combat.id)||!Number.isFinite(o.combat.hp)||o.combat.hp<0||o.combat.hp>1000000))return false;
+ if(o.combat){
+  if(typeof o.combat.name!=='string'||o.combat.name.length>120)return false;
+  for(const field of ['maxHp','ac','attack','lo','hi','xp','gmin','gmax'])if(!Number.isFinite(o.combat[field])||o.combat[field]<0||o.combat[field]>1000000)return false;
+  if(o.combat.hp>o.combat.maxHp||o.combat.lo>o.combat.hi)return false;
+ }
  if(o.combat?.weakened!==undefined&&(!Number.isInteger(o.combat.weakened)||o.combat.weakened<0||o.combat.weakened>2))return false;
- if(o.road&&(typeof o.road!=='object'||Array.isArray(o.road)))return false;
- if(o.road?.pending&&(!ROAD_EVENTS[o.road.pending.type]||!Number.isInteger(o.road.pending.book)||o.road.pending.book!==o.book))return false;
- if(o.gearBag&&(!Array.isArray(o.gearBag)||o.gearBag.length>30||o.gearBag.some(id=>!CINDER_GEAR[id])))return false;
- if(o.equipped&&Object.entries(o.equipped).some(([slot,id])=>!['weapon','armor','charm'].includes(slot)||(id!==null&&(!CINDER_GEAR[id]||CINDER_GEAR[id].slot!==slot))))return false;
+ if(o.road?.pending&&(!RECORD(o.road.pending)||!OWN(ROAD_EVENTS,o.road.pending.type)||!Number.isInteger(o.road.pending.book)||o.road.pending.book!==o.book))return false;
+ if(o.gearBag!==undefined&&(!Array.isArray(o.gearBag)||o.gearBag.length>30||o.gearBag.some(id=>!OWN(CINDER_GEAR,id))))return false;
+ if(o.equipped&&Object.entries(o.equipped).some(([slot,id])=>!['weapon','armor','charm'].includes(slot)||(id!==null&&(!OWN(CINDER_GEAR,id)||CINDER_GEAR[id].slot!==slot))))return false;
+ if(o.world?.lettersFound!==undefined&&(!Array.isArray(o.world.lettersFound)||o.world.lettersFound.some(n=>!Number.isInteger(n)||n<1||n>10)))return false;
+ if(o.world?.lettersDelivered!==undefined&&(!Array.isArray(o.world.lettersDelivered)||o.world.lettersDelivered.some(n=>!Number.isInteger(n)||n<1||n>10)))return false;
  return true;
 }
 $('exportBtn').onclick=()=>{
@@ -1631,7 +1670,7 @@ $('introPause').onclick=()=>{
 };
 // v1.2.0: an entirely simulated, never-networked BBS connection before the cinematic.
 // Status is announced by screen readers at major milestones only.
-const BBS_IDLE=String.raw`CINDER TERMINAL v1.2.2
+const BBS_IDLE=String.raw`CINDER TERMINAL v1.2.3
 NODE 01 / BRIARFALL
 MODEM READY
 
@@ -1687,7 +1726,7 @@ function connectBbs(){
  $('bbsSkipDial').focus();
  $('bbsLink').textContent='LINE: DIALING';
  $('bbsStatus').textContent='INITIALIZING MODEM . . .';
- $('bbsLog').textContent='CINDER TERMINAL v1.2.2\nNODE 01 / BRIARFALL\n';
+ $('bbsLog').textContent='CINDER TERMINAL v1.2.3\nNODE 01 / BRIARFALL\n';
  $('bbsAnnouncement').textContent='Simulated modem dialing sequence started. Skip dialing at any time.';
  bbsTimer=setInterval(()=>{
   if(!bbsActive||!bbsConnecting){clearBbsClock();return;}
